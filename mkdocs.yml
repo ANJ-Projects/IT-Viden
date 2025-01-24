@@ -1,2 +1,4 @@
-
 site_name: My Awesome Documentation
+nav:
+  - Home: index.md
+  - About: about.md
