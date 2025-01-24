@@ -4,9 +4,14 @@ nav:
   - About: about.md
 theme:
   name: material
-  features:
-    - navigation.tabs
-    - navigation.top
+  palette:
+    # Force dark mode as default
+    - scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to light
 
 plugins:
   - search
