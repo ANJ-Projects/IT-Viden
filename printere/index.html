@@ -329,18 +329,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#via-gui" class="md-nav__link">
+  <a href="#installering-af-driver-via-gui" class="md-nav__link">
     <span class="md-ellipsis">
-      Via GUI
+      Installering af driver via GUI
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#via-pwsh" class="md-nav__link">
+  <a href="#installering-af-driver-via-pwsh" class="md-nav__link">
     <span class="md-ellipsis">
-      Via PWSH
+      Installering af driver Via PWSH
     </span>
   </a>
   
@@ -348,6 +348,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-og-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips og tricks
+    </span>
+  </a>
   
 </li>
       
@@ -414,18 +423,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#via-gui" class="md-nav__link">
+  <a href="#installering-af-driver-via-gui" class="md-nav__link">
     <span class="md-ellipsis">
-      Via GUI
+      Installering af driver via GUI
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#via-pwsh" class="md-nav__link">
+  <a href="#installering-af-driver-via-pwsh" class="md-nav__link">
     <span class="md-ellipsis">
-      Via PWSH
+      Installering af driver Via PWSH
     </span>
   </a>
   
@@ -433,6 +442,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-og-tricks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips og tricks
+    </span>
+  </a>
   
 </li>
       
@@ -471,17 +489,20 @@ Tilgå derefter dens webinterface</p>
 <pre><code>192.168.1.34
 </code></pre>
 <p>Herinde ville du så kunne finde model navnet</p>
-<ul>
-<li>Søg efter "Printernavn" + Print Driver</li>
-<li>Hent den minimale print driver</li>
-<li>Kør filen (Bemærk: Den udpakker højst sandsynligvis til en mappe, længere nede forklares hvordan den kan installeres)</li>
-</ul>
-<h3 id="via-gui">Via GUI</h3>
+<p>Søg efter "Modelnavn" + Print Driver
+Hent den minimale print driver
+Kør filen (Bemærk: Den udpakker højst sandsynligvis til en mappe, længere nede forklares hvordan den kan installeres)</p>
+<h3 id="installering-af-driver-via-gui">Installering af driver via GUI</h3>
 <p>Under Kontrolpanel &gt; Printere &gt; Højreklik og vælg Printegenskaber &gt; Vælg driver &gt; Vælg ny &gt; Har CD/Disk &gt; Find mappen og tryk inter
 Her skulle den gerne vise driveren via Windows UI'en</p>
-<h3 id="via-pwsh">Via PWSH</h3>
+<h3 id="installering-af-driver-via-pwsh">Installering af driver Via PWSH</h3>
 <p>Kør denne command </p>
 <pre><code>pnputil.exe /add-driver &quot;C:\Drivers\PrinterDriver\*.inf&quot; /install
+</code></pre>
+<h2 id="tips-og-tricks">Tips og tricks</h2>
+<p>Windows har en application der hedder Print Management der kan være nyttig at lære at kende</p>
+<p>Du kan åbne den ved at skrive dette</p>
+<pre><code>printmanagement.msc
 </code></pre>
 
 
