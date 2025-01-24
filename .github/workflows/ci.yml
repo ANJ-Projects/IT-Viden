@@ -20,10 +20,13 @@ jobs:
       run: pip install mkdocs mkdocs-material  # Add other themes/plugins if needed
       
     - name: Build site
-      run: mkdocs build --site-dir site
+      run: |
+        mkdocs build --site-dir site
+        touch site/.nojekyll  # Create the file
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
+        keep_files: true  # Preserve existing files
