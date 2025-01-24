@@ -26,17 +26,26 @@ F.eks åben en browser og gå til
 
 Herinde ville du så kunne finde model navnet
 
-- Søg efter "Printernavn" + Print Driver
--  Hent den minimale print driver
--  Kør filen (Bemærk: Den udpakker højst sandsynligvis til en mappe, længere nede forklares hvordan den kan installeres)
+Søg efter "Modelnavn" + Print Driver
+Hent den minimale print driver
+Kør filen (Bemærk: Den udpakker højst sandsynligvis til en mappe, længere nede forklares hvordan den kan installeres)
 
-### Via GUI
+### Installering af driver via GUI
 Under Kontrolpanel > Printere > Højreklik og vælg Printegenskaber > Vælg driver > Vælg ny > Har CD/Disk > Find mappen og tryk inter
 Her skulle den gerne vise driveren via Windows UI'en
 
-### Via PWSH
+### Installering af driver Via PWSH
 
 Kør denne command 
 ```
 pnputil.exe /add-driver "C:\Drivers\PrinterDriver\*.inf" /install
+```
+
+## Tips og tricks
+
+Windows har en application der hedder Print Management der kan være nyttig at lære at kende
+
+Du kan åbne den ved at skrive dette
+```
+printmanagement.msc
 ```
