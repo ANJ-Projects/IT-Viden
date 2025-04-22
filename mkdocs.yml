@@ -29,5 +29,5 @@ theme:
 
 plugins:
   - search
-# - awesome-pages
+  - awesome-pages
 # awesome-pages autogenerer navigation
