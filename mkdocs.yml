@@ -1,8 +1,21 @@
-site_name: My Awesome Documentation
+site_name: IT-Viden
 nav:
   - Home: index.md
   - About: about.md
-  - ...
+  - Windows:
+      - Outlook: windows/outlook.md
+      - TeamViewer: windows/teamviewer.md
+      - Drive Mapping & Entra Joined Troubleshooting: windows/drive-mapping-entra.md
+      - Printere: windows/printere.md
+  - Windows Server:
+      - Active Directory: windows-server/active-directory.md
+      - Scheduled Tasks (Opgavestyring): windows-server/scheduled-tasks.md
+  - Microsoft Portals:
+      - Overview: microsoft-portals/index.md
+      - Entra: microsoft-portals/entra.md
+      - Intune: microsoft-portals/intune.md
+      - Exchange Online: microsoft-portals/exchange.md
+      - Security & Compliance: microsoft-portals/security-compliance.md
 theme:
   name: material
   palette:
