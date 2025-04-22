@@ -1,4 +1,6 @@
-# Tilfælde hvor at drev ikke virker efter password skift og der benyttes drev og Azure Joined PC'er
+# Drive mapping & Entra Joined Troubleshooting
+*Tilfælde hvor at drev ikke virker efter password skift og der benyttes drev og Azure Joined PC'er*  
+
 Rigtig godt svar fra den nye o3 model fra OpenAI
 
 **Short answer:**  
