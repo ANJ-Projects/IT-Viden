@@ -1,5 +1,5 @@
 
-# Guide: Tilknyt netværksdrev på macOS via SMB
+# Tilknyt netværksdrev på macOS
 
 ## Forudsætninger
 - macOS 11 (Big Sur) eller nyere  
