@@ -63,5 +63,3 @@ Statiske eller forældede nøgler blokerer ofte forbindelsen.
   ```bash
   diskutil unmount "/Volumes/sharenavn"
   ```
-
-> Kopiér, tilpas og brug frit.
