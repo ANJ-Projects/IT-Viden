@@ -17,4 +17,5 @@ theme:
 plugins:
   - search
   - awesome-pages
+  - copybutton
 # awesome-pages autogenerer navigation
