@@ -1,4 +1,4 @@
-```markdown
+
 # Guide: Tilknyt netværksdrev på macOS via SMB
 
 ## Forudsætninger
@@ -65,4 +65,3 @@ Statiske eller forældede nøgler blokerer ofte forbindelsen.
   ```
 
 > Kopiér, tilpas og brug frit.
-```
