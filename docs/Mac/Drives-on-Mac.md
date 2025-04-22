@@ -24,15 +24,15 @@
 - Marker **Remember this password in my keychain** hvis login må gemmes.  
 - Når sharet er monteret, gør én af disse:
   - **Højreklik** på drevikonet på Dock → **Options ▸ Open at Login**.  
-  - Gå til ** ▸ System Settings ▸ Users & Groups ▸ Login Items**  
+  - Gå til System Settings ▸ Users & Groups ▸ Login Items**  
     1. Klik **+**.  
     2. Vælg drevet under **Locations**.  
     3. Klik **Add**.
 
 ---
 
-## 3. Når Keychain driller
-Statiske eller forældede nøgler blokerer ofte forbindelsen.
+## 3. Når Keychain gør at drev login driller
+Statiske eller forældede adgangskoder blokerer ofte forbindelsen.
 
 1. Åbn **Keychain Access** (`/Applications/Utilities`).  
 2. Vælg **Passwords** i sidepanelet.  
