@@ -20,7 +20,7 @@
     
     
       
-        <title>Drives on Mac - IT-Viden</title>
+        <title>Guide: Tilknyt netværksdrev på macOS via SMB - IT-Viden</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#guide-tilknyt-netvrksdrev-pa-macos-via-smb" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Drives on Mac
+              Guide: Tilknyt netværksdrev på macOS via SMB
             
           </span>
         </div>
@@ -473,18 +478,106 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Guide: Tilknyt netværksdrev på macOS via SMB
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Drives on Mac
+    Guide: Tilknyt netværksdrev på macOS via SMB
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forudstninger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forudsætninger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-abn-connect-to-server-i-finder" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Åbn Connect to Server i Finder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gem-genabn-share-automatisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Gem &amp; genåbn share automatisk
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-nar-keychain-driller" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Når Keychain driller
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fejlfinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Fejlfinding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tips-genveje" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Tips &amp; genveje
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -812,6 +905,70 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forudstninger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forudsætninger
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-abn-connect-to-server-i-finder" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Åbn Connect to Server i Finder
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gem-genabn-share-automatisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Gem &amp; genåbn share automatisk
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-nar-keychain-driller" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Når Keychain driller
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fejlfinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Fejlfinding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tips-genveje" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Tips &amp; genveje
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -827,75 +984,96 @@
 
 
 
-  <h1>Drives on Mac</h1>
-
-<pre><code class="language-markdown"># Guide: Tilknyt netværksdrev på macOS via SMB
-
-## Forudsætninger
-- macOS 11 (Big Sur) eller nyere  
-- Netværks‑share tilgængelig via **SMB**  
-- Brugernavn + adgangskode med adgang til share
-
----
-
-## 1. Åbn **Connect to Server** i Finder
-1. Åbn **Finder**.  
-2. Tryk **⌘ K** *eller* vælg **Go ▸ Connect to Server…**.  
-3. Indtast stien – husk **forward slash**:
-   ```text
-   smb://servernavn/sharenavn
-   ```
-   &gt; Brug **/** (forward slash) mellem segmenterne – *ikke* `\` som i Windows.  
-4. Klik **Connect** → vælg **Registered User** → indtast legitimation.
-
----
-
-## 2. Gem &amp; genåbn share automatisk
-- Marker **Remember this password in my keychain** hvis login må gemmes.  
-- Når sharet er monteret, gør én af disse:
-  - **Højreklik** på drevikonet på Dock → **Options ▸ Open at Login**.  
-  - Gå til ** ▸ System Settings ▸ Users &amp; Groups ▸ Login Items**  
-    1. Klik **+**.  
-    2. Vælg drevet under **Locations**.  
-    3. Klik **Add**.
-
----
-
-## 3. Når Keychain driller
-Statiske eller forældede nøgler blokerer ofte forbindelsen.
-
-1. Åbn **Keychain Access** (`/Applications/Utilities`).  
-2. Vælg **Passwords** i sidepanelet.  
-3. Søg på servernavn/IP.  
-4. Slet (⌫) eller opdatér de matchende poster.  
-5. Forbind igen via **⌘ K** og indtast korrekte oplysninger.
-
----
-
-## 4. Fejlfinding
-
-| Symptom                              | Sandsynlig årsag                 | Hurtig løsning                              |
-|--------------------------------------|----------------------------------|---------------------------------------------|
-| **“Connection failed”**              | Backslash eller forkert protokol | Brug `smb://` + **/** mellem alle navne     |
-| Share forsvinder efter genstart      | Ikke sat til autostart           | Tilføj under **Login Items** (trin 2)       |
-| Gentagne login‑prompter              | Stale Keychain‑post              | Ryd/ret nøgler (trin 3)                     |
-| Manglende skrive‑/læserettigheder    | Server‑tilladelser               | Kontroller SMB‑rettigheder på serveren      |
-
----
-
-## 5. Tips &amp; genveje
-- Finder viser monterede drev under **Locations**; Terminal viser dem i **/Volumes**.  
-- Hurtig mount i Terminal:
-  ```bash
-  open smb://brugernavn@server/sharenavn
-  ```
-- Afmonter med **⌘ E** i Finder eller:
-  ```bash
-  diskutil unmount &quot;/Volumes/sharenavn&quot;
-  ```
-
-&gt; Kopiér, tilpas og brug frit.
-</code></pre>
+<h1 id="guide-tilknyt-netvrksdrev-pa-macos-via-smb">Guide: Tilknyt netværksdrev på macOS via SMB</h1>
+<h2 id="forudstninger">Forudsætninger</h2>
+<ul>
+<li>macOS 11 (Big Sur) eller nyere  </li>
+<li>Netværks‑share tilgængelig via <strong>SMB</strong>  </li>
+<li>Brugernavn + adgangskode med adgang til share</li>
+</ul>
+<hr />
+<h2 id="1-abn-connect-to-server-i-finder">1. Åbn <strong>Connect to Server</strong> i Finder</h2>
+<ol>
+<li>Åbn <strong>Finder</strong>.  </li>
+<li>Tryk <strong>⌘ K</strong> <em>eller</em> vælg <strong>Go ▸ Connect to Server…</strong>.  </li>
+<li>Indtast stien – husk <strong>forward slash</strong>:
+   <code>text
+   smb://servernavn/sharenavn</code><blockquote>
+<p>Brug <strong>/</strong> (forward slash) mellem segmenterne – <em>ikke</em> <code>\</code> som i Windows.  </p>
+</blockquote>
+</li>
+<li>Klik <strong>Connect</strong> → vælg <strong>Registered User</strong> → indtast legitimation.</li>
+</ol>
+<hr />
+<h2 id="2-gem-genabn-share-automatisk">2. Gem &amp; genåbn share automatisk</h2>
+<ul>
+<li>Marker <strong>Remember this password in my keychain</strong> hvis login må gemmes.  </li>
+<li>Når sharet er monteret, gør én af disse:</li>
+<li><strong>Højreklik</strong> på drevikonet på Dock → <strong>Options ▸ Open at Login</strong>.  </li>
+<li>Gå til <strong> ▸ System Settings ▸ Users &amp; Groups ▸ Login Items</strong>  <ol>
+<li>Klik <strong>+</strong>.  </li>
+<li>Vælg drevet under <strong>Locations</strong>.  </li>
+<li>Klik <strong>Add</strong>.</li>
+</ol>
+</li>
+</ul>
+<hr />
+<h2 id="3-nar-keychain-driller">3. Når Keychain driller</h2>
+<p>Statiske eller forældede nøgler blokerer ofte forbindelsen.</p>
+<ol>
+<li>Åbn <strong>Keychain Access</strong> (<code>/Applications/Utilities</code>).  </li>
+<li>Vælg <strong>Passwords</strong> i sidepanelet.  </li>
+<li>Søg på servernavn/IP.  </li>
+<li>Slet (⌫) eller opdatér de matchende poster.  </li>
+<li>Forbind igen via <strong>⌘ K</strong> og indtast korrekte oplysninger.</li>
+</ol>
+<hr />
+<h2 id="4-fejlfinding">4. Fejlfinding</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Sandsynlig årsag</th>
+<th>Hurtig løsning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>“Connection failed”</strong></td>
+<td>Backslash eller forkert protokol</td>
+<td>Brug <code>smb://</code> + <strong>/</strong> mellem alle navne</td>
+</tr>
+<tr>
+<td>Share forsvinder efter genstart</td>
+<td>Ikke sat til autostart</td>
+<td>Tilføj under <strong>Login Items</strong> (trin 2)</td>
+</tr>
+<tr>
+<td>Gentagne login‑prompter</td>
+<td>Stale Keychain‑post</td>
+<td>Ryd/ret nøgler (trin 3)</td>
+</tr>
+<tr>
+<td>Manglende skrive‑/læserettigheder</td>
+<td>Server‑tilladelser</td>
+<td>Kontroller SMB‑rettigheder på serveren</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-tips-genveje">5. Tips &amp; genveje</h2>
+<ul>
+<li>Finder viser monterede drev under <strong>Locations</strong>; Terminal viser dem i <strong>/Volumes</strong>.  </li>
+<li>Hurtig mount i Terminal:
+  <code>bash
+  open smb://brugernavn@server/sharenavn</code></li>
+<li>Afmonter med <strong>⌘ E</strong> i Finder eller:
+  <code>bash
+  diskutil unmount "/Volumes/sharenavn"</code></li>
+</ul>
+<blockquote>
+<p>Kopiér, tilpas og brug frit.</p>
+</blockquote>
 
 
 
