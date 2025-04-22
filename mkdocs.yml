@@ -1,21 +1,30 @@
 site_name: IT-Viden
+
 nav:
-   - Home: index.md
-   - About: about.md
-   - ...
+  - Home: index.md
+  - About: about.md
+  - ...
+
 theme:
   name: material
+  features:
+    - content.code.copy        # Adds "Copy" button to code blocks
+    - content.code.select      # Adds "Select all" button to code blocks
   palette:
-    # Force dark mode as default
+    # Dark mode is default, but toggle is available
+    - scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
     - scheme: slate
       primary: indigo
       accent: teal
       toggle:
         icon: material/weather-night
-        name: Switch to light
+        name: Switch to light mode
 
 plugins:
   - search
-  - awesome-pages
-  - copybutton
-# awesome-pages autogenerer navigation
+  - awesome-pages  # Autogenerates navigation from .pages files
