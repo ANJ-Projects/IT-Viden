@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Outlook/">
+        <link rel="prev" href="../../../Hardware/Lenovo%20Powercycle/">
       
       
-        <link rel="next" href="../Teamviewer/">
+        <link rel="next" href="../../../Mac/Drive-Troubleshooting-on-Mac/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Hent Outlook (Classic) hvis den ikke er med i default installeren - IT-Viden</title>
+        <title>Sådan konfigurerer du en ny Proxmox Server - IT-Viden</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hent-outlook-classic-hvis-den-ikke-er-med-i-default-installeren" class="md-skip">
+        <a href="#sadan-konfigurerer-du-en-ny-proxmox-server" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hent Outlook (Classic) hvis den ikke er med i default installeren
+              Sådan konfigurerer du en ny Proxmox Server
             
           </span>
         </div>
@@ -429,18 +429,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -456,7 +458,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Linux
@@ -467,18 +469,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -494,7 +498,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             Proxmox
@@ -505,10 +509,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../Linux/Proxmox/ProxmoxSetup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Sådan konfigurerer du en ny Proxmox Server
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -519,6 +545,161 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opstning" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPSÆTNING
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opdatering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opdatering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rens-partitioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rens partitioner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klargr-disk-til-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Klargør disk til storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tjek-om-disk-er-klar-til-vm-oprettelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tjek om disk er klar til VM-oprettelse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isos" class="md-nav__link">
+    <span class="md-ellipsis">
+      ISOs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Mount
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto Mount">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Brug
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-proxmox-servere" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Proxmox servere
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -748,20 +929,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -777,7 +956,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Windows
@@ -867,7 +1046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Brugere/Lokal%20Bruger/AddAdministratorForLocalUser/" class="md-nav__link">
+      <a href="../../../Windows/Brugere/Lokal%20Bruger/AddAdministratorForLocalUser/" class="md-nav__link">
         
   
   
@@ -890,7 +1069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Brugere/Lokal%20Bruger/setsqsalocalonly/" class="md-nav__link">
+      <a href="../../../Windows/Brugere/Lokal%20Bruger/setsqsalocalonly/" class="md-nav__link">
         
   
   
@@ -967,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Enrollment/CommonSignInIssueForOfficeApps/" class="md-nav__link">
+      <a href="../../../Windows/Enrollment/CommonSignInIssueForOfficeApps/" class="md-nav__link">
         
   
   
@@ -1036,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Entra%20Joined/Windows-Drivemapping-AzureJoined-Troubleshooting/" class="md-nav__link">
+      <a href="../../../Windows/Entra%20Joined/Windows-Drivemapping-AzureJoined-Troubleshooting/" class="md-nav__link">
         
   
   
@@ -1064,20 +1243,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
         
           
           <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
@@ -1093,7 +1270,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9_4">
             <span class="md-nav__icon md-icon"></span>
             Software
@@ -1107,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Outlook/" class="md-nav__link">
+      <a href="../../../Windows/Software/Outlook/" class="md-nav__link">
         
   
   
@@ -1127,19 +1304,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../Windows/Software/OutlookOld/" class="md-nav__link">
         
   
   
@@ -1150,7 +1318,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1163,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Teamviewer/" class="md-nav__link">
+      <a href="../../../Windows/Software/Teamviewer/" class="md-nav__link">
         
   
   
@@ -1305,6 +1472,149 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opstning" class="md-nav__link">
+    <span class="md-ellipsis">
+      OPSÆTNING
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opdatering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opdatering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rens-partitioner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rens partitioner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#klargr-disk-til-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Klargør disk til storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tjek-om-disk-er-klar-til-vm-oprettelse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tjek om disk er klar til VM-oprettelse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isos" class="md-nav__link">
+    <span class="md-ellipsis">
+      ISOs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Mount
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auto Mount">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Brug
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-proxmox-servere" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Proxmox servere
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1319,11 +1629,106 @@
 
 
 
-<h1 id="hent-outlook-classic-hvis-den-ikke-er-med-i-default-installeren">Hent Outlook (Classic) hvis den ikke er med i default installeren</h1>
-<p>Gå på denne site<br />
-https://support.microsoft.com/en-us/office/you-can-t-open-classic-outlook-on-a-new-windows-pc-5c94902b-31a5-4274-abb0-b07f4661edf5  </p>
-<p>Vælg sprog<br />
-Klik hent og kør installer  </p>
+<h1 id="sadan-konfigurerer-du-en-ny-proxmox-server">Sådan konfigurerer du en ny Proxmox Server</h1>
+<p>Denne guide bruges, når en ny Proxmox-server skal opsættes.  </p>
+<p>At være ny i Proxmox kan være en udfordring – nogle af de mest frustrerende ting at finde ud af som nybegynder er fx:<br />
+<em> Storage<br />
+</em> Backups<br />
+* Shares / Monterede eksterne drev  </p>
+<p>Denne guide forsøger at være så simpel som muligt, men stadig informativ nok til at kunne udføre de nødvendige opgaver.  </p>
+<hr />
+<h2 id="opstning">OPSÆTNING</h2>
+<ul>
+<li>Lenovo PC  </li>
+<li>120 GB SSD (Proxmox er installeret her)  </li>
+<li>500 GB NVME (Bruges til storage)  </li>
+<li>Drev blev slettet via Windows installer og genoprettet derfra (Der opstod fejl under installation af Proxmox, da diskene var uinitialiserede)</li>
+</ul>
+<p>Videoguide: https://www.youtube.com/watch?v=GoZaMgEgrHw  </p>
+<hr />
+<h2 id="opdatering">Opdatering</h2>
+<p>Gå ind i Proxmox Web GUI  </p>
+<p><strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Updates &gt; Repositories</strong>  </p>
+<p>Så:  </p>
+<pre><code>Add Standard  
+Disable Enterprise  
+</code></pre>
+<p>Åbn shell:  </p>
+<pre><code class="language-bash">apt update -y &amp;&amp; apt upgrade -y &amp;&amp; apt dist-upgrade -y
+</code></pre>
+<hr />
+<h2 id="storage">Storage</h2>
+<h3 id="rens-partitioner">Rens partitioner</h3>
+<p><em>Jeg har ikke haft brug for dette endnu, da alt kunne klares via GUI’en</em>  </p>
+<p>Gå til:<br />
+<strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Disks</strong><br />
+Her kan du se diskene  </p>
+<p>Åbn shell:<br />
+Brug <code>fdisk</code>  </p>
+<pre><code class="language-bash">fdisk /dev/sda
+</code></pre>
+<p>Vis partition-info:  </p>
+<pre><code class="language-bash">p
+</code></pre>
+<p>Slet partitioner (hvis nødvendigt):  </p>
+<pre><code class="language-bash">fdisk /dev/sda
+</code></pre>
+<hr />
+<h3 id="klargr-disk-til-storage">Klargør disk til storage</h3>
+<p><strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Disks</strong><br />
+Initialiser disken med GPT<br />
+<strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Disks &gt; ZFS</strong><br />
+Klik på <strong>CREATE: ZFS</strong><br />
+Vælg og tilføj disken som ZFS  </p>
+<hr />
+<h3 id="tjek-om-disk-er-klar-til-vm-oprettelse">Tjek om disk er klar til VM-oprettelse</h3>
+<p><strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server</strong> (højreklik)<br />
+<strong>Create VM</strong>  </p>
+<p>Angiv navn<br />
+Klik videre – når du kommer til Hard disk, fold <strong>Storage</strong> dropdown ud.<br />
+Den nye disk burde være synlig – hvis ikke, er der måske et problem med initialiseringen.  </p>
+<hr />
+<h2 id="backups">Backups</h2>
+<p>Genstart serveren, så den er på version <strong>Proxmox 7.3-3</strong> eller højere  </p>
+<p><strong>Datacenter &gt; Storage &gt; SMB/CIFS</strong>  </p>
+<ul>
+<li><strong>ID</strong> er navnet  </li>
+<li><strong>Server</strong> er SMB serveren  </li>
+<li><strong>Username</strong> er brugernavn  </li>
+<li><strong>Password</strong> er adgangskoden  </li>
+<li><strong>Share</strong> er det share, der bruges – opret et nyt share, da Proxmox laver mapper i sharet  </li>
+<li>Under <strong>Content</strong>, vælg <strong>VZDump backup file</strong></li>
+</ul>
+<hr />
+<h2 id="isos">ISOs</h2>
+<p><em>Jeg anbefaler at gemme ISOs på et netværks-share – upload kan være frustrerende, og det er en god idé at holde VMs adskilt</em>  </p>
+<p><strong>Datacenter &gt; Storage &gt; SMB/CIFS</strong></p>
+<ul>
+<li><strong>ID</strong> er navnet  </li>
+<li><strong>Server</strong> er SMB serveren  </li>
+<li><strong>Username</strong> er brugernavn  </li>
+<li><strong>Password</strong> er adgangskode  </li>
+<li><strong>Share</strong> er det share, der bruges – opret et nyt share, da Proxmox laver mapper i sharet  </li>
+<li>Under <strong>Content</strong>, vælg <strong>ISO image</strong></li>
+</ul>
+<hr />
+<h2 id="auto-mount">Auto Mount</h2>
+<p>Installer <code>pve7-usb-automount</code>  </p>
+<h3 id="installation">Installation</h3>
+<pre><code class="language-bash">apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2FAB19E7CCB7F415 &amp;&amp; echo &quot;deb https://apt.iteas.at/iteas bullseye main&quot; &gt; /etc/apt/sources.list.d/iteas.list &amp;&amp; apt update &amp;&amp; apt install pve7-usb-automount
+</code></pre>
+<h3 id="brug">Brug</h3>
+<pre><code class="language-bash">df -h
+</code></pre>
+<p>Find størrelsen på din storage og tjek hvor den er monteret – i dette eksempel var den monteret her:<br />
+<code>/media/sdb1</code></p>
+<hr />
+<h2 id="cluster">Cluster</h2>
+<h3 id="2-proxmox-servere">2 Proxmox servere</h3>
+<p><em>Sørg for, at den anden node ikke har adgang til nogen af de VMs eller storage den første node bruger.</em>  </p>
+<p>Kør følgende kommando for at starte VMs, hvis der kun er 2 Proxmox-servere:  </p>
+<pre><code class="language-bash">pvecm expected 1
+</code></pre>
 
 
 
