@@ -1,5 +1,10 @@
 
-### 🔧 **PowerShell Script: List Installed MSI Apps with GUIDs**
+# 🔧 **PowerShell-script: Vis installerede MSI-applikationer med GUID'er**
+
+## 🧾 **Introduktion**
+Dette PowerShell-script bruges til at finde og liste programmer installeret via MSI (Microsoft Installer) på en Windows-maskine. Det henter oplysninger fra både 64-bit og 32-bit registreringsstier under HKLM og HKCU. Det filtrerer kun de programmer, som er installeret med `msiexec`, og udtrækker GUID direkte fra afinstallationsstrengen.
+
+---
 
 ```powershell
 $registryPaths = @(
@@ -22,7 +27,8 @@ $results | Format-Table -AutoSize
 
 ---
 
-### 💡 Notes:
-- This filters only MSI-based applications (`msiexec` in `UninstallString`).
-- The GUID (`MSI_GUID`) is extracted via regex from the `UninstallString`.
-- It covers 64-bit and 32-bit locations under both HKLM and HKCU.
+### 💡 Noter:
+- Filtrerer kun MSI-baserede programmer (`msiexec` i `UninstallString`).
+- GUID (`MSI_GUID`) udtrækkes med regex fra `UninstallString`.
+- Dækker både 64-bit og 32-bit placeringer under HKLM og HKCU.
+
