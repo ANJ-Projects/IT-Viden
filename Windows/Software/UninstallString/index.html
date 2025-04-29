@@ -20,7 +20,7 @@
     
     
       
-        <title>UninstallString - IT-Viden</title>
+        <title>🔧 PowerShell-script: Vis installerede MSI-applikationer med GUID'er - IT-Viden</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#powershell-script-list-installed-msi-apps-with-guids" class="md-skip">
+        <a href="#powershell-script-vis-installerede-msi-applikationer-med-guider" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UninstallString
+              🔧 PowerShell-script: Vis installerede MSI-applikationer med GUID'er
             
           </span>
         </div>
@@ -1296,13 +1296,15 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   
   <span class="md-ellipsis">
-    UninstallString
+    🔧 PowerShell-script: Vis installerede MSI-applikationer med GUID'er
     
   </span>
   
@@ -1315,7 +1317,7 @@
   
   
   <span class="md-ellipsis">
-    UninstallString
+    🔧 PowerShell-script: Vis installerede MSI-applikationer med GUID'er
     
   </span>
   
@@ -1328,6 +1330,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1336,20 +1340,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#powershell-script-list-installed-msi-apps-with-guids" class="md-nav__link">
+  <a href="#introduktion" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 PowerShell Script: List Installed MSI Apps with GUIDs
+      🧾 Introduktion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 Introduktion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#noter" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Noter:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      💡 Notes:
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1485,6 +1495,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1493,20 +1505,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#powershell-script-list-installed-msi-apps-with-guids" class="md-nav__link">
+  <a href="#introduktion" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 PowerShell Script: List Installed MSI Apps with GUIDs
+      🧾 Introduktion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 Introduktion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#noter" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Noter:
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      💡 Notes:
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1526,9 +1544,10 @@
 
 
 
-  <h1>UninstallString</h1>
-
-<h3 id="powershell-script-list-installed-msi-apps-with-guids">🔧 <strong>PowerShell Script: List Installed MSI Apps with GUIDs</strong></h3>
+<h1 id="powershell-script-vis-installerede-msi-applikationer-med-guider">🔧 <strong>PowerShell-script: Vis installerede MSI-applikationer med GUID'er</strong></h1>
+<h2 id="introduktion">🧾 <strong>Introduktion</strong></h2>
+<p>Dette PowerShell-script bruges til at finde og liste programmer installeret via MSI (Microsoft Installer) på en Windows-maskine. Det henter oplysninger fra både 64-bit og 32-bit registreringsstier under HKLM og HKCU. Det filtrerer kun de programmer, som er installeret med <code>msiexec</code>, og udtrækker GUID direkte fra afinstallationsstrengen.</p>
+<hr />
 <pre><code class="language-powershell">$registryPaths = @(
     &quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;,
     &quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;,
@@ -1547,11 +1566,11 @@ $results = foreach ($path in $registryPaths) {
 $results | Format-Table -AutoSize
 </code></pre>
 <hr />
-<h3 id="notes">💡 Notes:</h3>
+<h3 id="noter">💡 Noter:</h3>
 <ul>
-<li>This filters only MSI-based applications (<code>msiexec</code> in <code>UninstallString</code>).</li>
-<li>The GUID (<code>MSI_GUID</code>) is extracted via regex from the <code>UninstallString</code>.</li>
-<li>It covers 64-bit and 32-bit locations under both HKLM and HKCU.</li>
+<li>Filtrerer kun MSI-baserede programmer (<code>msiexec</code> i <code>UninstallString</code>).</li>
+<li>GUID (<code>MSI_GUID</code>) udtrækkes med regex fra <code>UninstallString</code>.</li>
+<li>Dækker både 64-bit og 32-bit placeringer under HKLM og HKCU.</li>
 </ul>
 
 
