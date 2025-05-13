@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../General/printere/">
+        <link rel="prev" href="../bordersetup/">
       
       
-        <link rel="next" href="../../Kundeservice/Helpdesk-Afdeling/">
+        <link rel="next" href="../Proxmox/ProxmoxSetup/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Lenovo dræn strøm fra bærbar - IT-Viden</title>
+        <title>Protected-Whitelist SSH Jumphost - IT-Viden</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lenovo-drn-strm-fra-brbar" class="md-skip">
+        <a href="#protected-whitelist-ssh-jumphost" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Lenovo dræn strøm fra bærbar
+              Protected-Whitelist SSH Jumphost
             
           </span>
         </div>
@@ -361,20 +361,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -390,7 +388,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Hardware
@@ -401,19 +399,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Hardware/Lenovo%20Powercycle/" class="md-nav__link">
         
   
   
@@ -424,7 +413,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -509,18 +497,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -536,7 +526,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Linux
@@ -550,7 +540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Linux/bordersetup/" class="md-nav__link">
+      <a href="../bordersetup/" class="md-nav__link">
         
   
   
@@ -570,10 +560,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Linux/sshjump/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Protected-Whitelist SSH Jumphost
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -584,6 +596,131 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-what-youll-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. What you’ll need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-generate-an-ssh-key-at-work-one-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Generate an SSH key at work (one-time)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-add-the-key-to-the-ubuntu-jumphost" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Add the key to the Ubuntu jumphost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-harden-the-ssh-daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Harden the SSH daemon
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lock-it-down-with-ufw-ubuntu-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Lock it down with UFW (Ubuntu firewall)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-add-router-nat-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Add router ↔ NAT rule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optional-fail2ban-safety-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 (Optional) Fail2Ban safety-net
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-optional-persistent-audit-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 (Optional) Persistent audit logs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-connect-from-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 Connect from work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-routine-checklist-after-a-change-at-workhome" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 Routine checklist (after a change at work/home)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9 Routine checklist (after a change at work/home)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#you-now-have-a-protected-whitelisted-ip-ssh-jumphost" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎉 You now have a Protected Whitelisted-IP SSH Jumphost:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -634,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Linux/Proxmox/ProxmoxSetup/" class="md-nav__link">
+      <a href="../Proxmox/ProxmoxSetup/" class="md-nav__link">
         
   
   
@@ -1600,6 +1737,119 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-what-youll-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. What you’ll need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-generate-an-ssh-key-at-work-one-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Generate an SSH key at work (one-time)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-add-the-key-to-the-ubuntu-jumphost" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Add the key to the Ubuntu jumphost
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-harden-the-ssh-daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Harden the SSH daemon
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lock-it-down-with-ufw-ubuntu-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Lock it down with UFW (Ubuntu firewall)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-add-router-nat-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 Add router ↔ NAT rule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-optional-fail2ban-safety-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 (Optional) Fail2Ban safety-net
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-optional-persistent-audit-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 (Optional) Persistent audit logs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-connect-from-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 Connect from work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-routine-checklist-after-a-change-at-workhome" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 Routine checklist (after a change at work/home)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9 Routine checklist (after a change at work/home)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#you-now-have-a-protected-whitelisted-ip-ssh-jumphost" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎉 You now have a Protected Whitelisted-IP SSH Jumphost:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1614,23 +1864,157 @@
 
 
 
-<h1 id="lenovo-drn-strm-fra-brbar">Lenovo dræn strøm fra bærbar</h1>
-<ol>
-<li>Fjern strøm fra enheden</li>
-<li>Vend den om og find lille hul</li>
-<li>Put papirsklip eller mobil simkort udskifter ind i hullet så det trykkes nede i 15 sekunder</li>
-<li>Sæt strøm til at start bærbaren igen</li>
-</ol>
-<p><img alt="alt text" src="https://download.lenovo.com/km/media/images/HT510410/t15_emt_reset_hole_20230414062025868.png" /></p>
-<p>Bemærk: Hvis det var successfuldt ville enheden ikke starte før den tilsluttes strøm igen </p>
-<p>Dette har mulighed for at fikse  </p>
-<pre><code>Dock problemer  
-Skærm problemer  
-Adapter problemer  
-Camera problemer  
-Mikrofon problemer  
-Og meget mere
+<h1 id="protected-whitelist-ssh-jumphost">Protected-Whitelist SSH Jumphost</h1>
+<p><em>Fast, “set-and-forget” recipe for Ubuntu 22.04+</em></p>
+<hr />
+<h2 id="0-what-youll-need">0. What you’ll need</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Homelab Ubuntu server</strong></td>
+<td>The jumphost you’ll SSH into</td>
+</tr>
+<tr>
+<td><strong>Your static work WAN IP</strong> (e.g. 203.0.113.45)</td>
+<td>To whitelist in the firewall &amp; router</td>
+</tr>
+<tr>
+<td><strong>Router / firewall that supports source-IP port-forwarding</strong></td>
+<td>Hides the port from everyone else</td>
+</tr>
+<tr>
+<td><strong>Windows PC at work</strong> (no installs)</td>
+<td>Has built-in <code>ssh.exe</code> and <code>ssh-keygen</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-generate-an-ssh-key-at-work-one-time">1  Generate an SSH key <em>at work</em> (one-time)</h2>
+<pre><code class="language-powershell"># in a PowerShell window on the work PC
+ssh-keygen -t ed25519 -C &quot;work-pc key&quot; -f %USERPROFILE%\.ssh\work_homelab_ed25519
 </code></pre>
+<ul>
+<li>Press <strong>Enter</strong> twice to save without passphrase (or add one for extra safety).</li>
+<li>This creates <strong><code>work_homelab_ed25519</code></strong> (private) and <strong><code>work_homelab_ed25519.pub</code></strong> (public).</li>
+</ul>
+<p>Copy the content of the <strong><code>.pub</code></strong> file to your clipboard.</p>
+<hr />
+<h2 id="2-add-the-key-to-the-ubuntu-jumphost">2  Add the key to the Ubuntu jumphost</h2>
+<p>SSH into the box from <em>inside</em> your home network:</p>
+<pre><code class="language-bash">ssh youruser@192.168.1.50        # old way, still works internally
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-bash"># ensure .ssh exists
+mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+
+# paste the key
+echo 'ssh-ed25519 AAAAC3NzaC1... work-pc key' &gt;&gt; ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+</code></pre>
+<hr />
+<h2 id="3-harden-the-ssh-daemon">3  Harden the SSH daemon</h2>
+<p>Edit <code>/etc/ssh/sshd_config</code>:</p>
+<pre><code class="language-bash">sudo nano /etc/ssh/sshd_config
+</code></pre>
+<p>Add / modify:</p>
+<pre><code>Port 22222                 # pick any high, unused port
+PasswordAuthentication no  # keys only
+PermitRootLogin no
+# optional extra belt-and-braces – accept only that work IP
+Match Address 203.0.113.45
+    AllowUsers youruser
+</code></pre>
+<pre><code class="language-bash">sudo systemctl restart sshd
+</code></pre>
+<p>✅ <strong>Test locally</strong></p>
+<pre><code class="language-bash">ssh -p 22222 youruser@127.0.0.1
+</code></pre>
+<hr />
+<h2 id="4-lock-it-down-with-ufw-ubuntu-firewall">4  Lock it down with UFW (Ubuntu firewall)</h2>
+<pre><code class="language-bash">sudo ufw default deny incoming
+sudo ufw allow from 203.0.113.45 to any port 22222 proto tcp comment &quot;work-WAN SSH&quot;
+sudo ufw enable
+sudo ufw status
+</code></pre>
+<p>Everything except your work IP is now dropped at the server itself.</p>
+<hr />
+<h2 id="5-add-router-nat-rule">5  Add router ↔ NAT rule</h2>
+<ol>
+<li><strong>Internal target</strong>: <code>192.168.1.50 :22222</code></li>
+<li><strong>External port</strong> : <code>22222</code> (or the same you chose)</li>
+<li><strong>Source filter</strong> : <code>203.0.113.45/32</code> only</li>
+</ol>
+<blockquote>
+<p>Each router UI is different; look for “advanced NAT” or “source IP” field.
+If your firmware has no source filter, rely on UFW only—bots will reach the router but die at the server.</p>
+</blockquote>
+<hr />
+<h2 id="6-optional-fail2ban-safety-net">6  (Optional) Fail2Ban safety-net</h2>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install fail2ban -y
+# default jail already protects sshd
+sudo systemctl enable --now fail2ban
+</code></pre>
+<p>Even if password auth is disabled, this keeps audit noise low.</p>
+<hr />
+<h2 id="7-optional-persistent-audit-logs">7  (Optional) Persistent audit logs</h2>
+<pre><code class="language-bash">sudo mkdir -p /var/log/jumphost
+sudo journalctl -u ssh -f     # live view
+# or save a daily log
+sudo journalctl -u ssh --since today &gt; /var/log/jumphost/ssh-$(date +%F).log
+</code></pre>
+<p>Systemd’s journal already retains logs across reboots (check <code>/etc/systemd/journald.conf</code> if you need to enlarge the log size).</p>
+<hr />
+<h2 id="8-connect-from-work">8  Connect from work</h2>
+<p>Create / edit <code>%USERPROFILE%\.ssh\config</code> on the Windows PC:</p>
+<pre><code>Host homelab
+    HostName your-home-dns-or-ip   # or DDNS
+    Port 22222
+    User youruser
+    IdentityFile ~/.ssh/work_homelab_ed25519
+    IdentitiesOnly yes
+</code></pre>
+<p>Now just:</p>
+<pre><code class="language-powershell">ssh homelab
+</code></pre>
+<hr />
+<h2 id="9-routine-checklist-after-a-change-at-workhome">9  Routine checklist (after a change at work/home)</h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Work WAN IP changes</td>
+<td>Update UFW rule &amp; router source IP</td>
+</tr>
+<tr>
+<td>New work PC</td>
+<td>Generate a new key, append its <code>.pub</code> to <code>authorized_keys</code></td>
+</tr>
+<tr>
+<td>Retire a PC</td>
+<td>Remove its key line from <code>authorized_keys</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="you-now-have-a-protected-whitelisted-ip-ssh-jumphost">🎉 You now have a <strong>Protected Whitelisted-IP SSH Jumphost</strong>:</h3>
+<ul>
+<li>Invisible to the internet</li>
+<li>Only reachable from your work network</li>
+<li>Key-authenticated, non-standard port</li>
+<li>Local firewall + optional Fail2Ban &amp; logs</li>
+</ul>
+<p>Drop me a note if you need automation scripts or guidance for a different Ubuntu version—happy hacking!</p>
 
 
 
