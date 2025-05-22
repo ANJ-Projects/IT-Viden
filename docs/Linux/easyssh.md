@@ -10,7 +10,12 @@ cat ~/.ssh/id_ed25519.pub
 # Paste this at github.com > Settings > SSH Keys
 
 # Step 3 – On any server, run this
-ssh-import-id-gh usernamedev
+ssh-import-id-gh username
+
+# If using Winodws Step 3 is this
+mkdir $env:USERPROFILE\.ssh\
+Invoke-WebRequest -Uri "https://github.com/username.keys" -OutFile "$env:USERPROFILE\.ssh\authorized_keys"
+
 ```
 
 That's it.
