@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../Enrollment/CommonSignInIssueForOfficeApps/">
+        <link rel="prev" href="../../Entra%20Joined/Windows-Drivemapping-AzureJoined-Troubleshooting/">
       
       
-        <link rel="next" href="../../Management/opensshserver/">
+        <link rel="next" href="../../Software/Outlook/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Drive mapping & Entra Joined Troubleshooting - IT-Viden</title>
+        <title>Install SSH Server on Windows - IT-Viden</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#drive-mapping-entra-joined-troubleshooting" class="md-skip">
+        <a href="#install-ssh-server-on-windows" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Drive mapping &amp; Entra Joined Troubleshooting
+              Install SSH Server on Windows
             
           </span>
         </div>
@@ -1269,20 +1269,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_3" >
         
           
           <label class="md-nav__link" for="__nav_11_3" id="__nav_11_3_label" tabindex="0">
@@ -1298,10 +1296,81 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_11_3">
             <span class="md-nav__icon md-icon"></span>
             Entra Joined
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Entra%20Joined/Windows-Drivemapping-AzureJoined-Troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Drive mapping &amp; Entra Joined Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_11_4" id="__nav_11_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Management
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11_4">
+            <span class="md-nav__icon md-icon"></span>
+            Management
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1326,7 +1395,7 @@
   
   
   <span class="md-ellipsis">
-    Drive mapping &amp; Entra Joined Troubleshooting
+    Install SSH Server on Windows
     
   </span>
   
@@ -1339,7 +1408,7 @@
   
   
   <span class="md-ellipsis">
-    Drive mapping &amp; Entra Joined Troubleshooting
+    Install SSH Server on Windows
     
   </span>
   
@@ -1362,36 +1431,129 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-actually-happened" class="md-nav__link">
+  <a href="#step-1-install-openssh-server-windows-1011-or-server" class="md-nav__link">
     <span class="md-ellipsis">
-      What actually happened
+      ✅ STEP 1: INSTALL OPENSSH SERVER (Windows 10/11 or Server)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ STEP 1: INSTALL OPENSSH SERVER (Windows 10/11 or Server)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-powershell-best-for-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option A: PowerShell (Best for automation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option B: GUI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-start-and-enable-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ STEP 2: START AND ENABLE SERVICE
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#faster-cleaner-ways-no-reboot-required" class="md-nav__link">
+  <a href="#step-3-open-firewall-port-22" class="md-nav__link">
     <span class="md-ellipsis">
-      Faster / cleaner ways (no reboot required)
+      ✅ STEP 3: OPEN FIREWALL PORT 22
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardening-longterm-fixes" class="md-nav__link">
+  <a href="#step-4-restrict-access-to-specific-users-only" class="md-nav__link">
     <span class="md-ellipsis">
-      Hardening / long‑term fixes
+      ✅ STEP 4: RESTRICT ACCESS TO SPECIFIC USERS ONLY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ STEP 4: RESTRICT ACCESS TO SPECIFIC USERS ONLY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify-the-sshd_config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Modify the sshd_config file:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-this-at-the-bottom-of-sshd_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add this at the bottom of sshd_config:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-harden-ssh-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ STEP 5: HARDEN SSH CONFIG
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#checklist-for-next-time" class="md-nav__link">
+  <a href="#step-6-set-up-authorized-keys-for-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Checklist for next time
+      ✅ STEP 6: SET UP AUTHORIZED KEYS FOR USERS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-test-and-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ STEP 7: TEST AND VERIFY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-audit-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ BONUS: AUDIT &amp; MONITORING
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ COMMON MISTAKES TO AVOID
     </span>
   </a>
   
@@ -1401,75 +1563,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_11_4" id="__nav_11_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Management
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_11_4">
-            <span class="md-nav__icon md-icon"></span>
-            Management
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Management/opensshserver/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Install SSH Server on Windows
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1769,36 +1862,129 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-actually-happened" class="md-nav__link">
+  <a href="#step-1-install-openssh-server-windows-1011-or-server" class="md-nav__link">
     <span class="md-ellipsis">
-      What actually happened
+      ✅ STEP 1: INSTALL OPENSSH SERVER (Windows 10/11 or Server)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ STEP 1: INSTALL OPENSSH SERVER (Windows 10/11 or Server)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-powershell-best-for-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option A: PowerShell (Best for automation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option B: GUI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-start-and-enable-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ STEP 2: START AND ENABLE SERVICE
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#faster-cleaner-ways-no-reboot-required" class="md-nav__link">
+  <a href="#step-3-open-firewall-port-22" class="md-nav__link">
     <span class="md-ellipsis">
-      Faster / cleaner ways (no reboot required)
+      ✅ STEP 3: OPEN FIREWALL PORT 22
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#hardening-longterm-fixes" class="md-nav__link">
+  <a href="#step-4-restrict-access-to-specific-users-only" class="md-nav__link">
     <span class="md-ellipsis">
-      Hardening / long‑term fixes
+      ✅ STEP 4: RESTRICT ACCESS TO SPECIFIC USERS ONLY
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ STEP 4: RESTRICT ACCESS TO SPECIFIC USERS ONLY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify-the-sshd_config-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Modify the sshd_config file:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-this-at-the-bottom-of-sshd_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add this at the bottom of sshd_config:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-harden-ssh-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ STEP 5: HARDEN SSH CONFIG
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#checklist-for-next-time" class="md-nav__link">
+  <a href="#step-6-set-up-authorized-keys-for-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Checklist for next time
+      ✅ STEP 6: SET UP AUTHORIZED KEYS FOR USERS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-test-and-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ STEP 7: TEST AND VERIFY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-audit-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ BONUS: AUDIT &amp; MONITORING
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes-to-avoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ COMMON MISTAKES TO AVOID
     </span>
   </a>
   
@@ -1820,103 +2006,94 @@
 
 
 
-<h1 id="drive-mapping-entra-joined-troubleshooting">Drive mapping &amp; Entra Joined Troubleshooting</h1>
-<p><em>Tilfælde hvor at drev ikke virker efter password skift og der benyttes drev og Azure Joined PC'er</em>  </p>
-<p>Rigtig godt svar fra den nye o3 model fra OpenAI</p>
-<p><strong>Short answer:</strong><br />
-Unlocking the account on‑prem and then forcing the workstation to reboot (or at least sign‑out/sign‑in) <em>does</em> clear the cached credentials and Kerberos tickets, so it explains why everything started working. It wasn’t harmful—but it’s the “big hammer.” You could have fixed it without a restart and with less chance of a second lock‑out.</p>
-<hr />
-<h3 id="what-actually-happened">What actually happened</h3>
-<table>
-<thead>
-<tr>
-<th>Step</th>
-<th>What Windows was doing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>User changed password (Azure AD)</td>
-<td>The PC updated its cloud sign‑in token, <strong>but</strong> the old NTLM/Kerberos credentials that were saved for the mapped drives were still on disk and in memory.</td>
-</tr>
-<tr>
-<td>Mapped drives reconnected in the background</td>
-<td>Each reconnect tried the <strong>old</strong> password several times → caused AD DS account lock‑out citeturn0search0</td>
-</tr>
-<tr>
-<td>You unlocked the account in AD</td>
-<td>Lock‑out flag cleared, but the workstation still held the stale credentials + service tickets in LSASS, so new attempts still failed.</td>
-</tr>
-<tr>
-<td>Restart (or full sign‑out)</td>
-<td>Purged the cached Windows credentials and Kerberos tickets, so the next connect used the new password and succeeded.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="faster-cleaner-ways-no-reboot-required">Faster / cleaner ways (no reboot required)</h3>
-<table>
-<thead>
-<tr>
-<th>Action</th>
-<th>Command / UI</th>
-<th>When to use</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Flush Kerberos tickets in <em>current</em> logon session</td>
-<td><code>klist purge</code></td>
-<td>Immediately after a password change when the PC still has network resources open citeturn2search7</td>
-</tr>
-<tr>
-<td>Flush tickets held by SYSTEM for drive reconnect</td>
-<td><code>klist -li 0x3e7 purge</code> (elevated)</td>
-<td>If the SYSTEM account is doing the reconnects citeturn2search4</td>
-</tr>
-<tr>
-<td>Delete / re‑create mapped drive</td>
-<td><code>net use * /delete /y</code> then <code>net use Z: \\fileserver\share /user:DOMAIN\user newPassword</code></td>
-<td>Quickest way to stop the lock‑out loop; avoids touching Kerberos entirely</td>
-</tr>
-<tr>
-<td>Clear saved creds</td>
-<td>Credential Manager → <em>Windows Credentials</em> → remove the entry</td>
-<td>Needed if the drive was mapped with “Remember my credentials”</td>
-</tr>
-</tbody>
-</table>
-<p>Either of the first two options immediately forces Windows to request a fresh TGT/service ticket with the new password; no reboot is needed.</p>
-<hr />
-<h3 id="hardening-longterm-fixes">Hardening / long‑term fixes</h3>
-<ol>
-<li><strong>Stop storing passwords for on‑prem shares.</strong><br />
-   Configure <em>Azure AD Kerberos</em> so Azure AD–joined devices can get Kerberos tickets for your AD DS shares without saving credentials. Requires:  </li>
-<li>DCs on Server 2016+  </li>
-<li>Azure AD Connect (or cloud sync)  </li>
-<li>
-<p><code>Enable-AzureADKerberosServer</code> on a DC citeturn0search1<br />
-   Once enabled, the drive can be deployed via Intune with “Azure AD Kerberos” auth and users never re‑enter a password.</p>
-</li>
-<li>
-<p><strong>Review lock‑out sources.</strong><br />
-   Scheduled tasks, services, phones with legacy ActiveSync, etc. can all keep retrying the old password and re‑lock the account citeturn0search6.</p>
-</li>
-<li>
-<p><strong>Post‑password‑change guidance for users.</strong><br />
-   Tell users on Azure AD‑joined PCs to <em>sign out and back in</em> (not just lock/unlock) after they change their password. That renews all tokens and avoids silent lock‑outs.</p>
-</li>
-</ol>
-<hr />
-<h3 id="checklist-for-next-time">Checklist for next time</h3>
-<pre><code class="language-text">1. Unlock account in AD if necessary.
-2. On the PC (elevated):
-      klist purge
-      klist -li 0x3e7 purge   ← optional but safe
-3. Delete and re‑create any mapped drives OR clear the entry in Credential Manager.
-4. (Optional) Sign out/in to renew Azure AD tokens.
+<h1 id="install-ssh-server-on-windows">Install SSH Server on Windows</h1>
+<h2 id="step-1-install-openssh-server-windows-1011-or-server">✅ STEP 1: INSTALL OPENSSH SERVER (Windows 10/11 or Server)</h2>
+<h3 id="option-a-powershell-best-for-automation">Option A: PowerShell (Best for automation)</h3>
+<pre><code class="language-powershell">Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 </code></pre>
-<p>If you follow those four steps you’ll avoid the reboot and prevent multiple lock‑out cycles, while still getting the mapped drives online with the new password.</p>
+<h3 id="option-b-gui">Option B: GUI</h3>
+<ul>
+<li>Go to <em>Settings &gt; Apps &gt; Optional Features &gt; Add a feature</em></li>
+<li>Find <strong>OpenSSH Server</strong>, click <strong>Install</strong></li>
+</ul>
+<hr />
+<h2 id="step-2-start-and-enable-service">✅ STEP 2: START AND ENABLE SERVICE</h2>
+<pre><code class="language-powershell">Start-Service sshd
+Set-Service -Name sshd -StartupType 'Automatic'
+</code></pre>
+<p>To confirm it's running:</p>
+<pre><code class="language-powershell">Get-Service sshd
+</code></pre>
+<hr />
+<h2 id="step-3-open-firewall-port-22">✅ STEP 3: OPEN FIREWALL PORT 22</h2>
+<pre><code class="language-powershell">New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+</code></pre>
+<hr />
+<h2 id="step-4-restrict-access-to-specific-users-only">✅ STEP 4: RESTRICT ACCESS TO SPECIFIC USERS ONLY</h2>
+<p>This is where most people mess up. You don’t just install it—you <strong>lock it down</strong>.</p>
+<h3 id="modify-the-sshd_config-file">🔐 Modify the <code>sshd_config</code> file:</h3>
+<p>Location:</p>
+<pre><code class="language-plaintext">C:\ProgramData\ssh\sshd_config
+</code></pre>
+<h3 id="add-this-at-the-bottom-of-sshd_config">Add this at the bottom of <code>sshd_config</code>:</h3>
+<pre><code class="language-plaintext">AllowUsers yourdomain\User yourdomain\OtherUser
+</code></pre>
+<blockquote>
+<p>✅ You can also use local accounts like <code>DESKTOP-XXXX\username</code>
+❌ Don’t use <code>AllowGroups</code> unless you’ve configured local/AD groups correctly.</p>
+</blockquote>
+<p>Then restart the SSH service:</p>
+<pre><code class="language-powershell">Restart-Service sshd
+</code></pre>
+<hr />
+<h2 id="step-5-harden-ssh-config">✅ STEP 5: HARDEN SSH CONFIG</h2>
+<p>Edit <code>sshd_config</code> again and change/add these:</p>
+<pre><code class="language-plaintext">PasswordAuthentication no
+PermitRootLogin no
+PermitEmptyPasswords no
+UseDNS no
+AllowTcpForwarding no
+MaxAuthTries 3
+LogLevel VERBOSE
+</code></pre>
+<blockquote>
+<p>If you want to allow key-based only:</p>
+</blockquote>
+<pre><code class="language-plaintext">PubkeyAuthentication yes
+</code></pre>
+<hr />
+<h2 id="step-6-set-up-authorized-keys-for-users">✅ STEP 6: SET UP AUTHORIZED KEYS FOR USERS</h2>
+<p>For each allowed user:</p>
+<ol>
+<li>Create <code>.ssh</code> folder:
+   <code>C:\Users\&lt;Username&gt;\.ssh\</code></li>
+<li>Create <code>authorized_keys</code> file inside <code>.ssh</code></li>
+<li>Paste their public key inside</li>
+</ol>
+<p>Set proper permissions:</p>
+<ul>
+<li><code>.ssh</code> folder: User = Full Control</li>
+<li><code>authorized_keys</code> file: User = Read only</li>
+</ul>
+<hr />
+<h2 id="step-7-test-and-verify">✅ STEP 7: TEST AND VERIFY</h2>
+<p>From another machine:</p>
+<pre><code class="language-bash">ssh User@yourwindowsIP
+</code></pre>
+<p>Check <code>C:\ProgramData\ssh\logs\sshd.log</code> if login fails.</p>
+<hr />
+<h2 id="bonus-audit-monitoring">✅ BONUS: AUDIT &amp; MONITORING</h2>
+<p>Check login attempts:</p>
+<pre><code class="language-powershell">Get-WinEvent -LogName &quot;Microsoft-Windows-OpenSSH/Operational&quot; | Select TimeCreated, Message
+</code></pre>
+<hr />
+<h2 id="common-mistakes-to-avoid">⚠️ COMMON MISTAKES TO AVOID</h2>
+<ul>
+<li>❌ Forgetting to restart <code>sshd</code> after config changes</li>
+<li>❌ Not setting correct file permissions on <code>.ssh</code> folders</li>
+<li>❌ Leaving <code>PasswordAuthentication yes</code> on</li>
+<li>❌ Thinking UAC applies to SSH—it doesn’t. You need correct group/policy access too</li>
+</ul>
 
 
 
