@@ -27,6 +27,7 @@ theme:
 
 plugins:
   - search
+  - datatables
   - awesome-pages  # Autogenerates navigation from .pages files
 
   
