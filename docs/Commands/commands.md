@@ -70,4 +70,4 @@
 | pwsh | Get AD User Last Login | `Get-ADUser -Identity username -Properties LastLogonTimestamp \| Select-Object Name, @{Name='LastLogon';Expression={[DateTime]::FromFileTime($_.LastLogonTimestamp)}}` |
 | bash | Find SSH Connection Log | `grep 'sshd' /var/log/auth.log \| grep 'Accepted'` |
 | cmd | Genstart PC kl 23:30 | `schtasks /create /tn "Restart" /tr "shutdown.exe /r /f /t 0" /sc once /st 23:30` |
-{: .datatable }
+{ .datatable }
