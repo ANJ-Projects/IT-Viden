@@ -28,3 +28,7 @@ theme:
 plugins:
   - search
   - awesome-pages  # Autogenerates navigation from .pages files
+
+  
+markdown_extensions:
+  - attr_list # This is the crucial extension
