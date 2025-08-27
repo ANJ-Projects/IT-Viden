@@ -763,6 +763,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#eksempeltekst-til-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Eksempeltekst til ticket
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#betegnelser-hvor-at-software-ikke-virker-som-reklameret" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Betegnelser hvor at software ikke virker som reklameret
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2650,6 +2668,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#eksempeltekst-til-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Eksempeltekst til ticket
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#betegnelser-hvor-at-software-ikke-virker-som-reklameret" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Betegnelser hvor at software ikke virker som reklameret
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2676,7 +2712,7 @@
 ➡ Ticket lukkes med mulighed for genåbning, hvis problemet opstår igen med dokumentation.</p>
 <hr />
 <h3 id="no-fault-found-nff"><strong>No Fault Found (NFF)</strong></h3>
-<p>Der er undersøgt, men systemer og logs viser alt OK. Bruger har oplevet noget, men der findes ingen bekræftet fejl.<br />
+<p>Der er undersøgt, men systemer og logs viser alt OK. Bruger har oplevet noget, men der findes ingen fejl.<br />
 ➡ Typisk “spøgelsesfejl” eller enkeltstående hændelse.</p>
 <hr />
 <h3 id="user-error-misconfiguration"><strong>User Error / Misconfiguration</strong></h3>
@@ -2723,13 +2759,56 @@
 <p>Brugt i software/bug tracking, men også i IT: det indmeldte problem er ikke en egentlig fejl.<br />
 ➡ Eksempel: funktion virker som specificeret.</p>
 <hr />
-<hr />
+<h3 id="eksempeltekst-til-ticket">🔹 Eksempeltekst til ticket</h3>
+<blockquote>
+<p><strong>Status:</strong> Vendor Limitation
+<strong>Kommentar:</strong> Produktet opfører sig som dokumenteret af leverandøren, men opleves som ustabilt og lever ikke op til forventningerne. Dette er en begrænsning i produktet, ikke en fejl i vores miljø.
+Ticket lukkes. Kan genåbnes, hvis leverandøren udgiver en rettelse.</p>
+</blockquote>
+<p>🔹 Best Practice</p>
+<ul>
+<li><strong>Dokumentér objektivt</strong> (fx version, build, logs).</li>
+<li><strong>Henvis til vendor</strong> (ticket, knowledge base, release note).</li>
+<li><strong>Brug neutral framing</strong> → aldrig “produktet er dårligt”, men “leverandøren understøtter ikke dette scenarie”.</li>
+<li><strong>Afslut professionelt</strong> → “Kan ikke afhjælpes herfra, venligst kontakt leverandørens support/produktteam”.</li>
+</ul>
+<p>⚡ Kort sagt: du giver brugeren en <strong>professionel sandhed</strong>, placerer ansvaret hos vendor og undgår at jeres servicedesk fremstår inkompetent.</p>
 <p>⚡ <strong>Tip til implementering i servicedesk:</strong></p>
 <ul>
 <li>Hold listen kort i systemet (3-5 statusser), men brug disse som <strong>interne retningslinjer</strong>.</li>
 <li>Dokumentér altid neutralt → aldrig “det er brugerens skyld”, men “ingen fejl fundet” / “arbejder som designet”.</li>
 <li>Giv altid mulighed for genåbning → så er man professionel og viser, at man ikke bare lukker for at slippe.</li>
 </ul>
+<hr />
+<h3 id="betegnelser-hvor-at-software-ikke-virker-som-reklameret">🔹 Betegnelser hvor at software ikke virker som reklameret</h3>
+<ol>
+<li>
+<p><strong>Vendor Limitation</strong><br />
+   Bruges når fejlen kan spores til et produkt eller leverandør, men ikke kan fixes af jer.<br />
+   ➡ “Begrænsning i leverandørens produkt. Kan ikke løses internt.”</p>
+</li>
+<li>
+<p><strong>Known Issue</strong><br />
+   Når vendor <em>har</em> anerkendt problemet (men uden fix).<br />
+   ➡ “Fejlen er kendt hos leverandøren, men der findes ingen rettelse pt.”</p>
+</li>
+<li>
+<p><strong>Product Limitation / By Design (Vendor)</strong><br />
+   Når leverandøren siger, at det er designet sådan – selvom det opleves som fejl.<br />
+   ➡ “Funktionaliteten virker som leverandøren har defineret den, men ikke som forventet af brugeren.”</p>
+</li>
+<li>
+<p><strong>Vendor Dependency</strong><br />
+   Bruges til at markere, at løsningen afhænger af en tredjeparts vendor.<br />
+   ➡ “Afventer afklaring fra leverandør. Ticket lukkes midlertidigt.”</p>
+</li>
+<li>
+<p><strong>Expectation Gap</strong> <em>(uofficiel, men meget brugt i MSP’er)</em><br />
+   Når produktet markedsfører noget, som ikke matcher virkeligheden.<br />
+   ➡ “Brugerens forventninger overstiger leverandørens faktiske funktionalitet.”</p>
+</li>
+</ol>
+<hr />
 
 
 
