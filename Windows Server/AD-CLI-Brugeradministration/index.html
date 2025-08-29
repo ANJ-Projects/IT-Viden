@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../../Software/UninstallString/">
+        <link rel="prev" href="../../Windows/Windows%20Sign%20In/Windows%20Sign%20In%20Muligheder/">
       
       
-        <link rel="next" href="../../../Windows%20Server/AD-CLI-Brugeradministration/">
+        <link rel="next" href="../Active-Directory/">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
-        <title>De forskellige Windows Sign In muligheder - IT-Viden</title>
+        <title>Commands til at administerer AD brugere via CLI - IT-Viden</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +48,7 @@
     
       <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#de-forskellige-windows-sign-in-muligheder" class="md-skip">
+        <a href="#commands-til-at-administerer-ad-brugere-via-cli" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="IT-Viden" class="md-header__button md-logo" aria-label="IT-Viden" data-md-component="logo">
+    <a href="../.." title="IT-Viden" class="md-header__button md-logo" aria-label="IT-Viden" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              De forskellige Windows Sign In muligheder
+              Commands til at administerer AD brugere via CLI
             
           </span>
         </div>
@@ -214,7 +214,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="IT-Viden" class="md-nav__button md-logo" aria-label="IT-Viden" data-md-component="logo">
+    <a href="../.." title="IT-Viden" class="md-nav__button md-logo" aria-label="IT-Viden" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -232,7 +232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -254,7 +254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         
   
   
@@ -276,7 +276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../mkdocs/" class="md-nav__link">
+      <a href="../../mkdocs/" class="md-nav__link">
         
   
   
@@ -336,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Commands/commands/" class="md-nav__link">
+      <a href="../../Commands/commands/" class="md-nav__link">
         
   
   
@@ -404,7 +404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/documentationlcm/" class="md-nav__link">
+      <a href="../../General/documentationlcm/" class="md-nav__link">
         
   
   
@@ -427,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../General/printere/" class="md-nav__link">
+      <a href="../../General/printere/" class="md-nav__link">
         
   
   
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Hardware/Lenovo%20Powercycle/" class="md-nav__link">
+      <a href="../../Hardware/Lenovo%20Powercycle/" class="md-nav__link">
         
   
   
@@ -563,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Kundeservice/Helpdesk-Afdeling/" class="md-nav__link">
+      <a href="../../Kundeservice/Helpdesk-Afdeling/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Kundeservice/Tricky-Tickets/" class="md-nav__link">
+      <a href="../../Kundeservice/Tricky-Tickets/" class="md-nav__link">
         
   
   
@@ -654,7 +654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/bordersetup/" class="md-nav__link">
+      <a href="../../Linux/bordersetup/" class="md-nav__link">
         
   
   
@@ -677,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/easyssh/" class="md-nav__link">
+      <a href="../../Linux/easyssh/" class="md-nav__link">
         
   
   
@@ -700,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/sshjump/" class="md-nav__link">
+      <a href="../../Linux/sshjump/" class="md-nav__link">
         
   
   
@@ -761,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/Proxmox/ProxmoxSetup/" class="md-nav__link">
+      <a href="../../Linux/Proxmox/ProxmoxSetup/" class="md-nav__link">
         
   
   
@@ -830,7 +830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/Ubuntu/G%C3%B8r%20en%20bruger%20sudo/" class="md-nav__link">
+      <a href="../../Linux/Ubuntu/G%C3%B8r%20en%20bruger%20sudo/" class="md-nav__link">
         
   
   
@@ -853,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/Ubuntu/Skift%20tidszone%20%28Hvis%20f.eks%20klokken%20er%20forkert%29/" class="md-nav__link">
+      <a href="../../Linux/Ubuntu/Skift%20tidszone%20%28Hvis%20f.eks%20klokken%20er%20forkert%29/" class="md-nav__link">
         
   
   
@@ -876,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Linux/Ubuntu/%C3%86ndre%20kode%20p%C3%A5%20en%20anden%20bruger/" class="md-nav__link">
+      <a href="../../Linux/Ubuntu/%C3%86ndre%20kode%20p%C3%A5%20en%20anden%20bruger/" class="md-nav__link">
         
   
   
@@ -952,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Mac/Apple-MailApp/" class="md-nav__link">
+      <a href="../../Mac/Apple-MailApp/" class="md-nav__link">
         
   
   
@@ -975,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Mac/Drive-Troubleshooting-on-Mac/" class="md-nav__link">
+      <a href="../../Mac/Drive-Troubleshooting-on-Mac/" class="md-nav__link">
         
   
   
@@ -998,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Mac/Drives-on-Mac/" class="md-nav__link">
+      <a href="../../Mac/Drives-on-Mac/" class="md-nav__link">
         
   
   
@@ -1142,7 +1142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microsoft%20Portals/Exchange/Exchange%20Powershell/Giv%20bruger%20adgang%20til%20at%20redigere%20i%20andens%20bruger%20kalender/" class="md-nav__link">
+      <a href="../../Microsoft%20Portals/Exchange/Exchange%20Powershell/Giv%20bruger%20adgang%20til%20at%20redigere%20i%20andens%20bruger%20kalender/" class="md-nav__link">
         
   
   
@@ -1173,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Microsoft%20Portals/Exchange/IntegratedApps/" class="md-nav__link">
+      <a href="../../Microsoft%20Portals/Exchange/IntegratedApps/" class="md-nav__link">
         
   
   
@@ -1287,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Office%20Web/Outlook%20Web/Access-SharedMailbox-OutlookWeb/" class="md-nav__link">
+      <a href="../../Office%20Web/Outlook%20Web/Access-SharedMailbox-OutlookWeb/" class="md-nav__link">
         
   
   
@@ -1322,20 +1322,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
           <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
@@ -1351,7 +1349,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             Windows
@@ -1441,7 +1439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Brugere/Lokal%20Bruger/AddAdministratorForLocalUser/" class="md-nav__link">
+      <a href="../../Windows/Brugere/Lokal%20Bruger/AddAdministratorForLocalUser/" class="md-nav__link">
         
   
   
@@ -1464,7 +1462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Brugere/Lokal%20Bruger/setsqsalocalonly/" class="md-nav__link">
+      <a href="../../Windows/Brugere/Lokal%20Bruger/setsqsalocalonly/" class="md-nav__link">
         
   
   
@@ -1541,7 +1539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Enrollment/CommonSignInIssueForOfficeApps/" class="md-nav__link">
+      <a href="../../Windows/Enrollment/CommonSignInIssueForOfficeApps/" class="md-nav__link">
         
   
   
@@ -1610,7 +1608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Entra%20Joined/Windows-Drivemapping-AzureJoined-Troubleshooting/" class="md-nav__link">
+      <a href="../../Windows/Entra%20Joined/Windows-Drivemapping-AzureJoined-Troubleshooting/" class="md-nav__link">
         
   
   
@@ -1679,7 +1677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Management/opensshserver/" class="md-nav__link">
+      <a href="../../Windows/Management/opensshserver/" class="md-nav__link">
         
   
   
@@ -1786,7 +1784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Powershell/Powershell%20Profile/Portable%20Powershell%20Profil/" class="md-nav__link">
+      <a href="../../Windows/Powershell/Powershell%20Profile/Portable%20Powershell%20Profil/" class="md-nav__link">
         
   
   
@@ -1901,7 +1899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software/Onedrive/Fjern%20Onedrive%20genvej%20fra%20Stifinder/" class="md-nav__link">
+      <a href="../../Windows/Software/Onedrive/Fjern%20Onedrive%20genvej%20fra%20Stifinder/" class="md-nav__link">
         
   
   
@@ -2008,7 +2006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software/Outlook/Outlook%20Classic/HentOutlookClassic/" class="md-nav__link">
+      <a href="../../Windows/Software/Outlook/Outlook%20Classic/HentOutlookClassic/" class="md-nav__link">
         
   
   
@@ -2031,7 +2029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software/Outlook/Outlook%20Classic/Outlook/" class="md-nav__link">
+      <a href="../../Windows/Software/Outlook/Outlook%20Classic/Outlook/" class="md-nav__link">
         
   
   
@@ -2054,7 +2052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software/Outlook/Outlook%20Classic/OutlookClassic-TabelvisningTilNormalvisning/" class="md-nav__link">
+      <a href="../../Windows/Software/Outlook/Outlook%20Classic/OutlookClassic-TabelvisningTilNormalvisning/" class="md-nav__link">
         
   
   
@@ -2093,7 +2091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software/Teamviewer/" class="md-nav__link">
+      <a href="../../Windows/Software/Teamviewer/" class="md-nav__link">
         
   
   
@@ -2116,7 +2114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software/UninstallString/" class="md-nav__link">
+      <a href="../../Windows/Software/UninstallString/" class="md-nav__link">
         
   
   
@@ -2144,20 +2142,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_7" >
         
           
           <label class="md-nav__link" for="__nav_12_7" id="__nav_12_7_label" tabindex="0">
@@ -2173,10 +2169,88 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12_7">
             <span class="md-nav__icon md-icon"></span>
             Windows Sign In
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/Windows%20Sign%20In/Windows%20Sign%20In%20Muligheder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    De forskellige Windows Sign In muligheder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Windows Server
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Windows Server
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2201,89 +2275,13 @@
   
   
   <span class="md-ellipsis">
-    De forskellige Windows Sign In muligheder
-    
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
-        
-          
-          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Windows Server
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_13">
-            <span class="md-nav__icon md-icon"></span>
-            Windows Server
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Windows%20Server/AD-CLI-Brugeradministration/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     Commands til at administerer AD brugere via CLI
     
   </span>
   
 
       </a>
+      
     </li>
   
 
@@ -2296,7 +2294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Windows%20Server/Active-Directory/" class="md-nav__link">
+      <a href="../Active-Directory/" class="md-nav__link">
         
   
   
@@ -2319,7 +2317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Windows%20Server/Find-ADConnect/" class="md-nav__link">
+      <a href="../Find-ADConnect/" class="md-nav__link">
         
   
   
@@ -2342,7 +2340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Windows%20Server/Windows-Server-Scheduled-Tasks/" class="md-nav__link">
+      <a href="../Windows-Server-Scheduled-Tasks/" class="md-nav__link">
         
   
   
@@ -2399,10 +2397,113 @@
 
 
 
-<h1 id="de-forskellige-windows-sign-in-muligheder">De forskellige Windows Sign In muligheder</h1>
-<p>Adgangskode (Kan være forbundet med AD, Entra)<br />
-PIN (Kun for PC, men kan synces over med Windows Hello)  </p>
-<p><img alt="Windows Login Muligheder" src="/docs/images/os/windows/windows-signin-screen.png" /></p>
+<h1 id="commands-til-at-administerer-ad-brugere-via-cli">Commands til at administerer AD brugere via CLI</h1>
+<p><em>Benyttes f.eks til headless adgang til DC</em></p>
+<p>Kør i <strong>Windows PowerShell</strong> på en <strong>Domain Controller</strong> (eller med <strong>RSAT/ActiveDirectory-modul</strong>):<br />
+<em>Bemærk at på DC'er er den allerede importeret</em></p>
+<pre><code class="language-powershell">Import-Module ActiveDirectory
+</code></pre>
+<hr />
+<h1 id="sg-efter-brugere-find-users">Søg efter brugere (find users)</h1>
+<p><strong>Via navn (Name) – delvist match</strong></p>
+<pre><code class="language-powershell">$Name = Read-Host &quot;Indtast navn (delvist tilladt)&quot;
+Write-Host &quot;Søger: Name -like '*$Name*' ...&quot;
+Get-ADUser -Filter &quot;Name -like '*$Name*'&quot; -Properties DisplayName,SamAccountName,Mail |
+  Select-Object DisplayName,SamAccountName,Mail |
+  Sort-Object DisplayName | Format-Table -AutoSize
+</code></pre>
+<p><strong>Via e-mail (Mail)</strong></p>
+<pre><code class="language-powershell">$Mail = Read-Host &quot;Indtast e-mail (fuld adresse)&quot;
+Write-Host &quot;Søger: Mail -eq '$Mail' ...&quot;
+Get-ADUser -Filter &quot;Mail -eq '$Mail'&quot; -Properties DisplayName,SamAccountName,Mail |
+  Select-Object DisplayName,SamAccountName,Mail | Format-Table -AutoSize
+</code></pre>
+<p><strong>Via brugernavn (sAMAccountName / username)</strong></p>
+<pre><code class="language-powershell">$User = Read-Host &quot;Indtast brugernavn (sAMAccountName)&quot;
+Write-Host &quot;Henter bruger: $User ...&quot;
+Get-ADUser -Identity $User -Properties DisplayName,SamAccountName,Mail |
+  Select-Object DisplayName,SamAccountName,Mail | Format-Table -AutoSize
+</code></pre>
+<hr />
+<h1 id="password-konto-info-password-account-info">Password &amp; konto-info (password &amp; account info)</h1>
+<p><strong>Sidst ændret (PasswordLastSet) + beregnet udløb (Expiry)</strong></p>
+<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
+$u = Get-ADUser -Identity $User -Properties PasswordLastSet,PasswordExpired,msDS-UserPasswordExpiryTimeComputed,DisplayName,SamAccountName,LastLogonDate
+$expiry = if ($u.&quot;msDS-UserPasswordExpiryTimeComputed&quot;) { [datetime]::FromFileTime($u.&quot;msDS-UserPasswordExpiryTimeComputed&quot;) } else { $null }
+[pscustomobject]@{
+  DisplayName     = $u.DisplayName
+  SamAccountName  = $u.SamAccountName
+  PasswordExpired = $u.PasswordExpired
+  PasswordLastSet = $u.PasswordLastSet
+  PasswordExpiry  = $expiry
+  LastLogonDate   = $u.LastLogonDate
+} | Format-List
+</code></pre>
+<p><strong>Er konto låst (LockedOut) + lås op (Unlock)</strong></p>
+<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
+$u = Get-ADUser -Identity $User -Properties LockedOut
+Write-Host (&quot;LockedOut: {0}&quot; -f $u.LockedOut)
+if ($u.LockedOut) {
+  $go = Read-Host &quot;Tryk Enter for at låse op (Unlock-ADAccount), eller N for at afbryde&quot;
+  if ($go -notmatch '^(n|N)$') {
+    Unlock-ADAccount -Identity $User -Confirm:$false
+    Write-Host &quot;OK: Konto låst op.&quot;
+  } else { Write-Host &quot;Annulleret.&quot; }
+}
+</code></pre>
+<hr />
+<h1 id="handter-udlbet-password-user-must-change-password-at-next-logon">Håndter udløbet password (User must change password at next logon)</h1>
+<p><strong>Sæt kravet (ChangePasswordAtLogon = True)</strong></p>
+<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
+Write-Host &quot;Sætter 'User must change password at next logon' for $User (pwdLastSet=0)&quot;
+$go = Read-Host &quot;Tryk Enter for at fortsætte, eller N for at afbryde&quot;
+if ($go -notmatch '^(n|N)$') {
+  Set-ADUser -Identity $User -ChangePasswordAtLogon $true -Confirm:$false
+  Write-Host &quot;OK: Brugeren skal ændre password ved næste logon.&quot;
+} else { Write-Host &quot;Annulleret.&quot; }
+</code></pre>
+<p><strong>Fjern kravet igen (ChangePasswordAtLogon = False)</strong></p>
+<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
+$go = Read-Host &quot;Tryk Enter for at fjerne kravet, eller N for at afbryde&quot;
+if ($go -notmatch '^(n|N)$') {
+  Set-ADUser -Identity $User -ChangePasswordAtLogon $false -Confirm:$false
+  Write-Host &quot;OK: Kravet fjernet.&quot;
+} else { Write-Host &quot;Annulleret.&quot; }
+</code></pre>
+<blockquote>
+<p><strong>Bemærk</strong>: Hvis du i stedet skal ophæve udløb <strong>uden</strong> at tvinge ændring, kan du sætte “pwdLastSet” til nu:</p>
+</blockquote>
+<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
+$go = Read-Host &quot;Tryk Enter for at sætte pwdLastSet=nu (ophæv udløb), eller N for at afbryde&quot;
+if ($go -notmatch '^(n|N)$') {
+  Set-ADUser -Identity $User -Replace @{pwdLastSet = -1} -Confirm:$false
+  Write-Host &quot;OK: pwdLastSet sat til nu.&quot;
+} else { Write-Host &quot;Annulleret.&quot; }
+</code></pre>
+<hr />
+<h1 id="reset-password-klar-tekst-plain-text">Reset password (klar tekst / plain text)</h1>
+<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
+$pwPlain = Read-Host &quot;Ny adgangskode (PLAIN tekst – konverteres ved kørsel)&quot;
+Write-Host &quot;RESET PASSWORD for '$User' -&gt; '$pwPlain'&quot;
+$go = Read-Host &quot;Tryk Enter for at fortsætte, eller N for at afbryde&quot;
+if ($go -notmatch '^(n|N)$') {
+  Set-ADAccountPassword -Identity $User -Reset -NewPassword (ConvertTo-SecureString $pwPlain -AsPlainText -Force) -Confirm:$false
+  Write-Host &quot;OK: Password nulstillet.&quot;
+  $chg = Read-Host &quot;Tving 'User must change password at next logon'? (Enter=Ja, N=Nej)&quot;
+  if ($chg -notmatch '^(n|N)$') {
+    Set-ADUser -Identity $User -ChangePasswordAtLogon $true -Confirm:$false
+    Write-Host &quot;Sat: ChangePasswordAtLogon = True.&quot;
+  }
+} else { Write-Host &quot;Annulleret.&quot; }
+</code></pre>
+<hr />
+<h2 id="hurtige-noter">Hurtige noter</h2>
+<ul>
+<li>Kræver passende rettigheder og <strong>ActiveDirectory</strong>-modulet.</li>
+<li><strong>msDS-UserPasswordExpiryTimeComputed</strong> vises kun når domænets password-policy gør det relevant.</li>
+<li>Undgå anførselstegn i input til <code>-Filter</code> for at slippe for quoting-bøvl.</li>
+</ul>
+<p>Sig til, hvis du vil have en <strong>mini-menu</strong> (én enkelt paste der giver et simpelt valg-UI til alle handlinger).</p>
 
 
 
@@ -2451,16 +2552,16 @@ PIN (Kun for PC, men kan synces over med Windows Hello)  </p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       
         <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
       
-        <script src="../../../javascripts/datatables-init.js"></script>
+        <script src="../../javascripts/datatables-init.js"></script>
       
     
   </body>
