@@ -20,7 +20,7 @@
     
     
       
-        <title>Citrix Clean Reinstall - IT-Viden</title>
+        <title>Citrix – ren geninstallation - IT-Viden</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#citrix-clean-reinstall" class="md-skip">
+        <a href="#citrix-ren-geninstallation" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Citrix Clean Reinstall
+              Citrix – ren geninstallation
             
           </span>
         </div>
@@ -1919,7 +1919,7 @@
   
   
   <span class="md-ellipsis">
-    Citrix Clean Reinstall
+    Citrix – ren geninstallation
     
   </span>
   
@@ -2470,14 +2470,17 @@
 
 
 
-<h1 id="citrix-clean-reinstall">Citrix Clean Reinstall</h1>
-<p>Hvis Citrix skal geninstalleres helt, <br />
-så kan denne install parametre være nyttig</p>
-<p>Åben CMD <br />
-<em>Hvis i powershell skriv 'cmd' derefter ENTER for at skifte over</em>  </p>
-<pre><code>CitrixWorkspaceApp.exe /CleanInstall
-</code></pre>
-<p>Herefter skulle den gerne starte med med at reinstallere, du behøver ikke at slette Citrix først</p>
+<h1 id="citrix-ren-geninstallation">Citrix – ren geninstallation</h1>
+<p>Denne vejledning forklarer, hvordan du foretager en fuldstændig geninstallation af <strong>Citrix Workspace App</strong> på Windows. Metoden fjerner rester fra tidligere installationer, så du ikke behøver at afinstallere programmet manuelt.</p>
+<ol>
+<li>Download den seneste <code>CitrixWorkspaceApp.exe</code> fra Citrix.</li>
+<li>Åbn <strong>CMD</strong>. Hvis du befinder dig i PowerShell, skriv <code>cmd</code> og tryk <em>Enter</em>.</li>
+<li>Naviger til mappen hvor installationsfilen ligger.</li>
+<li>Kør installationen med parameteren <code>/CleanInstall</code>:</li>
+</ol>
+<p><code>cmd
+   CitrixWorkspaceApp.exe /CleanInstall</code></p>
+<p>Installationsprogrammet rydder nu alle tidligere installationer og gennemfører en ren opsætning. Når processen er færdig, kan du starte Citrix som normalt.</p>
 
 
 
