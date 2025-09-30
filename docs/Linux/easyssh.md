@@ -1,23 +1,22 @@
-# The Easy SSH Key Setup Guide That should be normalized
+# Den nemme SSH-nøgle-guide der bør standardiseres
 **"The 2025 SSH Key Setup That Doesn't Suck"**
 
 ```bash
-# Step 1 – Create your key
+# Trin 1 – Opret din nøgle
 ssh-keygen -t ed25519 -C "username_master_2025"
 
-# Step 2 – Upload public key to GitHub
+# Trin 2 – Upload public key til GitHub
 cat ~/.ssh/id_ed25519.pub
-# Paste this at github.com > Settings > SSH Keys
+# Indsæt dette på github.com > Settings > SSH Keys
 
-# Step 3 – On any server, run this
+# Trin 3 – På en hvilken som helst server, kør dette
 ssh-import-id-gh username
 
-# If using Winodws Step 3 is this
+# Hvis du bruger Windows er trin 3 dette
 mkdir $env:USERPROFILE\.ssh\
 Invoke-WebRequest -Uri "https://github.com/username.keys" -OutFile "$env:USERPROFILE\.ssh\authorized_keys"
 
 ```
 
-That's it.
-No `scp`, no editing `.ssh/authorized_keys`, no broken muscle memory.
-
+Det er det.
+Ingen `scp`, ingen redigering af `.ssh/authorized_keys`, ingen ødelagte vaner.

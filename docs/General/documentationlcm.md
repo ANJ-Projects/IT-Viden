@@ -1,82 +1,82 @@
-# MSP and IT Helpdesk Documentation Lifecycle
-**"MSP and IT Helpdesk Documentation Lifecycle"** is absolutely a *thing*—even if it's not always formalized under that name. What you're touching on is a very real and common challenge in managed service and internal IT environments: **striking the balance between over-documentation and under-documentation**.
+# MSP- og IT-helpdesk dokumentationslivscyklus
+**"MSP and IT Helpdesk Documentation Lifecycle"** er helt klart en *ting*—selv hvis det ikke altid er formaliseret under det navn. Det, du rører ved, er en meget reel udfordring i managed service- og interne IT-miljøer: **at finde balancen mellem over-dokumentation og under-dokumentation**.
 
-### 🔄 The Documentation Lifecycle (MSP/Helpdesk Context)
+### 🔄 Dokumentationslivscyklussen (MSP/helpdesk-kontekst)
 
-Here's a distilled version of what a practical **Documentation Lifecycle** looks like in MSP and IT helpdesk operations:
+Her er en kondenseret version af, hvordan en praktisk **Documentation Lifecycle** ser ud i MSP- og IT-helpdesk-drift:
 
 1. **Identify**
 
-   * What needs to be documented?
-     → Systems, credentials, procedures, contact details, vendors, configs, backups, licenses, etc.
+   * Hvad skal dokumenteres?
+     → Systemer, credentials, procedurer, kontaktdata, vendors, configs, backups, licenser osv.
 
 2. **Create**
 
-   * Use templates where possible.
-   * Keep it short and to the point (especially for techs under pressure).
+   * Brug skabeloner hvor det giver mening.
+   * Hold det kort og præcist (især til teknikere under pres).
 
 3. **Review & Validate**
 
-   * Make sure it’s technically correct and usable.
-   * Avoid "rote" steps unless needed for niche or legacy stuff.
+   * Sørg for, at det er teknisk korrekt og brugbart.
+   * Undgå "rote"-trin medmindre det er nødvendigt for niche- eller legacy-ting.
 
 4. **Distribute / Store**
 
-   * Centralized system: ITGlue, Hudu, Confluence, SharePoint, OneNote (for smaller ops), etc.
-   * Access control: Who can read, who can write.
+   * Centraliseret system: ITGlue, Hudu, Confluence, SharePoint, OneNote (til mindre ops) osv.
+   * Adgangskontrol: Hvem må læse, hvem må skrive.
 
 5. **Use & Update**
 
-   * Docs should be referenced during tickets, onboarding, projects.
-   * Revisit frequently accessed docs every 3–6 months.
-   * Put version/date headers to avoid zombie info.
+   * Docs skal bruges under tickets, onboarding, projekter.
+   * Genbesøg ofte brugte docs hver 3.–6. måned.
+   * Tilføj version-/dato-headere for at undgå zombie-info.
 
 6. **Archive / Decommission**
 
-   * Old client offboarded? Legacy system removed? Retire the doc.
+   * Er en kunde offboardet? Legacy-system fjernet? Pensionér dokumentet.
 
 ---
 
 ### 🧠 Less is More
 
-You're absolutely right:
+Du har helt ret:
 
 > “Too much information can be just as bad as barely any.”
 
-A good doc should:
+Et godt dokument skal:
 
-* Fit on one screen where possible
-* Use bullet points, not prose
-* Contain:
+* Passe på én skærm, hvis muligt
+* Bruge bullet points, ikke lange afsnit
+* Indeholde:
 
   * **Essential data** (IP, port, login, licensing, renewal date)
-  * **"Gotchas"** (e.g., "Restart service X, or the config won’t apply")
-  * **Links** to deeper info if needed
+  * **"Gotchas"** (fx “Genstart service X, ellers virker config ikke”)
+  * **Links** til dybere info efter behov
 
 ---
 
-### 📦 What Should Be Fully Documented?
+### 📦 Hvad skal dokumenteres fuldt?
 
-Only stuff that:
+Kun det der er:
 
-* Is **non-obvious**
-* Is **non-Googlable**
-* Is **business-critical**
-* Is **client-specific**
+* **Non-obvious**
+* **Non-Googlable**
+* **Business-critical**
+* **Client-specific**
 
-**Examples:**
+**Eksempler:**
 
-* An internal LOB app written in-house in 2009
-* A printer config that breaks unless SNMP is disabled
-* A VPN that only works if the client ID is set to a certain string
+* Et internt LOB-system skrevet i 2009
+* En printerkonfiguration der bryder sammen, hvis SNMP ikke er slået fra
+* En VPN der kun virker, hvis client ID sættes til en bestemt streng
 
 ---
 
-### 📌 Tips for Effective MSP/Helpdesk Docs
+### 📌 Tips til effektive MSP/helpdesk-docs
 
-* **Create "One-Pagers"** per system/client
-* **Standardize naming** and tagging
-* Use **screenshots** sparingly
-* Add **TL;DR** sections at the top
-* Don't document the **obvious** (“Click File > Save As” is insulting to any tech)
-* For How-Tos, assume the reader is **IT-competent** but unfamiliar with this exact setup
+* Lav **“One-Pagers”** pr. system/kunde
+* **Standardisér navngivning** og tagging
+* Brug **skærmbilleder** sparsomt
+* Tilføj **TL;DR**-sektioner i toppen
+* Dokumentér ikke det **åbenlyse** (“Klik File > Save As” er spild af tid for en tech)
+* Antag til How-Tos, at læseren er **IT-kompetent**, men ikke kender netop dette setup
