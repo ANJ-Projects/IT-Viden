@@ -1,8 +1,7 @@
+# Find Entra AD Connect-server
+### 🔍 Brug PowerShell eksternt (bedst hvis du har adgang til miljøet)
 
-# Find Entra AD Connect Server
-### 🔍 Use PowerShell Remotely (Best if You Have Access to the Environment)**
-
-#### **Script to Find the Azure AD Connect Server**
+#### **Script til at finde Azure AD Connect-serveren**
 
 ```powershell
 $syncServer = Get-ADComputer -Filter 'Name -like "*"' -Properties Name |
@@ -18,35 +17,34 @@ $syncServer = Get-ADComputer -Filter 'Name -like "*"' -Properties Name |
 Write-Output "Azure AD Connect is installed on: $syncServer"
 ```
 
-This will probe all machines in the domain for the `ADSync` service — the core of Entra Connect. It's fast and accurate if remote PowerShell is enabled and firewalls aren't in the way.
+Dette prøver alle maskiner i domænet for `ADSync`-servicen — kernen i Entra Connect. Det er hurtigt og præcist, hvis Remote PowerShell er aktiveret og firewalls ikke blokerer.
 
 ---
 
-### 🔍 **Option 2: Check via Event Logs (On Known Candidates)**
+### 🔍 **Mulighed 2: Tjek Event Logs (på sandsynlige kandidater)**
 
-Go to each server you *suspect* might be running it and look at:
+Gå til hver server, du *mistænker* kører den, og kig i:
 
 * **Event Viewer → Applications and Services Logs → Directory Synchronization**
-* Or `Event Viewer → Application Log` for source: `Directory Synchronization` or `ADSync`
+* Eller `Event Viewer → Application Log` efter kilderne `Directory Synchronization` eller `ADSync`
 
-You're looking for regular sync logs.
+Du leder efter regelmæssige sync-logs.
 
 ---
 
-### 🔍 **Option 3: Use Entra Connect Health (If Set Up)**
+### 🔍 **Mulighed 3: Brug Entra Connect Health (hvis sat op)**
 
 * **[https://portal.azure.com](https://portal.azure.com) > Azure AD Connect Health**
-* If they’ve deployed the health agent, it’ll show you **exactly which server is doing the sync**.
-* Sadly, many small orgs don’t have this configured, or it’s broken.
+* Hvis Health-agenten er implementeret, viser den dig **præcis hvilken server der synkroniserer**.
+* Desværre har mange små organisationer ikke konfigureret dette, eller også er det gået i stykker.
 
 ---
 
-### 🔍 **Option 4: Look in Entra Portal (Limited Use)**
+### 🔍 **Mulighed 4: Kig i Entra-portalen (begrænset brug)**
 
-You're already using:
+Du bruger måske allerede:
 
 * **Entra → User → Properties → On-premises**
-  Good to confirm **which AD domain** is syncing, but not the exact server.
+  God til at bekræfte **hvilket AD-domæne** der synkroniseres, men ikke den præcise server.
 
-You can at least narrow down the **AD domain**, then start checking DCs or file servers in that domain for the `ADSync` service.
-
+Du kan i det mindste indsnævre **AD-domænet** og derefter begynde at tjekke DC'er eller filservere i det domæne for `ADSync`-servicen.

@@ -1,70 +1,69 @@
-# Protected-Whitelist SSH Jumphost
-
-*Fast, “set-and-forget” recipe for Ubuntu 22.04+*
-
----
-
-## 0. What you’ll need
-
-| Item                                                          | Why                                     |
-| ------------------------------------------------------------- | --------------------------------------- |
-| **Homelab Ubuntu server**                                     | The jumphost you’ll SSH into            |
-| **Your static work WAN IP** (e.g. 203.0.113.45)               | To whitelist in the firewall & router   |
-| **Router / firewall that supports source-IP port-forwarding** | Hides the port from everyone else       |
-| **Windows PC at work** (no installs)                          | Has built-in `ssh.exe` and `ssh-keygen` |
+# Beskyttet SSH Jump-host med whitelist
+*Hurtig “set-and-forget” opskrift til Ubuntu 22.04+*
 
 ---
 
-## 1  Generate an SSH key *at work* (one-time)
+## 0. Det skal du bruge
+
+| Element                                                        | Hvorfor                                   |
+| -------------------------------------------------------------- | ----------------------------------------- |
+| **Homelab Ubuntu-server**                                      | Jump-hosten du SSH'er ind på              |
+| **Din statiske arbejds-WAN IP** (f.eks. 203.0.113.45)          | Skal whitelistes i firewall og router     |
+| **Router/firewall med source-IP port-forwarding**              | Skjuler porten for alle andre             |
+| **Windows-PC på arbejdet** (ingen installationer)              | Har indbygget `ssh.exe` og `ssh-keygen`   |
+
+---
+
+## 1  Generér en SSH-nøgle *på arbejdet* (engangs)
 
 ```powershell
-# in a PowerShell window on the work PC
+# I et PowerShell-vindue på arbejds-PC'en
 ssh-keygen -t ed25519 -C "work-pc key" -f %USERPROFILE%\.ssh\work_homelab_ed25519
 ```
 
-* Press **Enter** twice to save without passphrase (or add one for extra safety).
-* This creates **`work_homelab_ed25519`** (private) and **`work_homelab_ed25519.pub`** (public).
+* Tryk **Enter** to gange for at gemme uden passphrase (eller tilføj én for ekstra sikkerhed).
+* Det skaber **`work_homelab_ed25519`** (privat) og **`work_homelab_ed25519.pub`** (offentlig).
 
-Copy the content of the **`.pub`** file to your clipboard.
+Kopiér indholdet af **`.pub`**-filen til udklipsholderen.
 
 ---
 
-## 2  Add the key to the Ubuntu jumphost
+## 2  Tilføj nøglen til Ubuntu jump-hosten
 
-SSH into the box from *inside* your home network:
+SSH ind på boksen *inde fra* dit hjemmenetværk:
 
 ```bash
-ssh youruser@192.168.1.50        # old way, still works internally
+ssh youruser@192.168.1.50        # gammel metode, virker stadig internt
 ```
 
-Then:
+Derefter:
 
 ```bash
-# ensure .ssh exists
+# sørg for at .ssh findes
 mkdir -p ~/.ssh && chmod 700 ~/.ssh
 
-# paste the key
+# indsæt nøglen
 echo 'ssh-ed25519 AAAAC3NzaC1... work-pc key' >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 ```
 
 ---
 
-## 3  Harden the SSH daemon
+## 3  Hærd SSH-dæmonen
 
-Edit `/etc/ssh/sshd_config`:
+Redigér `/etc/ssh/sshd_config`:
 
 ```bash
 sudo nano /etc/ssh/sshd_config
 ```
 
-Add / modify:
+Tilføj/ret:
 
 ```
-Port 22222                 # pick any high, unused port
-PasswordAuthentication no  # keys only
+Port 22222                 # vælg en høj, ledig port
+PasswordAuthentication no  # kun nøgler
 PermitRootLogin no
-# optional extra belt-and-braces – accept only that work IP
+# ekstra bælte og seler – accepter kun den arbejds-IP
 Match Address 203.0.113.45
     AllowUsers youruser
 ```
@@ -73,7 +72,7 @@ Match Address 203.0.113.45
 sudo systemctl restart sshd
 ```
 
-✅ **Test locally**
+✅ **Test lokalt**
 
 ```bash
 ssh -p 22222 youruser@127.0.0.1
@@ -81,7 +80,7 @@ ssh -p 22222 youruser@127.0.0.1
 
 ---
 
-## 4  Lock it down with UFW (Ubuntu firewall)
+## 4  Lås ned med UFW (Ubuntu firewall)
 
 ```bash
 sudo ufw default deny incoming
@@ -90,60 +89,60 @@ sudo ufw enable
 sudo ufw status
 ```
 
-Everything except your work IP is now dropped at the server itself.
+Nu bliver alt undtagen din arbejds-IP droppet på selve serveren.
 
 ---
 
-## 5  Add router ↔ NAT rule
+## 5  Tilføj router ↔ NAT-regel
 
-1. **Internal target**: `192.168.1.50 :22222`
-2. **External port** : `22222` (or the same you chose)
-3. **Source filter** : `203.0.113.45/32` only
+1. **Intern destination**: `192.168.1.50 :22222`
+2. **Ekstern port** : `22222` (eller den port du valgte)
+3. **Source filter** : kun `203.0.113.45/32`
 
-> Each router UI is different; look for “advanced NAT” or “source IP” field.
-> If your firmware has no source filter, rely on UFW only—bots will reach the router but die at the server.
+> Hver router-UI er forskellig; kig efter feltet “advanced NAT” eller “source IP”.
+> Har firmwaren intet source filter, må du nøjes med UFW – bots når routeren men dør på serveren.
 
 ---
 
-## 6  (Optional) Fail2Ban safety-net
+## 6  (Valgfrit) Fail2Ban-sikkerhedsnet
 
 ```bash
 sudo apt update && sudo apt install fail2ban -y
-# default jail already protects sshd
+# standard-jail beskytter allerede sshd
 sudo systemctl enable --now fail2ban
 ```
 
-Even if password auth is disabled, this keeps audit noise low.
+Selv om password-login er slået fra, holder dette støj i audit-logs nede.
 
 ---
 
-## 7  (Optional) Persistent audit logs
+## 7  (Valgfrit) Vedvarende audit-logs
 
 ```bash
 sudo mkdir -p /var/log/jumphost
-sudo journalctl -u ssh -f     # live view
-# or save a daily log
+sudo journalctl -u ssh -f     # live-visning
+# eller gem en daglig log
 sudo journalctl -u ssh --since today > /var/log/jumphost/ssh-$(date +%F).log
 ```
 
-Systemd’s journal already retains logs across reboots (check `/etc/systemd/journald.conf` if you need to enlarge the log size).
+Systemd-journalen beholder allerede logs gennem genstarter (tjek `/etc/systemd/journald.conf` hvis du skal øge logstørrelsen).
 
 ---
 
-## 8  Connect from work
+## 8  Forbind fra arbejdet
 
-Create / edit `%USERPROFILE%\.ssh\config` on the Windows PC:
+Opret/redigér `%USERPROFILE%\.ssh\config` på Windows-PC'en:
 
 ```
 Host homelab
-    HostName your-home-dns-or-ip   # or DDNS
+    HostName your-home-dns-or-ip   # eller DDNS
     Port 22222
     User youruser
     IdentityFile ~/.ssh/work_homelab_ed25519
     IdentitiesOnly yes
 ```
 
-Now just:
+Nu kan du blot:
 
 ```powershell
 ssh homelab
@@ -151,21 +150,10 @@ ssh homelab
 
 ---
 
-## 9  Routine checklist (after a change at work/home)
+## 9  Fast tjekliste (efter ændringer hjemme/på arbejdet)
 
-| Event               | Action                                                     |
-| ------------------- | ---------------------------------------------------------- |
-| Work WAN IP changes | Update UFW rule & router source IP                         |
-| New work PC         | Generate a new key, append its `.pub` to `authorized_keys` |
-| Retire a PC         | Remove its key line from `authorized_keys`                 |
-
----
-
-### 🎉 You now have a **Protected Whitelisted-IP SSH Jumphost**:
-
-* Invisible to the internet
-* Only reachable from your work network
-* Key-authenticated, non-standard port
-* Local firewall + optional Fail2Ban & logs
-
-Drop me a note if you need automation scripts or guidance for a different Ubuntu version—happy hacking!
+| Hændelse            | Handling                                                     |
+| ------------------- | ------------------------------------------------------------ |
+| Arbejds-WAN IP ændres | Opdatér UFW-regel og routerens source-IP                   |
+| Ny arbejds-PC       | Generér ny nøgle og tilføj dens `.pub` til `authorized_keys` |
+| PC pensioneres      | Fjern dens nøglelinje fra `authorized_keys`                  |

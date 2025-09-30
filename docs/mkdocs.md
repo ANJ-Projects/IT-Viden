@@ -1,42 +1,42 @@
 ### TL;DR
 
-* **Small‑to‑medium doc set and you’re the only maintainer?**  
-  → Manual `nav:` in `mkdocs.yml` is perfectly fine.
+* **Lille til mellemstort doc-sæt og du er eneste vedligeholder?**
+  → Manuel `nav:` i `mkdocs.yml` er helt fint.
 
-* **Growing docs, several contributors, or you hate touching the giant YAML file?**  
-  → Use **`awesome-pages` (now called `awesome‑nav`)** – it keeps the YAML tiny and lets each folder carry its own ordering rules.
+* **Voksende dokumentation, flere bidragydere, eller hader du at røre den gigantiske YAML-fil?**
+  → Brug **`awesome-pages` (nu kaldet `awesome-nav`)** – den holder YAML'en lille og lader hver mappe styre sin egen rækkefølge.
 
-Below is a pragmatic comparison and a couple of patterns teams typically settle on.
-
----
-
-## 1. Manual `nav:` in `mkdocs.yml`
-
-| ✔ Pros | ✘ Cons |
-|--------|--------|
-| *Single source of truth* – you see the whole outline in one place. | File quickly turns into hundreds of lines; merge conflicts are common. |
-| Works out‑of‑the‑box, zero third‑party dependencies. | Every new/renamed page means editing the YAML. |
-| Absolute control: you can list files in any order, mix external links, etc. | Contributors need to understand YAML syntax and the repo layout. |
-
-For **10–30 pages** it’s still comfortable, but once the tree grows it becomes a maintenance choke‑point.  
+Nedenfor finder du en pragmatisk sammenligning og et par mønstre, teams ofte ender på.
 
 ---
 
-## 2. `awesome-pages` / `awesome‑nav` plugin
+## 1. Manuel `nav:` i `mkdocs.yml`
 
-> The plugin replaces or completes the `nav:` section by reading directory trees and tiny per‑folder *.pages* files. citeturn6search1
+| ✔ Fordele | ✘ Ulemper |
+| --------- | --------- |
+| *Single source of truth* – du ser hele strukturen ét sted. | Filen bliver hurtigt hundrede linjer lang; merge-conflicts er almindelige. |
+| Virker out-of-the-box uden tredjepartsafhængigheder. | Hver ny/omdøbt side kræver redigering af YAML. |
+| Fuld kontrol: du kan liste filer i vilkårlig rækkefølge og blande eksterne links. | Bidragydere skal forstå YAML-syntax og repo-strukturen. |
 
-### How it feels
+Til **10–30 sider** er det stadig komfortabelt, men når træet vokser, bliver det en flaskehals.
 
-* You **delete the huge `nav:` block** (or keep a skeleton with the `...` placeholder) and enable the plugin:
+---
+
+## 2. `awesome-pages` / `awesome-nav`-plugin
+
+> Pluginnet erstatter eller supplerer `nav:` ved at læse mappe-strukturen og små `.pages`-filer i hver mappe.
+
+### Sådan føles det
+
+* Du **fjerner det enorme `nav:`-blok** (eller beholder et skelet med `...`) og aktiverer pluginnet:
 
   ```yaml
   plugins:
-    - search      # you already have this
+    - search      # har du allerede
     - awesome-pages   # pip install mkdocs-awesome-pages-plugin
   ```
 
-* Inside any folder you drop a `.pages` file to tweak title, order, or hide items:
+* Inde i en mappe lægger du en `.pages`-fil for at styre titel, rækkefølge eller skjule elementer:
 
   ```yaml
   # docs/api/.pages
@@ -48,21 +48,21 @@ For **10–30 pages** it’s still comfortable, but once the tree grows it becom
     - changelog.md
   ```
 
-* New `.md` files appear automatically in the nav with the right sort‑order. No touching `mkdocs.yml`.
+* Nye `.md`-filer dukker automatisk op i navigationen med korrekt sortering. Ingen redigering af `mkdocs.yml`.
 
-### Strengths
+### Styrker
 
-| ✔ Pros | ✘ Cons |
-|--------|--------|
-| **Local decisions** – order and titles live next to the pages they affect. | Adds a plugin dependency (but it’s actively maintained – v3.1.1 released 6 Apr 2025). citeturn6search2 |
-| Scales painlessly to hundreds of pages; almost zero merge conflicts. | You still need *some* YAML if you want cross‑section mixes, but you can combine manual and automatic with `...`. |
-| Non‑tech writers can reorder pages by editing a two‑line `.pages` file. | If you require a nav radically different from the folder layout, manual YAML may still be clearer. |
+| ✔ Fordele | ✘ Ulemper |
+| --------- | --------- |
+| **Lokale beslutninger** – rækkefølge og titler ligger ved siden af de sider, de påvirker. | Tilføjer en plugin-afhængighed (men den vedligeholdes aktivt – v3.1.1 udkom 6. apr. 2025). |
+| Skalerer uden problemer til hundredvis af sider; næsten ingen merge-conflicts. | Du skal stadig bruge lidt YAML, hvis du vil blande sektioner på tværs, men du kan kombinere manuel og automatisk med `...`. |
+| Ikke-tekniske skribenter kan ændre rækkefølge ved at redigere en `.pages`-fil på to linjer. | Hvis navigationen skal afvige markant fra mappe-layoutet, kan manuel YAML stadig være tydeligere. |
 
-The plugin is extremely popular in the MkDocs community (≈550 GitHub stars and bundled in many Docker images). citeturn6search0turn6search3
+Pluginnet er meget populært i MkDocs-community'et (≈550 GitHub-stjerner og inkluderet i mange Docker-images).
 
 ---
 
-## 3. A hybrid many teams land on
+## 3. Et hybrid-setup mange vælger
 
 ```yaml
 # mkdocs.yml
@@ -72,33 +72,33 @@ plugins:
   - awesome-pages
 
 nav:
-  - Home: index.md      # explicit top‑level entries you really care about
+  - Home: index.md      # eksplicitte top-level-punkter du går op i
   - ...
 ```
 
-*Everything* under `...` is generated by the plugin, but you retain total control over the handful of top‑level items.
+*Alt* under `...` genereres af pluginnet, men du bevarer fuld kontrol over de få top-punkter.
 
 ---
 
 ## 4. Alternative “nav helpers”
 
-| Plugin | Idea | When useful |
-|--------|------|-------------|
-| **`literate-nav`** | Define nav in a Markdown list instead of YAML. | When you prefer writing lists in MD. citeturn0search9 |
-| **`mkdocs-simple-plugin`** | Similar to awesome‑pages but with different syntax. | Light projects where you want zero hidden files. citeturn4search1 |
+| Plugin | Idé | Hvornår nyttig |
+| ------ | --- | -------------- |
+| **`literate-nav`** | Definér navigation i en Markdown-liste i stedet for YAML. | Når du foretrækker at skrive lister i Markdown. |
+| **`mkdocs-simple-plugin`** | Minder om awesome-pages men med anden syntaks. | Små projekter hvor du vil undgå skjulte filer. |
 
-They solve the same pain point; awesome‑pages is simply the most battle‑tested.
+De løser samme problem; awesome-pages er blot mest gennemprøvet.
 
 ---
 
-## Recommendation for *“I want it simple but with good nav”*
+## Anbefaling til *“jeg vil have det simpelt men med god navigation”*
 
-1. **Install `awesome-pages`/`awesome‑nav`.**  
+1. **Installer `awesome-pages`/`awesome-nav`.**
    ```bash
    pip install mkdocs-awesome-pages-plugin
    ```
-2. **Start with an empty or skeletal `nav:`** (keep only the items that must stay on top).  
-3. **Use `.pages` files** inside folders for ordering and friendly titles.  
-4. Keep your existing `search` plugin – it works unchanged.
+2. **Start med en tom eller skelet-`nav:`** (behold kun de punkter, der skal være øverst).
+3. **Brug `.pages`-filer** i mapper til rækkefølge og venlige titler.
+4. Behold dit eksisterende `search`-plugin – det virker uændret.
 
-You’ll spend far less time in the central YAML, and contributors can curate their section without stepping on each other’s toes.
+Så bruger du langt mindre tid i den centrale YAML, og bidragydere kan styre deres sektion uden at træde hinanden over tæerne.

@@ -1,88 +1,89 @@
-AdGuard Home can give you exactly the “one-line wildcard” you want, while Pi-hole’s UI still can’t. Just add a single wildcard DNS-rewrite rule in AdGuard Home and every host you spin up in Nginx Proxy Manager will resolve automatically on the LAN.
+AdGuard Home giver dig præcis den “one-line wildcard”, du ønsker, mens Pi-hole’s UI stadig ikke kan. Tilføj blot en enkelt
+wildcard DNS-rewrite i AdGuard Home, og alle hosts du opretter i Nginx Proxy Manager, vil automatisk resolve på LAN'et.
 
 ---
 
-## Why AdGuard Home is a good fit
+## Hvorfor AdGuard Home passer godt
 
-| Feature                                           | AdGuard Home                                                                                                                 | Pi-hole (current UI)                                                                                                                                               |
-| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Wildcard A/AAAA or CNAME for an internal zone** | Native — GUI → **Filters → DNS Rewrites → Add**. Use `*.intra.lan → 192.168.1.10` (or a CNAME) and you’re done.([GitHub][1]) | Not exposed. You’d have to drop manual `address=/intra.lan/192.168.1.10` lines into `/etc/dnsmasq.d/` or use regex tricks; no GUI support.([Pi-hole Userspace][2]) |
-| **Specific host overrides**                       | Explicit entries beat the wildcard automatically (`nas.intra.lan` will win over `*.intra.lan`).([Reddit][3])                 | Same hack-around file-based method; still manual.                                                                                                                  |
-| **Ad/tracker blocking, client stats, DoH/DoT**    | Built-in                                                                                                                     |                                                                                                                                                                    |
-| **Auto-issue internal TLS (optional)**            | Still handled by Nginx Proxy Manager (e.g. internal ACME server or your own CA).                                             |                                                                                                                                                                    |
+| Feature                                           | AdGuard Home                                                                              | Pi-hole (nuværende UI)                                                                 |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Wildcard A/AAAA eller CNAME til intern zone**   | Native — GUI → **Filters → DNS Rewrites → Add**. Brug `*.intra.lan → 192.168.1.10` (eller en CNAME), og du er færdig.([GitHub][1]) | Ikke eksponeret. Du skal lægge manuelle `address=/intra.lan/192.168.1.10`-linjer i `/etc/dnsmasq.d/` eller bruge regex-tricks; ingen GUI-support.([Pi-hole Userspace][2]) |
+| **Specifikke host-overrides**                     | Eksplícitte entries slår wildcard automatisk (`nas.intra.lan` vinder over `*.intra.lan`).([Reddit][3]) | Samme filbaserede workaround-metode; stadig manuelt.                                    |
+| **Ad/tracker blocking, klientstatistik, DoH/DoT** | Indbygget                                                                               |                                                                                         |
+| **Auto-udsted intern TLS (valgfrit)**             | Håndteres stadig af Nginx Proxy Manager (fx intern ACME eller egen CA).                 |                                                                                         |
 
-AdGuard Home added wildcard support back in 0.104 (late 2019) and it’s now part of both the YAML config (`rewrites:`) and the web UI.([GitHub][4], [AdGuard DNS — ad-blocking DNS server][5])
+AdGuard Home fik wildcard-support tilbage i 0.104 (slut 2019) og har det nu både i YAML-konfigurationen (`rewrites:`) og i web-UI'et.([GitHub][4], [AdGuard DNS — ad-blocking DNS server][5])
 
 ---
 
-## One-time setup
+## Engangs-setup
 
-1. **Install AdGuard Home** on the Ubuntu 22.04 “border” VM
+1. **Installer AdGuard Home** på Ubuntu 22.04 “border”-VM'en
 
    ```bash
    curl -sSL https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sudo bash
    ```
 
-   (or run it in Docker if you prefer).
+   (eller kør den i Docker, hvis du foretrækker det).
 
-2. **Run the web wizard** (`http://<vm-ip>:3000`) → choose
+2. **Kør web-guiden** (`http://<vm-ip>:3000`) → vælg
 
-   * *Upstream DNS*: whatever recursive resolver you like.
-   * *Listening interfaces*: LAN only (leave WAN closed).
+   * *Upstream DNS*: den recursive resolver du foretrækker.
+   * *Listening interfaces*: kun LAN (lad WAN være lukket).
 
-3. **Add the wildcard rule**
+3. **Tilføj wildcard-reglen**
    *UI → Filters → DNS Rewrites → Add*
 
    ```
    Domain : *.intra.lan
-   Answer : 192.168.1.10        # the reverse-proxy VM’s LAN IP
+   Answer : 192.168.1.10        # reverse-proxy VM'ens LAN-IP
    ```
 
-   Save. That single entry covers **every** future `something.intra.lan`.
+   Gem. Denne ene entry dækker **hver** fremtidig `something.intra.lan`.
 
-4. **(Optional) exceptions**
-   If you need one host to point elsewhere, just add another rewrite:
+4. **(Valgfrit) undtagelser**
+   Hvis en host skal pege et andet sted hen, tilføjer du blot endnu en rewrite:
 
    ```
    nas.intra.lan  → 192.168.1.30
    ```
 
-   The specific host record overrides the wildcard automatically.([Reddit][3])
+   Den specifikke host-record overstyrer wildcard automatisk.([Reddit][3])
 
-5. **Point your LAN clients at AdGuard Home**
+5. **Peg LAN-klienter mod AdGuard Home**
 
-   * DHCP option – set DNS to the VM’s IP
-   * Or push via router if you’re running this at the edge.
+   * DHCP-option – sæt DNS til VM'ens IP
+   * Eller skub via router, hvis den kører i kanten.
 
 6. **Nginx Proxy Manager**
 
-   * In NPM, create a proxy host `newapp.intra.lan`.
-   * No DNS work needed; the wildcard already resolves it.
-   * For TLS inside the LAN you can:
+   * Opret et proxy host `newapp.intra.lan` i NPM.
+   * Ingen DNS-arbejde nødvendigt; wildcardet løser det allerede.
+   * For TLS på LAN'et kan du:
 
-     * Use your own internal CA and let NPM request certs from it; or
-     * Skip TLS and use HTTP if the network is trusted.
+     * Bruge din egen interne CA og lade NPM hente certifikater derfra; eller
+     * Springe TLS over og bruge HTTP, hvis netværket er betroet.
 
 ---
 
-## If you **must** stay on Pi-hole
+## Hvis du **skal** blive på Pi-hole
 
-Pi-hole’s core `dnsmasq` **can** do the same wildcard, but you have to touch the filesystem:
+Pi-hole's kerne-`dnsmasq` **kan** lave samme wildcard, men du skal røre filsystemet:
 
 ```bash
 echo 'address=/intra.lan/192.168.1.10' | sudo tee /etc/dnsmasq.d/45-wildcard.conf
 pihole restartdns
 ```
 
-No GUI, order management, or per-host override; hence most homelabbers switch to AdGuard Home for this use-case.([Pi-hole Userspace][2])
+Ingen GUI, ordrehåndtering eller per-host override; derfor skifter de fleste homelabbere til AdGuard Home til netop denne use-case.([Pi-hole Userspace][2])
 
 ---
 
 ### TL;DR
 
-* Deploy **AdGuard Home** (small, single-binary).
-* Add one DNS-rewrite: `*.intra.lan → <proxy-IP>`.
-* Point DHCP to AdGuard Home and forget about DNS forever — every new vhost you add in Nginx Proxy Manager “just works”.
+* Implementér **AdGuard Home** (lille, single-binary).
+* Tilføj én DNS-rewrite: `*.intra.lan → <proxy-IP>`.
+* Peg DHCP mod AdGuard Home og glem DNS – hver ny vhost du tilføjer i Nginx Proxy Manager fungerer bare.
 
 [1]: https://github.com/AdguardTeam/Adguardhome/wiki/Configuration "Configuration · AdguardTeam/AdGuardHome Wiki · GitHub"
 [2]: https://discourse.pi-hole.net/t/support-wildcards-in-local-dns-records/32098 "Support wildcards in local DNS records - Feature Requests - Pi-hole Userspace"
