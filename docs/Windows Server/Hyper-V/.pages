@@ -1,0 +1,6 @@
+title: Hyper-V
+arrange:
+  - Install-Hyper-V-Role.md
+  - Create-Virtual-Switch.md
+  - Provision-Generation-2-VM.md
+  - Checkpoint-and-Revert.md
