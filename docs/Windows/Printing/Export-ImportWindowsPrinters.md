@@ -1,4 +1,5 @@
 
+# Export & Import Windows Printers via printbrmui
 
 `printbrmui.exe` — the *hidden gem* of Windows printer management that **nobody talks about**, even though it’s one of the few tools that can *actually* back up and restore printers cleanly across systems.
 And yet, Microsoft has done zero to document it properly. It’s buried like some sort of secret sysadmin relic.
