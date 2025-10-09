@@ -29,21 +29,7 @@ It’s the **Printer Migration Wizard**, and it can:
   printbrmui.exe /r "PrintersExport.printerExport" /f
   ```
 
-And that’s **still** better than half the “enterprise” print management tools out there. 🤷‍♂️
+This is better than half the “enterprise” print management tools out there. 🤷‍♂️
 
 ---
 
-### 🧨 The insane part
-
-Microsoft *knows* the print subsystem is a disaster:
-
-* We have WSD ports that randomly duplicate
-* “Class drivers” that change behavior mid-update
-* GUI status icons that don’t match `Get-Printer` or SNMP
-* The spooler service that dies quietly mid-print job
-* Print migration tools that exist but aren’t documented
-
-
-
-
-You want me to throw together a PowerShell module (`Test-PrinterHealth.psm1`) that mimics what Windows *should’ve* had — ping, SNMP, port check, and driver info — so you can drop it into your MSP toolkit?
