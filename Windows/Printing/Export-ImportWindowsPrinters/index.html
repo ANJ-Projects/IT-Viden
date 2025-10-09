@@ -1942,15 +1942,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#the-insane-part" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧨 The insane part
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2720,15 +2711,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#the-insane-part" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧨 The insane part
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2765,18 +2747,8 @@ And yet, Microsoft has done zero to document it properly. It’s buried like som
 <p>or</p>
 <p><code>powershell
   printbrmui.exe /r "PrintersExport.printerExport" /f</code></p>
-<p>And that’s <strong>still</strong> better than half the “enterprise” print management tools out there. 🤷‍♂️</p>
+<p>This is better than half the “enterprise” print management tools out there. 🤷‍♂️</p>
 <hr />
-<h3 id="the-insane-part">🧨 The insane part</h3>
-<p>Microsoft <em>knows</em> the print subsystem is a disaster:</p>
-<ul>
-<li>We have WSD ports that randomly duplicate</li>
-<li>“Class drivers” that change behavior mid-update</li>
-<li>GUI status icons that don’t match <code>Get-Printer</code> or SNMP</li>
-<li>The spooler service that dies quietly mid-print job</li>
-<li>Print migration tools that exist but aren’t documented</li>
-</ul>
-<p>You want me to throw together a PowerShell module (<code>Test-PrinterHealth.psm1</code>) that mimics what Windows <em>should’ve</em> had — ping, SNMP, port check, and driver info — so you can drop it into your MSP toolkit?</p>
 
 
 
