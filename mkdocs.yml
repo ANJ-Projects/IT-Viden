@@ -34,7 +34,7 @@ extra_css:
 
 extra_javascript:
   - https://code.jquery.com/jquery-3.7.1.min.js
-  - https://cdn.datatables.net/2.0.7/js/dataTables.min.js
+  - https://cdn.datatables.net/2.0.7/js/jquery.dataTables.min.js
   - javascripts/datatables-init.js
 
   
