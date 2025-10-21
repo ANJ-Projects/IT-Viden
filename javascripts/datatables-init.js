@@ -1,36 +1,43 @@
 function applyTableDirectives(scope = document) {
   scope.querySelectorAll("table").forEach((tbl) => {
-    if (!tbl.tBodies || !tbl.tBodies[0]) return;
-    const lastRow = tbl.tBodies[0].lastElementChild;
-    if (!lastRow) return;
+    const rows = Array.from(tbl.querySelectorAll("tr"));
+    let mutated = false;
 
-    const onlyCell = lastRow.children.length === 1 ? lastRow.children[0] : null;
-    if (!onlyCell) return;
+    rows.forEach((row) => {
+      if (row.children.length !== 1) return;
 
-    const raw = onlyCell.textContent.trim();
-    const match = raw.match(/^\{\s*:?(.*)\}$/);
-    if (!match) return;
+      const onlyCell = row.children[0];
+      const raw = onlyCell.textContent.trim();
+      const match = raw.match(/^\{\s*:?(.*)\}$/);
+      if (!match) return;
 
-    const directive = match[1].trim();
-    if (!directive) return;
+      const directive = match[1].trim();
+      if (!directive) return;
 
-    directive.split(/\s+/).forEach((token) => {
-      if (!token) return;
-      if (token.startsWith(".")) {
-        tbl.classList.add(token.slice(1));
-      } else if (token.startsWith("#")) {
-        tbl.id = token.slice(1);
-      } else {
-        const [key, value] = token.split("=");
-        if (key && value) {
-          tbl.setAttribute(key, value.replace(/^"|"$/g, ""));
+      directive.split(/\s+/).forEach((token) => {
+        if (!token) return;
+        if (token.startsWith(".")) {
+          tbl.classList.add(token.slice(1));
+        } else if (token.startsWith("#")) {
+          tbl.id = token.slice(1);
+        } else {
+          const [key, value] = token.split("=");
+          if (key && value) {
+            tbl.setAttribute(key, value.replace(/^"|"$/g, ""));
+          }
         }
-      }
+      });
+
+      row.remove();
+      mutated = true;
     });
 
-    lastRow.remove();
-    if (tbl.tBodies[0].children.length === 0) {
-      tbl.tBodies[0].remove();
+    if (mutated) {
+      Array.from(tbl.tBodies || []).forEach((tbody) => {
+        if (tbody.children.length === 0) {
+          tbody.remove();
+        }
+      });
     }
   });
 }
@@ -38,9 +45,13 @@ function applyTableDirectives(scope = document) {
 function initDataTables(scope = document) {
   applyTableDirectives(scope);
 
+  if (!window.jQuery || !window.jQuery.fn || !window.jQuery.fn.DataTable) {
+    return;
+  }
+
   scope.querySelectorAll("table.datatable").forEach((tbl) => {
-    if ($.fn.dataTable.isDataTable(tbl)) return;
-    $(tbl).DataTable({
+    if (window.jQuery.fn.dataTable && window.jQuery.fn.dataTable.isDataTable(tbl)) return;
+    window.jQuery(tbl).DataTable({
       pageLength: 25,
       lengthMenu: [10, 25, 50, 100],
       ordering: true,
@@ -49,5 +60,25 @@ function initDataTables(scope = document) {
   });
 }
 
-// Initial load + after Material’s instant page loads
-document$.subscribe(() => initDataTables(document));
+function resolveScope(candidate) {
+  if (!candidate) return document;
+  if (candidate instanceof Document) return candidate;
+  if (candidate.document instanceof Document) return candidate.document;
+  return document;
+}
+
+function bootstrap(scope) {
+  initDataTables(resolveScope(scope));
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => bootstrap(document));
+} else {
+  bootstrap(document);
+}
+
+if (typeof window !== "undefined" && typeof window.document$ !== "undefined" && window.document$) {
+  window.document$.subscribe((event) => {
+    bootstrap(event);
+  });
+}
