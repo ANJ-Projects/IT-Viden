@@ -93,12 +93,38 @@ They solve the same pain point; awesome‑pages is simply the most battle‑test
 
 ## Recommendation for *“I want it simple but with good nav”*
 
-1. **Install `awesome-pages`/`awesome‑nav`.**  
+1. **Install `awesome-pages`/`awesome‑nav`.**
    ```bash
    pip install mkdocs-awesome-pages-plugin
    ```
-2. **Start with an empty or skeletal `nav:`** (keep only the items that must stay on top).  
-3. **Use `.pages` files** inside folders for ordering and friendly titles.  
+2. **Start with an empty or skeletal `nav:`** (keep only the items that must stay on top).
+3. **Use `.pages` files** inside folders for ordering and friendly titles.
 4. Keep your existing `search` plugin – it works unchanged.
-
 You’ll spend far less time in the central YAML, and contributors can curate their section without stepping on each other’s toes.
+
+## Code syntax
+
+Material for MkDocs relies on **Pygments** for fenced code blocks, but the theme only applies the syntax styles when the
+`pymdownx.highlight` extension is enabled. Make sure your `mkdocs.yml` includes both the highlighter and its helper fences:
+
+```yaml
+markdown_extensions:
+  - attr_list
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences
+```
+
+After that, annotate PowerShell snippets with either `powershell` or the alias `pwsh` so that GitHub Pages renders them with the
+correct styling:
+
+```powershell
+Get-Process | Where-Object { $_.MainWindowTitle -ne "" } | Format-Table Name, MainWindowTitle
+```
+
+```pwsh
+Get-ADUser -Identity "username" -Properties LastLogonTimestamp |
+  Select-Object Name,@{Name='LastLogon';Expression={[DateTime]::FromFileTime($_.LastLogonTimestamp)}}
+```
+
+Each code fence needs its own language tag – stick with `powershell`/`pwsh` for PowerShell snippets.
