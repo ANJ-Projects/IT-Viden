@@ -2767,21 +2767,20 @@
 
 <h1 id="the-easy-ssh-key-setup-guide-that-should-be-normalized">The Easy SSH Key Setup Guide That should be normalized</h1>
 <p><strong>"The 2025 SSH Key Setup That Doesn't Suck"</strong></p>
-<pre><code class="language-bash"># Step 1 – Create your key
-ssh-keygen -t ed25519 -C &quot;username_master_2025&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Step 1 – Create your key</span>
+ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;username_master_2025&quot;</span>
 
-# Step 2 – Upload public key to GitHub
-cat ~/.ssh/id_ed25519.pub
-# Paste this at github.com &gt; Settings &gt; SSH Keys
+<span class="c1"># Step 2 – Upload public key to GitHub</span>
+cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+<span class="c1"># Paste this at github.com &gt; Settings &gt; SSH Keys</span>
 
-# Step 3 – On any server, run this
-ssh-import-id-gh username
+<span class="c1"># Step 3 – On any server, run this</span>
+ssh-import-id-gh<span class="w"> </span>username
 
-# If using Winodws Step 3 is this
-mkdir $env:USERPROFILE\.ssh\
-Invoke-WebRequest -Uri &quot;https://github.com/username.keys&quot; -OutFile &quot;$env:USERPROFILE\.ssh\authorized_keys&quot;
-
-</code></pre>
+<span class="c1"># If using Winodws Step 3 is this</span>
+mkdir<span class="w"> </span><span class="nv">$env</span>:USERPROFILE<span class="se">\.</span>ssh<span class="se">\</span>
+Invoke-WebRequest<span class="w"> </span>-Uri<span class="w"> </span><span class="s2">&quot;https://github.com/username.keys&quot;</span><span class="w"> </span>-OutFile<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$env</span><span class="s2">:USERPROFILE\.ssh\authorized_keys&quot;</span>
+</code></pre></div>
 <p>That's it.
 No <code>scp</code>, no editing <code>.ssh/authorized_keys</code>, no broken muscle memory.</p>
 

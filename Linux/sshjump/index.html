@@ -3047,9 +3047,9 @@
 </table>
 <hr />
 <h2 id="1-generate-an-ssh-key-at-work-one-time">1  Generate an SSH key <em>at work</em> (one-time)</h2>
-<pre><code class="language-powershell"># in a PowerShell window on the work PC
-ssh-keygen -t ed25519 -C &quot;work-pc key&quot; -f %USERPROFILE%\.ssh\work_homelab_ed25519
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c"># in a PowerShell window on the work PC</span>
+<span class="n">ssh-keygen</span> <span class="n">-t</span> <span class="n">ed25519</span> <span class="n">-C</span> <span class="s2">&quot;work-pc key&quot;</span> <span class="o">-f</span> <span class="k">%</span><span class="n">USERPROFILE</span><span class="p">%\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">work_homelab_ed25519</span>
+</code></pre></div>
 <ul>
 <li>Press <strong>Enter</strong> twice to save without passphrase (or add one for extra safety).</li>
 <li>This creates <strong><code>work_homelab_ed25519</code></strong> (private) and <strong><code>work_homelab_ed25519.pub</code></strong> (public).</li>
@@ -3058,41 +3058,41 @@ ssh-keygen -t ed25519 -C &quot;work-pc key&quot; -f %USERPROFILE%\.ssh\work_home
 <hr />
 <h2 id="2-add-the-key-to-the-ubuntu-jumphost">2  Add the key to the Ubuntu jumphost</h2>
 <p>SSH into the box from <em>inside</em> your home network:</p>
-<pre><code class="language-bash">ssh youruser@192.168.1.50        # old way, still works internally
-</code></pre>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>youruser@192.168.1.50<span class="w">        </span><span class="c1"># old way, still works internally</span>
+</code></pre></div>
 <p>Then:</p>
-<pre><code class="language-bash"># ensure .ssh exists
-mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh
+<div class="highlight"><pre><span></span><code><span class="c1"># ensure .ssh exists</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/.ssh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>~/.ssh
 
-# paste the key
-echo 'ssh-ed25519 AAAAC3NzaC1... work-pc key' &gt;&gt; ~/.ssh/authorized_keys
-chmod 600 ~/.ssh/authorized_keys
-</code></pre>
+<span class="c1"># paste the key</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ssh-ed25519 AAAAC3NzaC1... work-pc key&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.ssh/authorized_keys
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/authorized_keys
+</code></pre></div>
 <hr />
 <h2 id="3-harden-the-ssh-daemon">3  Harden the SSH daemon</h2>
 <p>Edit <code>/etc/ssh/sshd_config</code>:</p>
-<pre><code class="language-bash">sudo nano /etc/ssh/sshd_config
-</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/ssh/sshd_config
+</code></pre></div>
 <p>Add / modify:</p>
-<pre><code>Port 22222                 # pick any high, unused port
+<div class="highlight"><pre><span></span><code>Port 22222                 # pick any high, unused port
 PasswordAuthentication no  # keys only
 PermitRootLogin no
 # optional extra belt-and-braces – accept only that work IP
 Match Address 203.0.113.45
     AllowUsers youruser
-</code></pre>
-<pre><code class="language-bash">sudo systemctl restart sshd
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>sshd
+</code></pre></div>
 <p>✅ <strong>Test locally</strong></p>
-<pre><code class="language-bash">ssh -p 22222 youruser@127.0.0.1
-</code></pre>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">22222</span><span class="w"> </span>youruser@127.0.0.1
+</code></pre></div>
 <hr />
 <h2 id="4-lock-it-down-with-ufw-ubuntu-firewall">4  Lock it down with UFW (Ubuntu firewall)</h2>
-<pre><code class="language-bash">sudo ufw default deny incoming
-sudo ufw allow from 203.0.113.45 to any port 22222 proto tcp comment &quot;work-WAN SSH&quot;
-sudo ufw enable
-sudo ufw status
-</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ufw<span class="w"> </span>default<span class="w"> </span>deny<span class="w"> </span>incoming
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>from<span class="w"> </span><span class="m">203</span>.0.113.45<span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span>port<span class="w"> </span><span class="m">22222</span><span class="w"> </span>proto<span class="w"> </span>tcp<span class="w"> </span>comment<span class="w"> </span><span class="s2">&quot;work-WAN SSH&quot;</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>status
+</code></pre></div>
 <p>Everything except your work IP is now dropped at the server itself.</p>
 <hr />
 <h2 id="5-add-router-nat-rule">5  Add router ↔ NAT rule</h2>
@@ -3107,32 +3107,32 @@ If your firmware has no source filter, rely on UFW only—bots will reach the ro
 </blockquote>
 <hr />
 <h2 id="6-optional-fail2ban-safety-net">6  (Optional) Fail2Ban safety-net</h2>
-<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt install fail2ban -y
-# default jail already protects sshd
-sudo systemctl enable --now fail2ban
-</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>fail2ban<span class="w"> </span>-y
+<span class="c1"># default jail already protects sshd</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>fail2ban
+</code></pre></div>
 <p>Even if password auth is disabled, this keeps audit noise low.</p>
 <hr />
 <h2 id="7-optional-persistent-audit-logs">7  (Optional) Persistent audit logs</h2>
-<pre><code class="language-bash">sudo mkdir -p /var/log/jumphost
-sudo journalctl -u ssh -f     # live view
-# or save a daily log
-sudo journalctl -u ssh --since today &gt; /var/log/jumphost/ssh-$(date +%F).log
-</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/jumphost
+sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>ssh<span class="w"> </span>-f<span class="w">     </span><span class="c1"># live view</span>
+<span class="c1"># or save a daily log</span>
+sudo<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>ssh<span class="w"> </span>--since<span class="w"> </span>today<span class="w"> </span>&gt;<span class="w"> </span>/var/log/jumphost/ssh-<span class="k">$(</span>date<span class="w"> </span>+%F<span class="k">)</span>.log
+</code></pre></div>
 <p>Systemd’s journal already retains logs across reboots (check <code>/etc/systemd/journald.conf</code> if you need to enlarge the log size).</p>
 <hr />
 <h2 id="8-connect-from-work">8  Connect from work</h2>
 <p>Create / edit <code>%USERPROFILE%\.ssh\config</code> on the Windows PC:</p>
-<pre><code>Host homelab
+<div class="highlight"><pre><span></span><code>Host homelab
     HostName your-home-dns-or-ip   # or DDNS
     Port 22222
     User youruser
     IdentityFile ~/.ssh/work_homelab_ed25519
     IdentitiesOnly yes
-</code></pre>
+</code></pre></div>
 <p>Now just:</p>
-<pre><code class="language-powershell">ssh homelab
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">ssh</span> <span class="n">homelab</span>
+</code></pre></div>
 <hr />
 <h2 id="9-routine-checklist-after-a-change-at-workhome">9  Routine checklist (after a change at work/home)</h2>
 <table>

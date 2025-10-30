@@ -3068,8 +3068,8 @@
 <h1 id="install-ssh-server-on-windows">Install SSH Server on Windows</h1>
 <h2 id="step-1-install-openssh-server-windows-1011-or-server">✅ STEP 1: INSTALL OPENSSH SERVER (Windows 10/11 or Server)</h2>
 <h3 id="option-a-powershell-best-for-automation">Option A: PowerShell (Best for automation)</h3>
-<pre><code class="language-powershell">Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="n">OpenSSH</span><span class="p">.</span><span class="n">Server</span><span class="p">~~~~</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
+</code></pre></div>
 <h3 id="option-b-gui">Option B: GUI</h3>
 <ul>
 <li>Go to <em>Settings &gt; Apps &gt; Optional Features &gt; Add a feature</em></li>
@@ -3077,49 +3077,49 @@
 </ul>
 <hr />
 <h2 id="step-2-start-and-enable-service">✅ STEP 2: START AND ENABLE SERVICE</h2>
-<pre><code class="language-powershell">Start-Service sshd
-Set-Service -Name sshd -StartupType 'Automatic'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Start-Service</span> <span class="n">sshd</span>
+<span class="nb">Set-Service</span> <span class="n">-Name</span> <span class="n">sshd</span> <span class="n">-StartupType</span> <span class="s1">&#39;Automatic&#39;</span>
+</code></pre></div>
 <p>To confirm it's running:</p>
-<pre><code class="language-powershell">Get-Service sshd
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Service</span> <span class="n">sshd</span>
+</code></pre></div>
 <hr />
 <h2 id="step-3-open-firewall-port-22">✅ STEP 3: OPEN FIREWALL PORT 22</h2>
-<pre><code class="language-powershell">New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">New-NetFirewallRule</span> <span class="n">-Name</span> <span class="n">sshd</span> <span class="n">-DisplayName</span> <span class="s1">&#39;OpenSSH Server&#39;</span> <span class="n">-Enabled</span> <span class="n">True</span> <span class="n">-Direction</span> <span class="n">Inbound</span> <span class="n">-Protocol</span> <span class="n">TCP</span> <span class="n">-Action</span> <span class="n">Allow</span> <span class="n">-LocalPort</span> <span class="n">22</span>
+</code></pre></div>
 <hr />
 <h2 id="step-4-restrict-access-to-specific-users-only">✅ STEP 4: RESTRICT ACCESS TO SPECIFIC USERS ONLY</h2>
 <p>This is where most people mess up. You don’t just install it—you <strong>lock it down</strong>.</p>
 <h3 id="modify-the-sshd_config-file">🔐 Modify the <code>sshd_config</code> file:</h3>
 <p>Location:</p>
-<pre><code class="language-plaintext">C:\ProgramData\ssh\sshd_config
-</code></pre>
+<div class="highlight"><pre><span></span><code>C:\ProgramData\ssh\sshd_config
+</code></pre></div>
 <h3 id="add-this-at-the-bottom-of-sshd_config">Add this at the bottom of <code>sshd_config</code>:</h3>
-<pre><code class="language-plaintext">AllowUsers yourdomain\User yourdomain\OtherUser
-</code></pre>
+<div class="highlight"><pre><span></span><code>AllowUsers yourdomain\User yourdomain\OtherUser
+</code></pre></div>
 <blockquote>
 <p>✅ You can also use local accounts like <code>DESKTOP-XXXX\username</code>
 ❌ Don’t use <code>AllowGroups</code> unless you’ve configured local/AD groups correctly.</p>
 </blockquote>
 <p>Then restart the SSH service:</p>
-<pre><code class="language-powershell">Restart-Service sshd
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Restart-Service</span> <span class="n">sshd</span>
+</code></pre></div>
 <hr />
 <h2 id="step-5-harden-ssh-config">✅ STEP 5: HARDEN SSH CONFIG</h2>
 <p>Edit <code>sshd_config</code> again and change/add these:</p>
-<pre><code class="language-plaintext">PasswordAuthentication no
+<div class="highlight"><pre><span></span><code>PasswordAuthentication no
 PermitRootLogin no
 PermitEmptyPasswords no
 UseDNS no
 AllowTcpForwarding no
 MaxAuthTries 3
 LogLevel VERBOSE
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>If you want to allow key-based only:</p>
 </blockquote>
-<pre><code class="language-plaintext">PubkeyAuthentication yes
-</code></pre>
+<div class="highlight"><pre><span></span><code>PubkeyAuthentication yes
+</code></pre></div>
 <hr />
 <h2 id="step-6-set-up-authorized-keys-for-users">✅ STEP 6: SET UP AUTHORIZED KEYS FOR USERS</h2>
 <p>For each allowed user:</p>
@@ -3137,14 +3137,14 @@ LogLevel VERBOSE
 <hr />
 <h2 id="step-7-test-and-verify">✅ STEP 7: TEST AND VERIFY</h2>
 <p>From another machine:</p>
-<pre><code class="language-bash">ssh User@yourwindowsIP
-</code></pre>
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>User@yourwindowsIP
+</code></pre></div>
 <p>Check <code>C:\ProgramData\ssh\logs\sshd.log</code> if login fails.</p>
 <hr />
 <h2 id="bonus-audit-monitoring">✅ BONUS: AUDIT &amp; MONITORING</h2>
 <p>Check login attempts:</p>
-<pre><code class="language-powershell">Get-WinEvent -LogName &quot;Microsoft-Windows-OpenSSH/Operational&quot; | Select TimeCreated, Message
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-WinEvent</span> <span class="n">-LogName</span> <span class="s2">&quot;Microsoft-Windows-OpenSSH/Operational&quot;</span> <span class="p">|</span> <span class="nb">Select </span><span class="n">TimeCreated</span><span class="p">,</span> <span class="n">Message</span>
+</code></pre></div>
 <hr />
 <h2 id="common-mistakes-to-avoid">⚠️ COMMON MISTAKES TO AVOID</h2>
 <ul>

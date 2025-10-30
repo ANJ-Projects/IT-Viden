@@ -3005,35 +3005,35 @@ Password: <code>Din kode</code>  </p>
 Password: <code>Din kode</code>  </p>
 <h2 id="teamviewer-cli">Teamviewer CLI</h2>
 <h3 id="teamviewer-cmd">Teamviewer CMD</h3>
-<pre><code>C:\Program Files\TeamViewer\TeamViewer.exe -i &quot;ID&quot; --password &quot;Password&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>C:\Program Files\TeamViewer\TeamViewer.exe -i &quot;ID&quot; --password &quot;Password&quot;
+</code></pre></div>
 <h3 id="powershell-script-forbind-via-teamviewer">Powershell Script - Forbind via Teamviewer</h3>
-<pre><code class="language-powershell">function Connect-TeamViewer {
-        param (
-            [Parameter(Mandatory=$true)]
-            [string]$ID,
+<div class="highlight"><pre><span></span><code><span class="k">function</span> <span class="nb">Connect-TeamViewer</span> <span class="p">{</span>
+        <span class="k">param</span> <span class="p">(</span>
+            <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$true</span><span class="p">)]</span>
+            <span class="no">[string]</span><span class="nv">$ID</span><span class="p">,</span>
 
-            [Parameter(Mandatory=$true)]
-            [string]$Password
-        )
+            <span class="p">[</span><span class="k">Parameter</span><span class="p">(</span><span class="k">Mandatory</span><span class="p">=</span><span class="nv">$true</span><span class="p">)]</span>
+            <span class="no">[string]</span><span class="nv">$Password</span>
+        <span class="p">)</span>
 
-        # Build the command to run TeamViewer with ID and Password
-        $teamViewerCommand = &quot;C:\Program Files\TeamViewer\TeamViewer.exe&quot;
-        $arguments = &quot;-i $ID --Password $Password&quot;
+        <span class="c"># Build the command to run TeamViewer with ID and Password</span>
+        <span class="nv">$teamViewerCommand</span> <span class="p">=</span> <span class="s2">&quot;C:\Program Files\TeamViewer\TeamViewer.exe&quot;</span>
+        <span class="nv">$arguments</span> <span class="p">=</span> <span class="s2">&quot;-i $ID --Password $Password&quot;</span>
 
-        # Start TeamViewer with the specified ID and Password
-        Start-Process -FilePath $teamViewerCommand -ArgumentList $arguments
+        <span class="c"># Start TeamViewer with the specified ID and Password</span>
+        <span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="nv">$teamViewerCommand</span> <span class="n">-ArgumentList</span> <span class="nv">$arguments</span>
 
-        # Get current timestamp
-        $timestamp = Get-Date -Format &quot;HH:mm dd-MM-yyyy&quot;
+        <span class="c"># Get current timestamp</span>
+        <span class="nv">$timestamp</span> <span class="p">=</span> <span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s2">&quot;HH:mm dd-MM-yyyy&quot;</span>
 
-        # Define the path to the notes file (optional)
-        # $notesPath = &quot;c:\notes.txt&quot;
+        <span class="c"># Define the path to the notes file (optional)</span>
+        <span class="c"># $notesPath = &quot;c:\notes.txt&quot;</span>
 
-        # Add entry to the notes file (optional)
-        # Add-Content -Path $script:filePath -Value &quot;$timestamp - Connected to TeamViewer with ID: $ID and Password: $Password&quot;
-    }
-</code></pre>
+        <span class="c"># Add entry to the notes file (optional)</span>
+        <span class="c"># Add-Content -Path $script:filePath -Value &quot;$timestamp - Connected to TeamViewer with ID: $ID and Password: $Password&quot;</span>
+    <span class="p">}</span>
+</code></pre></div>
 
 
 

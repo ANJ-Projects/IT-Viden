@@ -2910,18 +2910,18 @@
 <h1 id="find-entra-ad-connect-server">Find Entra AD Connect Server</h1>
 <h3 id="use-powershell-remotely-best-if-you-have-access-to-the-environment">🔍 Use PowerShell Remotely (Best if You Have Access to the Environment)**</h3>
 <h4 id="script-to-find-the-azure-ad-connect-server"><strong>Script to Find the Azure AD Connect Server</strong></h4>
-<pre><code class="language-powershell">$syncServer = Get-ADComputer -Filter 'Name -like &quot;*&quot;' -Properties Name |
-    ForEach-Object {
-        try {
-            $result = Invoke-Command -ComputerName $_.Name -ScriptBlock {
-                Get-Service -Name ADSync -ErrorAction Stop
-            } -ErrorAction Stop
-            return $_.Name
-        } catch {}
-    }
+<div class="highlight"><pre><span></span><code><span class="nv">$syncServer</span> <span class="p">=</span> <span class="nb">Get-ADComputer</span> <span class="n">-Filter</span> <span class="s1">&#39;Name -like &quot;*&quot;&#39;</span> <span class="n">-Properties</span> <span class="n">Name</span> <span class="p">|</span>
+    <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$result</span> <span class="p">=</span> <span class="nb">Invoke-Command</span> <span class="n">-ComputerName</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span> <span class="n">-ScriptBlock</span> <span class="p">{</span>
+                <span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">ADSync</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+            <span class="p">}</span> <span class="n">-ErrorAction</span> <span class="n">Stop</span>
+            <span class="k">return</span> <span class="nv">$_</span><span class="p">.</span><span class="n">Name</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">{}</span>
+    <span class="p">}</span>
 
-Write-Output &quot;Azure AD Connect is installed on: $syncServer&quot;
-</code></pre>
+<span class="nb">Write-Output</span> <span class="s2">&quot;Azure AD Connect is installed on: $syncServer&quot;</span>
+</code></pre></div>
 <p>This will probe all machines in the domain for the <code>ADSync</code> service — the core of Entra Connect. It's fast and accurate if remote PowerShell is enabled and firewalls aren't in the way.</p>
 <hr />
 <h3 id="option-2-check-via-event-logs-on-known-candidates">🔍 <strong>Option 2: Check via Event Logs (On Known Candidates)</strong></h3>

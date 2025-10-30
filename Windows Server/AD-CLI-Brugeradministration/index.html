@@ -2769,101 +2769,101 @@
 <p><em>Benyttes f.eks til headless adgang til DC</em></p>
 <p>Kør i <strong>Windows PowerShell</strong> på en <strong>Domain Controller</strong> (eller med <strong>RSAT/ActiveDirectory-modul</strong>):<br />
 <em>Bemærk at på DC'er er den allerede importeret</em></p>
-<pre><code class="language-powershell">Import-Module ActiveDirectory
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Import-Module</span> <span class="n">ActiveDirectory</span>
+</code></pre></div>
 <hr />
 <h1 id="sg-efter-brugere-find-users">Søg efter brugere (find users)</h1>
 <p><strong>Via navn (Name) – delvist match</strong></p>
-<pre><code class="language-powershell">$Name = Read-Host &quot;Indtast navn (delvist tilladt)&quot;
-Write-Host &quot;Søger: Name -like '*$Name*' ...&quot;
-Get-ADUser -Filter &quot;Name -like '*$Name*'&quot; -Properties DisplayName,SamAccountName,Mail |
-  Select-Object DisplayName,SamAccountName,Mail |
-  Sort-Object DisplayName | Format-Table -AutoSize
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$Name</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Indtast navn (delvist tilladt)&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;Søger: Name -like &#39;*$Name*&#39; ...&quot;</span>
+<span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="s2">&quot;Name -like &#39;*$Name*&#39;&quot;</span> <span class="n">-Properties</span> <span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">Mail</span> <span class="p">|</span>
+  <span class="nb">Select-Object</span> <span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">Mail</span> <span class="p">|</span>
+  <span class="nb">Sort-Object</span> <span class="n">DisplayName</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-AutoSize</span>
+</code></pre></div>
 <p><strong>Via e-mail (Mail)</strong></p>
-<pre><code class="language-powershell">$Mail = Read-Host &quot;Indtast e-mail (fuld adresse)&quot;
-Write-Host &quot;Søger: Mail -eq '$Mail' ...&quot;
-Get-ADUser -Filter &quot;Mail -eq '$Mail'&quot; -Properties DisplayName,SamAccountName,Mail |
-  Select-Object DisplayName,SamAccountName,Mail | Format-Table -AutoSize
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$Mail</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Indtast e-mail (fuld adresse)&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;Søger: Mail -eq &#39;$Mail&#39; ...&quot;</span>
+<span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="s2">&quot;Mail -eq &#39;$Mail&#39;&quot;</span> <span class="n">-Properties</span> <span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">Mail</span> <span class="p">|</span>
+  <span class="nb">Select-Object</span> <span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">Mail</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-AutoSize</span>
+</code></pre></div>
 <p><strong>Via brugernavn (sAMAccountName / username)</strong></p>
-<pre><code class="language-powershell">$User = Read-Host &quot;Indtast brugernavn (sAMAccountName)&quot;
-Write-Host &quot;Henter bruger: $User ...&quot;
-Get-ADUser -Identity $User -Properties DisplayName,SamAccountName,Mail |
-  Select-Object DisplayName,SamAccountName,Mail | Format-Table -AutoSize
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Indtast brugernavn (sAMAccountName)&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;Henter bruger: $User ...&quot;</span>
+<span class="nb">Get-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-Properties</span> <span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">Mail</span> <span class="p">|</span>
+  <span class="nb">Select-Object</span> <span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">Mail</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-AutoSize</span>
+</code></pre></div>
 <hr />
 <h1 id="password-konto-info-password-account-info">Password &amp; konto-info (password &amp; account info)</h1>
 <p><strong>Sidst ændret (PasswordLastSet) + beregnet udløb (Expiry)</strong></p>
-<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
-$u = Get-ADUser -Identity $User -Properties PasswordLastSet,PasswordExpired,msDS-UserPasswordExpiryTimeComputed,DisplayName,SamAccountName,LastLogonDate
-$expiry = if ($u.&quot;msDS-UserPasswordExpiryTimeComputed&quot;) { [datetime]::FromFileTime($u.&quot;msDS-UserPasswordExpiryTimeComputed&quot;) } else { $null }
-[pscustomobject]@{
-  DisplayName     = $u.DisplayName
-  SamAccountName  = $u.SamAccountName
-  PasswordExpired = $u.PasswordExpired
-  PasswordLastSet = $u.PasswordLastSet
-  PasswordExpiry  = $expiry
-  LastLogonDate   = $u.LastLogonDate
-} | Format-List
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Brugernavn&quot;</span>
+<span class="nv">$u</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-Properties</span> <span class="n">PasswordLastSet</span><span class="p">,</span><span class="n">PasswordExpired</span><span class="p">,</span><span class="n">msDS-UserPasswordExpiryTimeComputed</span><span class="p">,</span><span class="n">DisplayName</span><span class="p">,</span><span class="n">SamAccountName</span><span class="p">,</span><span class="n">LastLogonDate</span>
+<span class="nv">$expiry</span> <span class="p">=</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$u</span><span class="p">.</span><span class="s2">&quot;msDS-UserPasswordExpiryTimeComputed&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="no">[datetime]</span><span class="p">::</span><span class="n">FromFileTime</span><span class="p">(</span><span class="nv">$u</span><span class="p">.</span><span class="s2">&quot;msDS-UserPasswordExpiryTimeComputed&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="nv">$null</span> <span class="p">}</span>
+<span class="no">[pscustomobject]</span><span class="p">@{</span>
+  <span class="n">DisplayName</span>     <span class="p">=</span> <span class="nv">$u</span><span class="p">.</span><span class="n">DisplayName</span>
+  <span class="n">SamAccountName</span>  <span class="p">=</span> <span class="nv">$u</span><span class="p">.</span><span class="n">SamAccountName</span>
+  <span class="n">PasswordExpired</span> <span class="p">=</span> <span class="nv">$u</span><span class="p">.</span><span class="n">PasswordExpired</span>
+  <span class="n">PasswordLastSet</span> <span class="p">=</span> <span class="nv">$u</span><span class="p">.</span><span class="n">PasswordLastSet</span>
+  <span class="n">PasswordExpiry</span>  <span class="p">=</span> <span class="nv">$expiry</span>
+  <span class="n">LastLogonDate</span>   <span class="p">=</span> <span class="nv">$u</span><span class="p">.</span><span class="n">LastLogonDate</span>
+<span class="p">}</span> <span class="p">|</span> <span class="nb">Format-List</span>
+</code></pre></div>
 <p><strong>Er konto låst (LockedOut) + lås op (Unlock)</strong></p>
-<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
-$u = Get-ADUser -Identity $User -Properties LockedOut
-Write-Host (&quot;LockedOut: {0}&quot; -f $u.LockedOut)
-if ($u.LockedOut) {
-  $go = Read-Host &quot;Tryk Enter for at låse op (Unlock-ADAccount), eller N for at afbryde&quot;
-  if ($go -notmatch '^(n|N)$') {
-    Unlock-ADAccount -Identity $User -Confirm:$false
-    Write-Host &quot;OK: Konto låst op.&quot;
-  } else { Write-Host &quot;Annulleret.&quot; }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Brugernavn&quot;</span>
+<span class="nv">$u</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-Properties</span> <span class="n">LockedOut</span>
+<span class="nb">Write-Host</span> <span class="p">(</span><span class="s2">&quot;LockedOut: {0}&quot;</span> <span class="o">-f</span> <span class="nv">$u</span><span class="p">.</span><span class="n">LockedOut</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$u</span><span class="p">.</span><span class="n">LockedOut</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$go</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Tryk Enter for at låse op (Unlock-ADAccount), eller N for at afbryde&quot;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$go</span> <span class="o">-notmatch</span> <span class="s1">&#39;^(n|N)$&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Unlock-ADAccount</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;OK: Konto låst op.&quot;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Annulleret.&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h1 id="handter-udlbet-password-user-must-change-password-at-next-logon">Håndter udløbet password (User must change password at next logon)</h1>
 <p><strong>Sæt kravet (ChangePasswordAtLogon = True)</strong></p>
-<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
-Write-Host &quot;Sætter 'User must change password at next logon' for $User (pwdLastSet=0)&quot;
-$go = Read-Host &quot;Tryk Enter for at fortsætte, eller N for at afbryde&quot;
-if ($go -notmatch '^(n|N)$') {
-  Set-ADUser -Identity $User -ChangePasswordAtLogon $true -Confirm:$false
-  Write-Host &quot;OK: Brugeren skal ændre password ved næste logon.&quot;
-} else { Write-Host &quot;Annulleret.&quot; }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Brugernavn&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;Sætter &#39;User must change password at next logon&#39; for $User (pwdLastSet=0)&quot;</span>
+<span class="nv">$go</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Tryk Enter for at fortsætte, eller N for at afbryde&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$go</span> <span class="o">-notmatch</span> <span class="s1">&#39;^(n|N)$&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-ChangePasswordAtLogon</span> <span class="nv">$true</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+  <span class="nb">Write-Host</span> <span class="s2">&quot;OK: Brugeren skal ændre password ved næste logon.&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Annulleret.&quot;</span> <span class="p">}</span>
+</code></pre></div>
 <p><strong>Fjern kravet igen (ChangePasswordAtLogon = False)</strong></p>
-<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
-$go = Read-Host &quot;Tryk Enter for at fjerne kravet, eller N for at afbryde&quot;
-if ($go -notmatch '^(n|N)$') {
-  Set-ADUser -Identity $User -ChangePasswordAtLogon $false -Confirm:$false
-  Write-Host &quot;OK: Kravet fjernet.&quot;
-} else { Write-Host &quot;Annulleret.&quot; }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Brugernavn&quot;</span>
+<span class="nv">$go</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Tryk Enter for at fjerne kravet, eller N for at afbryde&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$go</span> <span class="o">-notmatch</span> <span class="s1">&#39;^(n|N)$&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-ChangePasswordAtLogon</span> <span class="nv">$false</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+  <span class="nb">Write-Host</span> <span class="s2">&quot;OK: Kravet fjernet.&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Annulleret.&quot;</span> <span class="p">}</span>
+</code></pre></div>
 <blockquote>
 <p><strong>Bemærk</strong>: Hvis du i stedet skal ophæve udløb <strong>uden</strong> at tvinge ændring, kan du sætte “pwdLastSet” til nu:</p>
 </blockquote>
-<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
-$go = Read-Host &quot;Tryk Enter for at sætte pwdLastSet=nu (ophæv udløb), eller N for at afbryde&quot;
-if ($go -notmatch '^(n|N)$') {
-  Set-ADUser -Identity $User -Replace @{pwdLastSet = -1} -Confirm:$false
-  Write-Host &quot;OK: pwdLastSet sat til nu.&quot;
-} else { Write-Host &quot;Annulleret.&quot; }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Brugernavn&quot;</span>
+<span class="nv">$go</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Tryk Enter for at sætte pwdLastSet=nu (ophæv udløb), eller N for at afbryde&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$go</span> <span class="o">-notmatch</span> <span class="s1">&#39;^(n|N)$&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="o">-Replace</span> <span class="p">@{</span><span class="n">pwdLastSet</span> <span class="p">=</span> <span class="p">-</span><span class="n">1</span><span class="p">}</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+  <span class="nb">Write-Host</span> <span class="s2">&quot;OK: pwdLastSet sat til nu.&quot;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Annulleret.&quot;</span> <span class="p">}</span>
+</code></pre></div>
 <hr />
 <h1 id="reset-password-klar-tekst-plain-text">Reset password (klar tekst / plain text)</h1>
-<pre><code class="language-powershell">$User = Read-Host &quot;Brugernavn&quot;
-$pwPlain = Read-Host &quot;Ny adgangskode (PLAIN tekst – konverteres ved kørsel)&quot;
-Write-Host &quot;RESET PASSWORD for '$User' -&gt; '$pwPlain'&quot;
-$go = Read-Host &quot;Tryk Enter for at fortsætte, eller N for at afbryde&quot;
-if ($go -notmatch '^(n|N)$') {
-  Set-ADAccountPassword -Identity $User -Reset -NewPassword (ConvertTo-SecureString $pwPlain -AsPlainText -Force) -Confirm:$false
-  Write-Host &quot;OK: Password nulstillet.&quot;
-  $chg = Read-Host &quot;Tving 'User must change password at next logon'? (Enter=Ja, N=Nej)&quot;
-  if ($chg -notmatch '^(n|N)$') {
-    Set-ADUser -Identity $User -ChangePasswordAtLogon $true -Confirm:$false
-    Write-Host &quot;Sat: ChangePasswordAtLogon = True.&quot;
-  }
-} else { Write-Host &quot;Annulleret.&quot; }
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$User</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Brugernavn&quot;</span>
+<span class="nv">$pwPlain</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Ny adgangskode (PLAIN tekst – konverteres ved kørsel)&quot;</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;RESET PASSWORD for &#39;$User&#39; -&gt; &#39;$pwPlain&#39;&quot;</span>
+<span class="nv">$go</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Tryk Enter for at fortsætte, eller N for at afbryde&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$go</span> <span class="o">-notmatch</span> <span class="s1">&#39;^(n|N)$&#39;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Set-ADAccountPassword</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-Reset</span> <span class="n">-NewPassword</span> <span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="nv">$pwPlain</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span><span class="p">)</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+  <span class="nb">Write-Host</span> <span class="s2">&quot;OK: Password nulstillet.&quot;</span>
+  <span class="nv">$chg</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="s2">&quot;Tving &#39;User must change password at next logon&#39;? (Enter=Ja, N=Nej)&quot;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$chg</span> <span class="o">-notmatch</span> <span class="s1">&#39;^(n|N)$&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="nv">$User</span> <span class="n">-ChangePasswordAtLogon</span> <span class="nv">$true</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;Sat: ChangePasswordAtLogon = True.&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="nb">Write-Host</span> <span class="s2">&quot;Annulleret.&quot;</span> <span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="hurtige-noter">Hurtige noter</h2>
 <ul>

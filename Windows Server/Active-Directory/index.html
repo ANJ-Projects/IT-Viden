@@ -2897,15 +2897,15 @@
 Herefter skulle expire gerne være nulstillet</p>
 <p><em>Det kan være en idé at verificere om det virker</em></p>
 <h3 id="tjek-hvornar-koden-udlber">Tjek hvornår koden udløber</h3>
-<p>Sæt ind i pwsh</p>
-<pre><code class="language-powershell">$Username = Read-Host -Prompt &quot;Angiv brugernavn&quot;
-Get-ADUser -Identity $Username -Properties &quot;msDS-UserPasswordExpiryTimeComputed&quot; | 
-Select-Object Name, @{Name=&quot;PasswordExpires&quot;; Expression={[datetime]::FromFileTime($_.&quot;msDS-UserPasswordExpiryTimeComputed&quot;)}}
-</code></pre>
+<p>Sæt ind i pwsh
+<div class="highlight"><pre><span></span><code><span class="nv">$Username</span> <span class="p">=</span> <span class="nb">Read-Host</span> <span class="n">-Prompt</span> <span class="s2">&quot;Angiv brugernavn&quot;</span>
+<span class="nb">Get-ADUser</span> <span class="n">-Identity</span> <span class="nv">$Username</span> <span class="n">-Properties</span> <span class="s2">&quot;msDS-UserPasswordExpiryTimeComputed&quot;</span> <span class="p">|</span> 
+<span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;PasswordExpires&quot;</span><span class="p">;</span> <span class="n">Expression</span><span class="p">={</span><span class="no">[datetime]</span><span class="p">::</span><span class="n">FromFileTime</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="s2">&quot;msDS-UserPasswordExpiryTimeComputed&quot;</span><span class="p">)}}</span>
+</code></pre></div></p>
 <h3 id="find-password-udlbs-politik">Find password udløbs politik</h3>
-<p>Sæt ind i pwsh</p>
-<pre><code class="language-powershell">&quot;MaxPasswordAge: $((Get-ADDefaultDomainPasswordPolicy).MaxPasswordAge.Days) days&quot;
-</code></pre>
+<p>Sæt ind i pwsh
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;MaxPasswordAge: </span><span class="p">$((</span><span class="nb">Get-ADDefaultDomainPasswordPolicy</span><span class="p">).</span><span class="n">MaxPasswordAge</span><span class="p">.</span><span class="n">Days</span><span class="p">)</span><span class="s2"> days&quot;</span>
+</code></pre></div></p>
 
 
 

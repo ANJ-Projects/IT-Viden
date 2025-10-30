@@ -3045,26 +3045,26 @@
 <hr />
 <h2 id="cli-hurtige-kommandoer-til-backup-og-restore">CLI: Hurtige kommandoer til backup og restore</h2>
 <h3 id="kr-manuel-backup">Kør manuel backup</h3>
-<pre><code class="language-bash"># Backup VM 120 til storage 'backup-nas'
-vzdump 120 --storage backup-nas --mode snapshot --compress zstd
+<div class="highlight"><pre><span></span><code><span class="c1"># Backup VM 120 til storage &#39;backup-nas&#39;</span>
+vzdump<span class="w"> </span><span class="m">120</span><span class="w"> </span>--storage<span class="w"> </span>backup-nas<span class="w"> </span>--mode<span class="w"> </span>snapshot<span class="w"> </span>--compress<span class="w"> </span>zstd
 
-# Backup container 220 og stop midlertidigt for konsistens
-vzdump 220 --storage backup-nas --mode stop --compress zstd
-</code></pre>
+<span class="c1"># Backup container 220 og stop midlertidigt for konsistens</span>
+vzdump<span class="w"> </span><span class="m">220</span><span class="w"> </span>--storage<span class="w"> </span>backup-nas<span class="w"> </span>--mode<span class="w"> </span>stop<span class="w"> </span>--compress<span class="w"> </span>zstd
+</code></pre></div>
 <h3 id="planlg-via-cron-alternativ-til-gui">Planlæg via cron (alternativ til GUI)</h3>
-<pre><code class="language-bash">cat &lt;&lt;'CRON' &gt;&gt; /etc/cron.d/proxmox-custom-backups
-# Daglig VM backup kl. 02:30
-30 2 * * * root vzdump 120 --storage backup-nas --mode snapshot --compress zstd --quiet 1
-CRON
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt;&#39;CRON&#39; &gt;&gt; /etc/cron.d/proxmox-custom-backups</span>
+<span class="s"># Daglig VM backup kl. 02:30</span>
+<span class="s">30 2 * * * root vzdump 120 --storage backup-nas --mode snapshot --compress zstd --quiet 1</span>
+<span class="s">CRON</span>
+</code></pre></div>
 <h3 id="restore-direkte-fra-shell">Restore direkte fra shell</h3>
-<pre><code class="language-bash"># Gendan VM backup til nyt ID 121 og kør på samme node
-vzdump --list /mnt/pve/backup-nas/dump | grep vm-120
-qmrestore /mnt/pve/backup-nas/dump/vzdump-qemu-120-*.vma.zst 121 --unique 1 --storage fast-ssd
+<div class="highlight"><pre><span></span><code><span class="c1"># Gendan VM backup til nyt ID 121 og kør på samme node</span>
+vzdump<span class="w"> </span>--list<span class="w"> </span>/mnt/pve/backup-nas/dump<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>vm-120
+qmrestore<span class="w"> </span>/mnt/pve/backup-nas/dump/vzdump-qemu-120-*.vma.zst<span class="w"> </span><span class="m">121</span><span class="w"> </span>--unique<span class="w"> </span><span class="m">1</span><span class="w"> </span>--storage<span class="w"> </span>fast-ssd
 
-# Gendan container til nyt ID 221
-pct restore 221 /mnt/pve/backup-nas/dump/vzdump-lxc-220-*.tar.zst --storage fast-ssd
-</code></pre>
+<span class="c1"># Gendan container til nyt ID 221</span>
+pct<span class="w"> </span>restore<span class="w"> </span><span class="m">221</span><span class="w"> </span>/mnt/pve/backup-nas/dump/vzdump-lxc-220-*.tar.zst<span class="w"> </span>--storage<span class="w"> </span>fast-ssd
+</code></pre></div>
 <blockquote>
 <p>Tip: Brug <code>--pool</code> på backup jobs for at gruppere relaterede servere. Under restore kan du filtrere via pool-navnet.</p>
 </blockquote>

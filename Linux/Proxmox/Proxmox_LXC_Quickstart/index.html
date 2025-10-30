@@ -2973,36 +2973,36 @@
 <hr />
 <h2 id="cli-opret-container-via-pct">CLI: Opret container via <code>pct</code></h2>
 <p>Eksempel opretter en Debian 12 container på ID 220 med statisk IP.</p>
-<pre><code class="language-bash">CTID=220
-HOSTNAME=&quot;debian-services&quot;
-TEMPLATE=&quot;local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst&quot;
-STORAGE=&quot;fast-ssd&quot;
-BRIDGE=&quot;vmbr0&quot;
-IP=&quot;192.168.10.50/24&quot;
-GW=&quot;192.168.10.1&quot;
+<div class="highlight"><pre><span></span><code><span class="nv">CTID</span><span class="o">=</span><span class="m">220</span>
+<span class="nv">HOSTNAME</span><span class="o">=</span><span class="s2">&quot;debian-services&quot;</span>
+<span class="nv">TEMPLATE</span><span class="o">=</span><span class="s2">&quot;local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst&quot;</span>
+<span class="nv">STORAGE</span><span class="o">=</span><span class="s2">&quot;fast-ssd&quot;</span>
+<span class="nv">BRIDGE</span><span class="o">=</span><span class="s2">&quot;vmbr0&quot;</span>
+<span class="nv">IP</span><span class="o">=</span><span class="s2">&quot;192.168.10.50/24&quot;</span>
+<span class="nv">GW</span><span class="o">=</span><span class="s2">&quot;192.168.10.1&quot;</span>
 
-pct create &quot;$CTID&quot; &quot;$TEMPLATE&quot; \
-  --hostname &quot;$HOSTNAME&quot; \
-  --password 'SkiftMig123!' \
-  --cores 2 \
-  --memory 2048 \
-  --swap 0 \
-  --rootfs ${STORAGE}:8 \
-  --net0 name=eth0,bridge=$BRIDGE,ip=$IP,gw=$GW \
-  --features nesting=1 \
-  --unprivileged 1
-</code></pre>
+pct<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CTID</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TEMPLATE</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hostname<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOSTNAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--password<span class="w"> </span><span class="s1">&#39;SkiftMig123!&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cores<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--memory<span class="w"> </span><span class="m">2048</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--swap<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--rootfs<span class="w"> </span><span class="si">${</span><span class="nv">STORAGE</span><span class="si">}</span>:8<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--net0<span class="w"> </span><span class="nv">name</span><span class="o">=</span>eth0,bridge<span class="o">=</span><span class="nv">$BRIDGE</span>,ip<span class="o">=</span><span class="nv">$IP</span>,gw<span class="o">=</span><span class="nv">$GW</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--features<span class="w"> </span><span class="nv">nesting</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--unprivileged<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
 <h3 id="efter-opstning">Efter opsætning</h3>
-<pre><code class="language-bash"># Start container og attach konsol
-pct start &quot;$CTID&quot;
-pct console &quot;$CTID&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Start container og attach konsol</span>
+pct<span class="w"> </span>start<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CTID</span><span class="s2">&quot;</span>
+pct<span class="w"> </span>console<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CTID</span><span class="s2">&quot;</span>
 
-# Tilføj bind mount til /data
-pct set &quot;$CTID&quot; --mp0 /srv/appdata,mp=/data
+<span class="c1"># Tilføj bind mount til /data</span>
+pct<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CTID</span><span class="s2">&quot;</span><span class="w"> </span>--mp0<span class="w"> </span>/srv/appdata,mp<span class="o">=</span>/data
 
-# Sæt automatisk start, når noden booter
-pct set &quot;$CTID&quot; --onboot 1 --startup order=20,up=30
-</code></pre>
+<span class="c1"># Sæt automatisk start, når noden booter</span>
+pct<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CTID</span><span class="s2">&quot;</span><span class="w"> </span>--onboot<span class="w"> </span><span class="m">1</span><span class="w"> </span>--startup<span class="w"> </span><span class="nv">order</span><span class="o">=</span><span class="m">20</span>,up<span class="o">=</span><span class="m">30</span>
+</code></pre></div>
 <hr />
 <h2 id="fejlfinding-i-felten">Fejlfinding i felten</h2>
 <ul>

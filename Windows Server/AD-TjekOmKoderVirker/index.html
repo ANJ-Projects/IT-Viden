@@ -2919,33 +2919,33 @@ Det er nyttigt efter en ny bruger er oprettet, ved fejlmeldinger om login, eller
 <hr />
 <h2 id="hurtig-test-via-net-directoryentry">Hurtig test via .NET DirectoryEntry</h2>
 <p>Bruger indbyggede .NET klasser til at forsøge et login.</p>
-<pre><code class="language-powershell">$username = &quot;DOMAIN\BrugerNavn&quot;
-$password = &quot;Hemmelig123&quot;
+<div class="highlight"><pre><span></span><code><span class="nv">$username</span> <span class="p">=</span> <span class="s2">&quot;DOMAIN\BrugerNavn&quot;</span>
+<span class="nv">$password</span> <span class="p">=</span> <span class="s2">&quot;Hemmelig123&quot;</span>
 
-new-object directoryservices.directoryentry &quot;&quot;,$username,$password
-</code></pre>
+<span class="nb">new-object</span> <span class="n">directoryservices</span><span class="p">.</span><span class="n">directoryentry</span> <span class="s2">&quot;&quot;</span><span class="p">,</span><span class="nv">$username</span><span class="p">,</span><span class="nv">$password</span>
+</code></pre></div>
 <p>✅ Hvis koden returnerer et objekt uden fejl → password er OK.
 ❌ Hvis du får en exception → password er forkert eller kontoen er spærret/udløbet.</p>
 <hr />
 <h2 id="test-med-get-aduser">Test med <code>Get-ADUser</code></h2>
 <p>Her kan man lade PowerShell selv spørge efter credentials:</p>
-<pre><code class="language-powershell">Get-ADUser -Identity BrugerNavn -Credential (Get-Credential)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ADUser</span> <span class="n">-Identity</span> <span class="n">BrugerNavn</span> <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span><span class="p">)</span>
+</code></pre></div>
 <p>Indtast domæne-brugernavn og password i prompten.
 ✅ Returnerer brugerobjekt → login virker.
 ❌ Fejl: <em>“Logon failure: unknown user name or bad password”</em> → password forkert.</p>
 <hr />
 <h2 id="alternativ-brug-test-computersecurechannel">Alternativ: Brug <code>Test-ComputerSecureChannel</code></h2>
 <p>Hvis du tester maskinens domænetrust samtidig:</p>
-<pre><code class="language-powershell">Test-ComputerSecureChannel -Credential (Get-Credential)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Test-ComputerSecureChannel</span> <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span><span class="p">)</span>
+</code></pre></div>
 <p>Returnerer <code>True</code> hvis login og trust er OK.</p>
 <hr />
 <h2 id="tjek-status-for-bruger">Tjek status for bruger</h2>
 <p>Nyttigt at se om kontoen <strong>i det hele taget kan logge på</strong>:</p>
-<pre><code class="language-powershell">Get-ADUser BrugerNavn -Properties Enabled, PasswordExpired, LockedOut, LastLogonDate |
-Select-Object SamAccountName, Enabled, PasswordExpired, LockedOut, LastLogonDate
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ADUser</span> <span class="n">BrugerNavn</span> <span class="n">-Properties</span> <span class="n">Enabled</span><span class="p">,</span> <span class="n">PasswordExpired</span><span class="p">,</span> <span class="n">LockedOut</span><span class="p">,</span> <span class="n">LastLogonDate</span> <span class="p">|</span>
+<span class="nb">Select-Object</span> <span class="n">SamAccountName</span><span class="p">,</span> <span class="n">Enabled</span><span class="p">,</span> <span class="n">PasswordExpired</span><span class="p">,</span> <span class="n">LockedOut</span><span class="p">,</span> <span class="n">LastLogonDate</span>
+</code></pre></div>
 <ul>
 <li><strong>Enabled</strong> = Konto er aktiv.</li>
 <li><strong>PasswordExpired</strong> = Skal skifte password ved næste login.</li>
@@ -2954,8 +2954,8 @@ Select-Object SamAccountName, Enabled, PasswordExpired, LockedOut, LastLogonDate
 <hr />
 <h2 id="simuler-logon-via-runas">Simuler logon via <code>runas</code></h2>
 <p>Hurtig manuelt test uden PowerShell:</p>
-<pre><code class="language-cmd">runas /user:DOMAIN\BrugerNavn cmd
-</code></pre>
+<div class="highlight"><pre><span></span><code>runas /user:DOMAIN\BrugerNavn cmd
+</code></pre></div>
 <p>Hvis password er forkert → prompten dukker bare op igen.
 Hvis password er rigtigt → ny CMD åbner i brugerens kontekst.</p>
 <hr />

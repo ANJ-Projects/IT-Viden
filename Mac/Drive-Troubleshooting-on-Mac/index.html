@@ -2878,15 +2878,16 @@
 <ol>
 <li><strong>Force a fresh mount with your true user credentials</strong>  </li>
 <li>In Finder: <strong>Go → Connect to Server…</strong>, then use<br />
-<code>smb://DOMAIN;username@fileserver.example.com/ShareName</code>  </li>
+     <div class="highlight"><pre><span></span><code>smb://DOMAIN;username@fileserver.example.com/ShareName
+</code></pre></div></li>
 <li>
 <p>Enter your password when prompted (don’t let it default to Guest).  </p>
 </li>
 <li>
 <p><strong>Renew your Kerberos ticket</strong><br />
-<code>bash
-   kdestroy
-   kinit username@YOUR.DOMAIN</code><br />
+   <div class="highlight"><pre><span></span><code>kdestroy
+kinit<span class="w"> </span>username@YOUR.DOMAIN
+</code></pre></div>
    Then unmount/remount the share.</p>
 </li>
 <li>
@@ -2897,9 +2898,9 @@
 </li>
 <li>
 <p><strong>Test from the Mac command line</strong><br />
-<code>bash
-   smbutil statshares -a
-   ls -led /Volumes/ShareName/ProblemSubfolder</code><br />
+   <div class="highlight"><pre><span></span><code>smbutil<span class="w"> </span>statshares<span class="w"> </span>-a
+ls<span class="w"> </span>-led<span class="w"> </span>/Volumes/ShareName/ProblemSubfolder
+</code></pre></div>
    The <code>ls -led</code> will show you the POSIX permissions and any extended ACL entries that macOS sees; a “0” or “drwx—” for your user means you truly aren’t allowed in.</p>
 </li>
 </ol>

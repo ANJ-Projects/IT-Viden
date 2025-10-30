@@ -2831,19 +2831,19 @@ And yet, Microsoft has done zero to document it properly. It’s buried like som
 <hr />
 <h3 id="for-anyone-who-hasnt-suffered-enough">🧱 For anyone who hasn’t suffered enough:</h3>
 <p><code>printbrmui.exe</code> lives here:</p>
-<pre><code>C:\Windows\System32\spool\tools\printbrmui.exe
-</code></pre>
+<div class="highlight"><pre><span></span><code>C:\Windows\System32\spool\tools\printbrmui.exe
+</code></pre></div>
 <p>It’s the <strong>Printer Migration Wizard</strong>, and it can:</p>
 <ul>
 <li>Export <em>all printers, drivers, ports</em> to a <code>.printerExport</code> file</li>
 <li>Import them on another machine</li>
 <li>Even silently via:</li>
 </ul>
-<p><code>powershell
-  printbrmui.exe /b "PrintersExport.printerExport" /f</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">printbrmui</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">b</span> <span class="s2">&quot;PrintersExport.printerExport&quot;</span> <span class="p">/</span><span class="n">f</span>
+</code></pre></div>
 <p>or</p>
-<p><code>powershell
-  printbrmui.exe /r "PrintersExport.printerExport" /f</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">printbrmui</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="nb">r </span><span class="s2">&quot;PrintersExport.printerExport&quot;</span> <span class="p">/</span><span class="n">f</span>
+</code></pre></div>
 <p>This is better than half the “enterprise” print management tools out there. 🤷‍♂️</p>
 <hr />
 

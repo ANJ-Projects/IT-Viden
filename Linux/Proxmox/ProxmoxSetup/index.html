@@ -3097,13 +3097,13 @@
 <h2 id="opdatering">Opdatering</h2>
 <p>Gå ind i Proxmox Web GUI  </p>
 <p><strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Updates &gt; Repositories</strong>  </p>
-<p>Så:  </p>
-<pre><code>Add Standard  
+<p>Så:<br />
+<div class="highlight"><pre><span></span><code>Add Standard  
 Disable Enterprise  
-</code></pre>
-<p>Åbn shell:  </p>
-<pre><code class="language-bash">apt update -y &amp;&amp; apt upgrade -y &amp;&amp; apt dist-upgrade -y
-</code></pre>
+</code></pre></div></p>
+<p>Åbn shell:<br />
+<div class="highlight"><pre><span></span><code>apt<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>dist-upgrade<span class="w"> </span>-y
+</code></pre></div></p>
 <hr />
 <h2 id="storage">Storage</h2>
 <h3 id="rens-partitioner">Rens partitioner</h3>
@@ -3112,15 +3112,15 @@ Disable Enterprise
 <strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Disks</strong><br />
 Her kan du se diskene  </p>
 <p>Åbn shell:<br />
-Brug <code>fdisk</code>  </p>
-<pre><code class="language-bash">fdisk /dev/sda
-</code></pre>
-<p>Vis partition-info:  </p>
-<pre><code class="language-bash">p
-</code></pre>
-<p>Slet partitioner (hvis nødvendigt):  </p>
-<pre><code class="language-bash">fdisk /dev/sda
-</code></pre>
+Brug <code>fdisk</code><br />
+<div class="highlight"><pre><span></span><code>fdisk<span class="w"> </span>/dev/sda
+</code></pre></div></p>
+<p>Vis partition-info:<br />
+<div class="highlight"><pre><span></span><code>p
+</code></pre></div></p>
+<p>Slet partitioner (hvis nødvendigt):<br />
+<div class="highlight"><pre><span></span><code>fdisk<span class="w"> </span>/dev/sda
+</code></pre></div></p>
 <hr />
 <h3 id="klargr-disk-til-storage">Klargør disk til storage</h3>
 <p><strong>Datacenter &gt; Nodes &gt; Aktuel PC/Server &gt; Disks</strong><br />
@@ -3163,20 +3163,20 @@ Den nye disk burde være synlig – hvis ikke, er der måske et problem med init
 <h2 id="auto-mount">Auto Mount</h2>
 <p>Installer <code>pve7-usb-automount</code>  </p>
 <h3 id="installation">Installation</h3>
-<pre><code class="language-bash">apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2FAB19E7CCB7F415 &amp;&amp; echo &quot;deb https://apt.iteas.at/iteas bullseye main&quot; &gt; /etc/apt/sources.list.d/iteas.list &amp;&amp; apt update &amp;&amp; apt install pve7-usb-automount
-</code></pre>
+<div class="highlight"><pre><span></span><code>apt-key<span class="w"> </span>adv<span class="w"> </span>--recv-keys<span class="w"> </span>--keyserver<span class="w"> </span>keyserver.ubuntu.com<span class="w"> </span>2FAB19E7CCB7F415<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://apt.iteas.at/iteas bullseye main&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/apt/sources.list.d/iteas.list<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pve7-usb-automount
+</code></pre></div>
 <h3 id="brug">Brug</h3>
-<pre><code class="language-bash">df -h
-</code></pre>
+<div class="highlight"><pre><span></span><code>df<span class="w"> </span>-h
+</code></pre></div>
 <p>Find størrelsen på din storage og tjek hvor den er monteret – i dette eksempel var den monteret her:<br />
 <code>/media/sdb1</code></p>
 <hr />
 <h2 id="cluster">Cluster</h2>
 <h3 id="2-proxmox-servere">2 Proxmox servere</h3>
 <p><em>Sørg for, at den anden node ikke har adgang til nogen af de VMs eller storage den første node bruger.</em>  </p>
-<p>Kør følgende kommando for at starte VMs, hvis der kun er 2 Proxmox-servere:  </p>
-<pre><code class="language-bash">pvecm expected 1
-</code></pre>
+<p>Kør følgende kommando for at starte VMs, hvis der kun er 2 Proxmox-servere:<br />
+<div class="highlight"><pre><span></span><code>pvecm<span class="w"> </span>expected<span class="w"> </span><span class="m">1</span>
+</code></pre></div></p>
 
 
 

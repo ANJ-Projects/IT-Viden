@@ -2925,8 +2925,8 @@
 <ol>
 <li><strong>Install AdGuard Home</strong> on the Ubuntu 22.04 “border” VM</li>
 </ol>
-<p><code>bash
-   curl -sSL https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sudo bash</code></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
+</code></pre></div>
 <p>(or run it in Docker if you prefer).</p>
 <ol>
 <li>
@@ -2943,14 +2943,16 @@
    <em>UI → Filters → DNS Rewrites → Add</em></p>
 </li>
 </ol>
-<p><code>Domain : *.intra.lan
-   Answer : 192.168.1.10        # the reverse-proxy VM’s LAN IP</code></p>
+<div class="highlight"><pre><span></span><code>Domain : *.intra.lan
+Answer : 192.168.1.10        # the reverse-proxy VM’s LAN IP
+</code></pre></div>
 <p>Save. That single entry covers <strong>every</strong> future <code>something.intra.lan</code>.</p>
 <ol>
 <li><strong>(Optional) exceptions</strong>
    If you need one host to point elsewhere, just add another rewrite:</li>
 </ol>
-<p><code>nas.intra.lan  → 192.168.1.30</code></p>
+<div class="highlight"><pre><span></span><code>nas.intra.lan  → 192.168.1.30
+</code></pre></div>
 <p>The specific host record overrides the wildcard automatically.(<a href="https://www.reddit.com/r/AdGuardHome/comments/12bhyok/order_of_dns_rewrites/" title="Order of DNS rewrites : r/AdGuardHome">Reddit</a>)</p>
 <ol>
 <li>
@@ -2980,9 +2982,9 @@
 <hr />
 <h2 id="if-you-must-stay-on-pi-hole">If you <strong>must</strong> stay on Pi-hole</h2>
 <p>Pi-hole’s core <code>dnsmasq</code> <strong>can</strong> do the same wildcard, but you have to touch the filesystem:</p>
-<pre><code class="language-bash">echo 'address=/intra.lan/192.168.1.10' | sudo tee /etc/dnsmasq.d/45-wildcard.conf
-pihole restartdns
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;address=/intra.lan/192.168.1.10&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/dnsmasq.d/45-wildcard.conf
+pihole<span class="w"> </span>restartdns
+</code></pre></div>
 <p>No GUI, order management, or per-host override; hence most homelabbers switch to AdGuard Home for this use-case.(<a href="https://discourse.pi-hole.net/t/support-wildcards-in-local-dns-records/32098" title="Support wildcards in local DNS records - Feature Requests - Pi-hole Userspace">Pi-hole Userspace</a>)</p>
 <hr />
 <h3 id="tldr">TL;DR</h3>

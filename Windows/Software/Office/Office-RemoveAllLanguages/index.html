@@ -2887,22 +2887,22 @@
 <hr />
 <h3 id="how-to-do-it">How to do it</h3>
 <p>Each of those entries has an uninstall string in the registry under:</p>
-<pre><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\
+<div class="highlight"><pre><span></span><code>HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\
 HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\
-</code></pre>
+</code></pre></div>
 <p>You can collect all that match <code>"Microsoft 365*"</code> and call them.</p>
 <p>Here’s a PowerShell example:</p>
-<pre><code class="language-powershell">$apps = Get-ItemProperty `
-    &quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot; ,
-    &quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot; `
-    -ErrorAction SilentlyContinue |
-    Where-Object { $_.DisplayName -like &quot;Microsoft 365*&quot; }
+<div class="highlight"><pre><span></span><code><span class="nv">$apps</span> <span class="p">=</span> <span class="nb">Get-ItemProperty</span> <span class="p">`</span>
+    <span class="s2">&quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span> <span class="p">,</span>
+    <span class="s2">&quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span> <span class="p">`</span>
+    <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span>
+    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="o">-like</span> <span class="s2">&quot;Microsoft 365*&quot;</span> <span class="p">}</span>
 
-foreach ($app in $apps) {
-    Write-Host &quot;Uninstalling $($app.DisplayName)...&quot;
-    Start-Process -FilePath &quot;cmd.exe&quot; -ArgumentList &quot;/c `&quot;$($app.UninstallString)`&quot;&quot; -Wait
-}
-</code></pre>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$app</span> <span class="k">in</span> <span class="nv">$apps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">&quot;Uninstalling </span><span class="p">$(</span><span class="nv">$app</span><span class="p">.</span><span class="n">DisplayName</span><span class="p">)</span><span class="s2">...&quot;</span>
+    <span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="s2">&quot;cmd.exe&quot;</span> <span class="n">-ArgumentList</span> <span class="s2">&quot;/c </span><span class="se">`&quot;</span><span class="p">$(</span><span class="nv">$app</span><span class="p">.</span><span class="n">UninstallString</span><span class="p">)</span><span class="se">`&quot;</span><span class="s2">&quot;</span> <span class="n">-Wait</span>
+<span class="p">}</span>
+</code></pre></div>
 <ul>
 <li>This will loop through every Office 365 language pack entry.</li>
 <li>Instead of you clicking <em>Uninstall → Wait → Uninstall</em>, it automates the queue.</li>
@@ -2929,8 +2929,8 @@ foreach ($app in $apps) {
 <p><strong>Argument handling</strong> →</p>
 </li>
 </ol>
-<p><code>powershell
-   $UninstallArg = ($UninstallString -split '"')[2] + " DisplayLevel=False"</code></p>
+<div class="highlight"><pre><span></span><code><span class="nv">$UninstallArg</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$UninstallString</span> <span class="n">-split</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">)[</span><span class="n">2</span><span class="p">]</span> <span class="p">+</span> <span class="s2">&quot; DisplayLevel=False&quot;</span>
+</code></pre></div>
 <ul>
 <li>This assumes the uninstall string <em>always</em> looks like <code>"C:\path\to\setup.exe" /config something.xml</code>.</li>
 <li>But some Click-to-Run entries are structured differently (some even don’t have quotes).</li>
@@ -2944,32 +2944,32 @@ foreach ($app in $apps) {
 <hr />
 <h3 id="a-safer-approach">A safer approach</h3>
 <p>Here’s a hardened version:</p>
-<pre><code class="language-powershell">$uninstallKeys = @(
-    &quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;,
-    &quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;
-)
+<div class="highlight"><pre><span></span><code><span class="nv">$uninstallKeys</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="s2">&quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span>
+<span class="p">)</span>
 
-$officeApps = Get-ItemProperty $uninstallKeys -ErrorAction SilentlyContinue |
-    Where-Object { $_.DisplayName -like &quot;*Microsoft 365*&quot; -or $_.DisplayName -like &quot;*Office 365*&quot; }
+<span class="nv">$officeApps</span> <span class="p">=</span> <span class="nb">Get-ItemProperty</span> <span class="nv">$uninstallKeys</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span>
+    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="o">-like</span> <span class="s2">&quot;*Microsoft 365*&quot;</span> <span class="o">-or</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="o">-like</span> <span class="s2">&quot;*Office 365*&quot;</span> <span class="p">}</span>
 
-foreach ($app in $officeApps) {
-    $uninstallString = $app.UninstallString
-    if ($null -ne $uninstallString) {
-        Write-Host &quot;Uninstalling $($app.DisplayName)...&quot;
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$app</span> <span class="k">in</span> <span class="nv">$officeApps</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$uninstallString</span> <span class="p">=</span> <span class="nv">$app</span><span class="p">.</span><span class="n">UninstallString</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$null</span> <span class="o">-ne</span> <span class="nv">$uninstallString</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="s2">&quot;Uninstalling </span><span class="p">$(</span><span class="nv">$app</span><span class="p">.</span><span class="n">DisplayName</span><span class="p">)</span><span class="s2">...&quot;</span>
 
-        # Split exe and arguments safely
-        $exe, $args = $uninstallString -replace '^\s*','' -split '\s+',2
-        # Force quiet if possible
-        if ($args) {
-            $args = &quot;$args DisplayLevel=False&quot;
-        } else {
-            $args = &quot;DisplayLevel=False&quot;
-        }
+        <span class="c"># Split exe and arguments safely</span>
+        <span class="nv">$exe</span><span class="p">,</span> <span class="nv">$args</span> <span class="p">=</span> <span class="nv">$uninstallString</span> <span class="o">-replace</span> <span class="s1">&#39;^\s*&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span> <span class="n">-split</span> <span class="s1">&#39;\s+&#39;</span><span class="p">,</span><span class="n">2</span>
+        <span class="c"># Force quiet if possible</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$args</span> <span class="p">=</span> <span class="s2">&quot;$args DisplayLevel=False&quot;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nv">$args</span> <span class="p">=</span> <span class="s2">&quot;DisplayLevel=False&quot;</span>
+        <span class="p">}</span>
 
-        Start-Process -FilePath $exe -ArgumentList $args -Wait
-    }
-}
-</code></pre>
+        <span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="nv">$exe</span> <span class="n">-ArgumentList</span> <span class="nv">$args</span> <span class="n">-Wait</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3 id="what-this-does">What this does</h3>
 <ul>

@@ -3205,10 +3205,10 @@
 <p>Gå til:
 - <strong>Indstillinger → Konti → Adgang til arbejde eller skole</strong>
 - Vælg den arbejdskonto og klik på <strong>Fjern</strong> / <strong>Kobl fra</strong></p>
-<p>Eller kør følgende PowerShell via RMM (f.eks. NinjaRMM):</p>
-<pre><code class="language-powershell"># Fjern AAD-registrering
-Start-Process -FilePath dsregcmd -ArgumentList &quot;/leave&quot; -Wait
-</code></pre>
+<p>Eller kør følgende PowerShell via RMM (f.eks. NinjaRMM):
+<div class="highlight"><pre><span></span><code><span class="c"># Fjern AAD-registrering</span>
+<span class="nb">Start-Process</span> <span class="n">-FilePath</span> <span class="n">dsregcmd</span> <span class="n">-ArgumentList</span> <span class="s2">&quot;/leave&quot;</span> <span class="n">-Wait</span>
+</code></pre></div></p>
 <h3 id="trin-2-genstart-pcen">Trin 2: Genstart PC'en</h3>
 <p>Dette sikrer at cached tokens bliver fjernet.</p>
 <h3 id="trin-3-brugeren-logger-ind-igen">Trin 3: Brugeren logger ind igen</h3>
@@ -3219,14 +3219,14 @@ Start-Process -FilePath dsregcmd -ArgumentList &quot;/leave&quot; -Wait
 <hr />
 <h2 id="4-forebyggelse-af-problemet">4. Forebyggelse af problemet</h2>
 <h3 id="mulighed-a-bloker-fremtidige-prompts-via-registreringsdatabasen">Mulighed A: Bloker fremtidige prompts via registreringsdatabasen</h3>
-<p>Deploy dette via Group Policy eller script:</p>
-<pre><code class="language-reg">[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin]
+<p>Deploy dette via Group Policy eller script:
+<div class="highlight"><pre><span></span><code>[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin]
 &quot;BlockAADWorkplaceJoin&quot;=dword:00000001
-</code></pre>
-<p>Alternativt via PowerShell:</p>
-<pre><code class="language-powershell">New-Item -Path &quot;HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin&quot; -Force | Out-Null
-Set-ItemProperty -Path &quot;HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin&quot; -Name &quot;BlockAADWorkplaceJoin&quot; -Value 1 -Type DWord
-</code></pre>
+</code></pre></div></p>
+<p>Alternativt via PowerShell:
+<div class="highlight"><pre><span></span><code><span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin&quot;</span> <span class="n">-Force</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+<span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;BlockAADWorkplaceJoin&quot;</span> <span class="n">-Value</span> <span class="n">1</span> <span class="n">-Type</span> <span class="n">DWord</span>
+</code></pre></div></p>
 <h3 id="mulighed-b-informer-brugere">Mulighed B: Informer brugere</h3>
 <ul>
 <li>Lav en informationskampagne: "Klik altid NEJ til enhedsadministration"</li>

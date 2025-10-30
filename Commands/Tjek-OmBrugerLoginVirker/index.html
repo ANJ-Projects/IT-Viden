@@ -2827,14 +2827,14 @@
 <p>Denne side er scripts der kan bruges til at verificere om </p>
 <h2 id="simple-commands">Simple commands</h2>
 <p>Simpel Command, kig efter sidste login, refresh manuelt  </p>
-<pre><code>Get-ADUser -Identity &lt;USERNAME&gt; -Properties LastLogonDate | 
+<div class="highlight"><pre><span></span><code>Get-ADUser -Identity &lt;USERNAME&gt; -Properties LastLogonDate | 
     Select-Object Name, SamAccountName, LastLogonDate
-</code></pre>
+</code></pre></div>
 <h1 id="monitoring-commands">Monitoring commands</h1>
-<p>Utestet - Complex command, skulle gerne refresh automatisk, så du får svar hvis det virkede</p>
-<pre><code>&lt;# 
-    Purpose: Watch for a user's next AD logon in near real-time
-    How it works: Queries each DC's non-replicated 'lastLogon' attribute and looks for a newer value.
+<p>Utestet - Complex command, skulle gerne refresh automatisk, så du får svar hvis det virkede
+<div class="highlight"><pre><span></span><code>&lt;# 
+    Purpose: Watch for a user&#39;s next AD logon in near real-time
+    How it works: Queries each DC&#39;s non-replicated &#39;lastLogon&#39; attribute and looks for a newer value.
     Requirements: RSAT ActiveDirectory module
 #&gt;
 
@@ -2882,7 +2882,7 @@ try { Import-Module ActiveDirectory -ErrorAction Stop } catch {
     return
 }
 
-$UserId = Read-Host -Prompt 'Enter username (sAMAccountName or UPN)'
+$UserId = Read-Host -Prompt &#39;Enter username (sAMAccountName or UPN)&#39;
 if ([string]::IsNullOrWhiteSpace($UserId)) {
     Write-Host &quot;No username provided. Exiting.&quot; -ForegroundColor Yellow
     return
@@ -2892,7 +2892,7 @@ if ([string]::IsNullOrWhiteSpace($UserId)) {
 try {
     $userObj = Get-ADUser -Identity $UserId -Properties DisplayName,SamAccountName -ErrorAction Stop
 } catch {
-    Write-Host &quot;User '$UserId' not found in AD.&quot; -ForegroundColor Red
+    Write-Host &quot;User &#39;$UserId&#39; not found in AD.&quot; -ForegroundColor Red
     return
 }
 
@@ -2935,7 +2935,7 @@ while ($true) {
     $current = Get-TrueLastLogon -Identity $userObj.SamAccountName -DomainControllers $dcs
 
     if ($current -and $current.LastLogon) {
-        # New logon if there's no baseline or if timestamp increased
+        # New logon if there&#39;s no baseline or if timestamp increased
         if (-not $baselineTime -or ($current.LastLogon -gt $baselineTime)) {
             Write-Host &quot;&quot;
             Write-Host (&quot;SUCCESS: Logon detected for {0}&quot; -f $display) -ForegroundColor Green
@@ -2947,8 +2947,7 @@ while ($true) {
 
     Start-Sleep -Seconds $PollIntervalSeconds
 }
-
-</code></pre>
+</code></pre></div></p>
 
 
 

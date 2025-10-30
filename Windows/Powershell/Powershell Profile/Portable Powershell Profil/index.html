@@ -2929,37 +2929,37 @@
 <p>Målet: Du har en PowerShell-konfiguration på GitHub og kan til enhver tid hente og loade den uden at ændre din <code>$PROFILE</code>.</p>
 <hr />
 <h3 id="struktur-i-dit-repo-eksempel">📁 Struktur i dit repo (eksempel):</h3>
-<pre><code>my-powershell-profile/
+<div class="highlight"><pre><span></span><code>my-powershell-profile/
 ├── profile.ps1
 ├── modules/
 │   └── MyCustomModule/
 └── scripts/
     └── useful-functions.ps1
-</code></pre>
+</code></pre></div>
 <hr />
 <h3 id="hente-og-bruge-din-profil-uden-at-installere-noget">⚙️ Hente og bruge din profil uden at installere noget</h3>
-<pre><code class="language-powershell"># Sæt base URL til dit GitHub-repo
-$baseUrl = &quot;https://raw.githubusercontent.com/youruser/my-powershell-profile/main&quot;
+<div class="highlight"><pre><span></span><code><span class="c"># Sæt base URL til dit GitHub-repo</span>
+<span class="nv">$baseUrl</span> <span class="p">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/youruser/my-powershell-profile/main&quot;</span>
 
-# Hent din midlertidige profil
-Invoke-WebRequest &quot;$baseUrl/profile.ps1&quot; -OutFile &quot;$env:TEMP\portable-profile.ps1&quot;
+<span class="c"># Hent din midlertidige profil</span>
+<span class="nb">Invoke-WebRequest</span> <span class="s2">&quot;$baseUrl/profile.ps1&quot;</span> <span class="n">-OutFile</span> <span class="s2">&quot;$env:TEMP\portable-profile.ps1&quot;</span>
 
-# Importér midlertidig profil (engangsbrug i denne session)
-. &quot;$env:TEMP\portable-profile.ps1&quot;
-</code></pre>
+<span class="c"># Importér midlertidig profil (engangsbrug i denne session)</span>
+<span class="p">.</span> <span class="s2">&quot;$env:TEMP\portable-profile.ps1&quot;</span>
+</code></pre></div>
 <hr />
 <h3 id="tip-lav-en-bootstrapps1">💡 Tip: Lav en <code>bootstrap.ps1</code></h3>
 <p>Denne kan ligge i repo'et og bruges til hurtigt at hente og indlæse profilen:</p>
-<pre><code class="language-powershell"># bootstrap.ps1
-$baseUrl = &quot;https://raw.githubusercontent.com/youruser/my-powershell-profile/main&quot;
+<div class="highlight"><pre><span></span><code><span class="c"># bootstrap.ps1</span>
+<span class="nv">$baseUrl</span> <span class="p">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/youruser/my-powershell-profile/main&quot;</span>
 
-# Load selve profilscriptet
-Invoke-WebRequest &quot;$baseUrl/profile.ps1&quot; -OutFile &quot;$env:TEMP\portable-profile.ps1&quot;
-. &quot;$env:TEMP\portable-profile.ps1&quot;
-</code></pre>
+<span class="c"># Load selve profilscriptet</span>
+<span class="nb">Invoke-WebRequest</span> <span class="s2">&quot;$baseUrl/profile.ps1&quot;</span> <span class="n">-OutFile</span> <span class="s2">&quot;$env:TEMP\portable-profile.ps1&quot;</span>
+<span class="p">.</span> <span class="s2">&quot;$env:TEMP\portable-profile.ps1&quot;</span>
+</code></pre></div>
 <p>Brug derefter:</p>
-<pre><code class="language-powershell">irm https://raw.githubusercontent.com/youruser/my-powershell-profile/main/bootstrap.ps1 | iex
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">irm </span><span class="n">https</span><span class="p">://</span><span class="n">raw</span><span class="p">.</span><span class="n">githubusercontent</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">youruser</span><span class="p">/</span><span class="n">my-powershell-profile</span><span class="p">/</span><span class="n">main</span><span class="p">/</span><span class="n">bootstrap</span><span class="p">.</span><span class="n">ps1</span> <span class="p">|</span> <span class="nb">iex</span>
+</code></pre></div>
 <hr />
 <h3 id="hvorfor-bruge-en-portabel-profil">🧠 Hvorfor bruge en portabel profil?</h3>
 <ul>
@@ -2970,21 +2970,21 @@ Invoke-WebRequest &quot;$baseUrl/profile.ps1&quot; -OutFile &quot;$env:TEMP\port
 </ul>
 <hr />
 <h3 id="eksempel-indhold-i-profileps1">✅ Eksempel: Indhold i <code>profile.ps1</code></h3>
-<pre><code class="language-powershell"># profile.ps1
-Write-Host &quot;🔧 Indlæser portabel profil...&quot;
+<div class="highlight"><pre><span></span><code><span class="c"># profile.ps1</span>
+<span class="nb">Write-Host</span> <span class="s2">&quot;🔧 Indlæser portabel profil...&quot;</span>
 
-Set-Alias ll Get-ChildItem
-function gpoedit { gpmc.msc }
+<span class="nb">Set-Alias</span> <span class="n">ll</span> <span class="nb">Get-ChildItem</span>
+<span class="k">function</span> <span class="n">gpoedit</span> <span class="p">{</span> <span class="n">gpmc</span><span class="p">.</span><span class="n">msc</span> <span class="p">}</span>
 
-# Automatisk import af brugerdefinerede moduler
-$modulePath = &quot;$PSScriptRoot\modules&quot;
-if (Test-Path $modulePath) {
-    $env:PSModulePath += &quot;;$modulePath&quot;
-    Get-ChildItem $modulePath -Directory | ForEach-Object {
-        Import-Module $_.FullName -Force
-    }
-}
-</code></pre>
+<span class="c"># Automatisk import af brugerdefinerede moduler</span>
+<span class="nv">$modulePath</span> <span class="p">=</span> <span class="s2">&quot;$PSScriptRoot\modules&quot;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="nv">$modulePath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$env:PSModulePath</span> <span class="p">+=</span> <span class="s2">&quot;;$modulePath&quot;</span>
+    <span class="nb">Get-ChildItem</span> <span class="nv">$modulePath</span> <span class="n">-Directory</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+        <span class="nb">Import-Module</span> <span class="nv">$_</span><span class="p">.</span><span class="n">FullName</span> <span class="n">-Force</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <p>Sig til hvis du vil have hjælp til at sætte repoet op med <code>scripts/</code>, <code>modules/</code> og en klar <code>bootstrap.ps1</code> – eller hvis du vil inkludere støtte til forskellige shells (f.eks. Windows PowerShell vs. PowerShell Core).</p>
 

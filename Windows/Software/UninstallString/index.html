@@ -2859,23 +2859,23 @@
 <h2 id="introduktion">🧾 <strong>Introduktion</strong></h2>
 <p>Dette PowerShell-script bruges til at finde og liste programmer installeret via MSI (Microsoft Installer) på en Windows-maskine. Det henter oplysninger fra både 64-bit og 32-bit registreringsstier under HKLM og HKCU. Det filtrerer kun de programmer, som er installeret med <code>msiexec</code>, og udtrækker GUID direkte fra afinstallationsstrengen.</p>
 <hr />
-<pre><code class="language-powershell">$registryPaths = @(
-    &quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;,
-    &quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;,
-    &quot;HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;
-)
+<div class="highlight"><pre><span></span><code><span class="nv">$registryPaths</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="s2">&quot;HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*&quot;</span>
+<span class="p">)</span>
 
-$results = foreach ($path in $registryPaths) {
-    Get-ItemProperty $path -ErrorAction SilentlyContinue |
-    Where-Object { $_.DisplayName -and $_.UninstallString -like &quot;*msiexec*&quot; } |
-    Select-Object @{Name=&quot;Name&quot;;Expression={$_.DisplayName}},
-                  @{Name=&quot;Version&quot;;Expression={$_.DisplayVersion}},
-                  @{Name=&quot;MSI_GUID&quot;;Expression={[regex]::Match($_.UninstallString, '{.*?}').Value}},
-                  @{Name=&quot;InstallLocation&quot;;Expression={$_.InstallLocation}}
-}
+<span class="nv">$results</span> <span class="p">=</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$path</span> <span class="k">in</span> <span class="nv">$registryPaths</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Get-ItemProperty</span> <span class="nv">$path</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span> <span class="p">|</span>
+    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span> <span class="o">-and</span> <span class="nv">$_</span><span class="p">.</span><span class="n">UninstallString</span> <span class="o">-like</span> <span class="s2">&quot;*msiexec*&quot;</span> <span class="p">}</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;Name&quot;</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">DisplayName</span><span class="p">}},</span>
+                  <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;Version&quot;</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">DisplayVersion</span><span class="p">}},</span>
+                  <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;MSI_GUID&quot;</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="no">[regex]</span><span class="p">::</span><span class="n">Match</span><span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">UninstallString</span><span class="p">,</span> <span class="s1">&#39;{.*?}&#39;</span><span class="p">).</span><span class="n">Value</span><span class="p">}},</span>
+                  <span class="p">@{</span><span class="n">Name</span><span class="p">=</span><span class="s2">&quot;InstallLocation&quot;</span><span class="p">;</span><span class="n">Expression</span><span class="p">={</span><span class="nv">$_</span><span class="p">.</span><span class="n">InstallLocation</span><span class="p">}}</span>
+<span class="p">}</span>
 
-$results | Format-Table -AutoSize
-</code></pre>
+<span class="nv">$results</span> <span class="p">|</span> <span class="nb">Format-Table</span> <span class="n">-AutoSize</span>
+</code></pre></div>
 <hr />
 <h3 id="noter">💡 Noter:</h3>
 <ul>

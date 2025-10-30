@@ -2866,17 +2866,17 @@
 <h1 id="giv-bruger-adgang-til-at-redigere-i-andens-brugers-kalender">Giv bruger adgang til at redigere i anden's bruger's kalender</h1>
 <p>For at give <strong><a href="mailto:sbd@mailexample.dk">sbd@mailexample.dk</a></strong> skriveadgang (Editor) til <strong><a href="mailto:jbb@mailexample.dk">jbb@mailexample.dk</a></strong>'s kalender via PowerShell med Exchange Online, kan du bruge <code>Add-MailboxFolderPermission</code> cmdlet’en.</p>
 <h3 id="kommando">🎯 Kommando:</h3>
-<pre><code class="language-powershell">Add-MailboxFolderPermission -Identity &quot;jbb@mailexample.dk:\Calendar&quot; -User sbd@mailexample.dk -AccessRights Editor
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Add-MailboxFolderPermission</span> <span class="n">-Identity</span> <span class="s2">&quot;jbb@mailexample.dk:\Calendar&quot;</span> <span class="n">-User</span> <span class="n">sbd</span><span class="nv">@mailexample</span><span class="p">.</span><span class="n">dk</span> <span class="n">-AccessRights</span> <span class="n">Editor</span>
+</code></pre></div>
 <p>Dette vil virke i både engelske og danske Outlook/Exchange-miljøer <strong>hvis</strong> mappen hedder <code>Calendar</code>. Men hvis kalenderen er navngivet <strong>"Kalender"</strong> (dansk sprogversion), skal mappenavnet justeres.</p>
 <h3 id="tjek-hvilket-kalendermappenavn-der-bruges-calendarkalender">✅ Tjek hvilket kalendermappenavn der bruges (Calendar/Kalender):</h3>
 <p>Du kan tjekke det med:</p>
-<pre><code class="language-powershell">Get-MailboxFolderStatistics -Identity jbb@mailexample.dk | Where-Object {$_.FolderType -eq &quot;Calendar&quot;}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-MailboxFolderStatistics</span> <span class="n">-Identity</span> <span class="n">jbb</span><span class="nv">@mailexample</span><span class="p">.</span><span class="n">dk</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="p">{</span><span class="nv">$_</span><span class="p">.</span><span class="n">FolderType</span> <span class="o">-eq</span> <span class="s2">&quot;Calendar&quot;</span><span class="p">}</span>
+</code></pre></div>
 <p>Denne kommando viser dig det præcise lokaliserede mappenavn (f.eks. <code>jbb@mailexample.dk:\Kalender</code> eller <code>jbb@mailexample.dk:\Calendar</code>).</p>
 <h3 id="hvis-det-er-kalender-sa-kr">💡 Hvis det er <strong>Kalender</strong>, så kør:</h3>
-<pre><code class="language-powershell">Add-MailboxFolderPermission -Identity &quot;jbb@mailexample.dk:\Kalender&quot; -User sbd@mailexample.dk -AccessRights Editor
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Add-MailboxFolderPermission</span> <span class="n">-Identity</span> <span class="s2">&quot;jbb@mailexample.dk:\Kalender&quot;</span> <span class="n">-User</span> <span class="n">sbd</span><span class="nv">@mailexample</span><span class="p">.</span><span class="n">dk</span> <span class="n">-AccessRights</span> <span class="n">Editor</span>
+</code></pre></div>
 <p>Sig til hvis du i stedet ønsker at give <strong>delegate access</strong> (så sbd kan håndtere mødeindkaldelser osv.) – det kræver en anden metode.</p>
 <hr />
 <p>Lad mig vide, hvis du vil have det sat op til flere brugere eller automatiseret i et script.</p>

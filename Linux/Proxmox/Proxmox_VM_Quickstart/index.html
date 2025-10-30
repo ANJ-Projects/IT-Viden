@@ -2993,44 +2993,44 @@
 <hr />
 <h2 id="cli-hurtig-vm-via-qm">CLI: Hurtig VM via <code>qm</code></h2>
 <p>Brug CLI, når du allerede har defineret standarder (ISO, storage, bridge). Eksemplet opretter en Ubuntu server på ID 120.</p>
-<pre><code class="language-bash">VMID=120
-VMNAME=&quot;ubuntu-core&quot;
-ISO_STORAGE=&quot;local&quot;
-ISO_IMAGE=&quot;ubuntu-22.04-live-server.iso&quot;
-VM_STORAGE=&quot;fast-ssd&quot;
-BRIDGE=&quot;vmbr0&quot;
+<div class="highlight"><pre><span></span><code><span class="nv">VMID</span><span class="o">=</span><span class="m">120</span>
+<span class="nv">VMNAME</span><span class="o">=</span><span class="s2">&quot;ubuntu-core&quot;</span>
+<span class="nv">ISO_STORAGE</span><span class="o">=</span><span class="s2">&quot;local&quot;</span>
+<span class="nv">ISO_IMAGE</span><span class="o">=</span><span class="s2">&quot;ubuntu-22.04-live-server.iso&quot;</span>
+<span class="nv">VM_STORAGE</span><span class="o">=</span><span class="s2">&quot;fast-ssd&quot;</span>
+<span class="nv">BRIDGE</span><span class="o">=</span><span class="s2">&quot;vmbr0&quot;</span>
 
-qm create &quot;$VMID&quot; \
-  --name &quot;$VMNAME&quot; \
-  --ostype l26 \
-  --memory 4096 \
-  --cores 4 \
-  --sockets 1 \
-  --cpu host \
-  --scsihw virtio-scsi-single \
-  --scsi0 ${VM_STORAGE}:32 \
-  --net0 virtio,bridge=$BRIDGE \
-  --ide2 ${ISO_STORAGE}:iso/${ISO_IMAGE},media=cdrom \
-  --boot order=scsi0;ide2 \
-  --agent enabled=1,fstrim_cloned_disks=1
-</code></pre>
+qm<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMNAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ostype<span class="w"> </span>l26<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--memory<span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cores<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sockets<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpu<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scsihw<span class="w"> </span>virtio-scsi-single<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--scsi0<span class="w"> </span><span class="si">${</span><span class="nv">VM_STORAGE</span><span class="si">}</span>:32<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--net0<span class="w"> </span>virtio,bridge<span class="o">=</span><span class="nv">$BRIDGE</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ide2<span class="w"> </span><span class="si">${</span><span class="nv">ISO_STORAGE</span><span class="si">}</span>:iso/<span class="si">${</span><span class="nv">ISO_IMAGE</span><span class="si">}</span>,media<span class="o">=</span>cdrom<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--boot<span class="w"> </span><span class="nv">order</span><span class="o">=</span>scsi0<span class="p">;</span>ide2<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--agent<span class="w"> </span><span class="nv">enabled</span><span class="o">=</span><span class="m">1</span>,fstrim_cloned_disks<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
 <h3 id="tuning-og-start">Tuning og start</h3>
-<pre><code class="language-bash"># Tilføj Cloud-Init disk (kræver Cloud-Init image i storage)
-qm set &quot;$VMID&quot; --ide0 ${VM_STORAGE}:cloudinit
+<div class="highlight"><pre><span></span><code><span class="c1"># Tilføj Cloud-Init disk (kræver Cloud-Init image i storage)</span>
+qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span><span class="w"> </span>--ide0<span class="w"> </span><span class="si">${</span><span class="nv">VM_STORAGE</span><span class="si">}</span>:cloudinit
 
-# Definér bruger, SSH nøgle og netværk
-qm set &quot;$VMID&quot; --ciuser admin --cipassword 'SikkerMidltidigtPassword'
-qm set &quot;$VMID&quot; --sshkey ~/.ssh/id_ed25519.pub
-qm set &quot;$VMID&quot; --ipconfig0 ip=dhcp
+<span class="c1"># Definér bruger, SSH nøgle og netværk</span>
+qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span><span class="w"> </span>--ciuser<span class="w"> </span>admin<span class="w"> </span>--cipassword<span class="w"> </span><span class="s1">&#39;SikkerMidltidigtPassword&#39;</span>
+qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span><span class="w"> </span>--sshkey<span class="w"> </span>~/.ssh/id_ed25519.pub
+qm<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span><span class="w"> </span>--ipconfig0<span class="w"> </span><span class="nv">ip</span><span class="o">=</span>dhcp
 
-# Start VM'en og overvåg konsollen
-qm start &quot;$VMID&quot;
-qm terminal &quot;$VMID&quot;
-</code></pre>
+<span class="c1"># Start VM&#39;en og overvåg konsollen</span>
+qm<span class="w"> </span>start<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span>
+qm<span class="w"> </span>terminal<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span>
+</code></pre></div>
 <h3 id="genbrug-opstningen">Genbrug opsætningen</h3>
-<p>Når VM'en er klar, stop den og lav en template, så du kan klone lynhurtigt næste gang:</p>
-<pre><code class="language-bash">qm shutdown &quot;$VMID&quot; &amp;&amp; qm template &quot;$VMID&quot;
-</code></pre>
+<p>Når VM'en er klar, stop den og lav en template, så du kan klone lynhurtigt næste gang:
+<div class="highlight"><pre><span></span><code>qm<span class="w"> </span>shutdown<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>qm<span class="w"> </span>template<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VMID</span><span class="s2">&quot;</span>
+</code></pre></div></p>
 <hr />
 <h2 id="hurtige-fejlfindingstrin">Hurtige fejlfindingstrin</h2>
 <ul>

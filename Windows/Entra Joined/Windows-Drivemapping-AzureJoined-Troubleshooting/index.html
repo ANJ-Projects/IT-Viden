@@ -2968,13 +2968,13 @@ Unlocking the account on‑prem and then forcing the workstation to reboot (or a
 </ol>
 <hr />
 <h3 id="checklist-for-next-time">Checklist for next time</h3>
-<pre><code class="language-text">1. Unlock account in AD if necessary.
+<div class="highlight"><pre><span></span><code>1. Unlock account in AD if necessary.
 2. On the PC (elevated):
       klist purge
       klist -li 0x3e7 purge   ← optional but safe
 3. Delete and re‑create any mapped drives OR clear the entry in Credential Manager.
 4. (Optional) Sign out/in to renew Azure AD tokens.
-</code></pre>
+</code></pre></div>
 <p>If you follow those four steps you’ll avoid the reboot and prevent multiple lock‑out cycles, while still getting the mapped drives online with the new password.</p>
 
 
