@@ -40,3 +40,6 @@ extra_javascript:
   
 markdown_extensions:
   - attr_list # This is the crucial extension
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences
